@@ -17,8 +17,88 @@
 
     <!-- 스타일 프레임워크 (Tailwind CSS) -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="style.css" rel="stylesheet">
     
+    <!-- 커스텀 스타일 -->
+    <style>
+        :root {
+            --color-primary: #2C2C2C; /* 메인 텍스트 컬러 */
+            --color-accent: #8B5E3C;  /* 포인트 컬러 (국수색) */
+            --color-bg: #F9F8F5;      /* 배경 컬러 (미색) */
+            --font-serif: 'Noto Serif KR', serif;
+            --font-sans: 'Pretendard', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-bg);
+            color: var(--color-primary);
+            line-height: 1.6;
+            word-break: keep-all;
+        }
+
+        /* 폰트 스타일 */
+        h1, h2, h3, .serif {
+            font-family: var(--font-serif);
+        }
+
+        /* 헤더 스크롤 효과 */
+        header {
+            transition: all 0.3s ease;
+        }
+        header.scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+        }
+
+        /* 메인 히어로 섹션 배경 */
+        .hero-section {
+            height: 90vh;
+            /* 배경 이미지 URL 변경 완료 */
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('바탕화면 고화질.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* 공통 버튼 스타일 */
+        .btn-premium {
+            background-color: var(--color-accent);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .btn-premium:hover {
+            background-color: #6d482d;
+            transform: translateY(-2px);
+        }
+
+        /* 프로그램 카드 호버 효과 */
+        .program-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+        .program-card img {
+            transition: transform 0.5s ease;
+        }
+        .program-card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* 스크롤 등장 애니메이션 */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8186894594525105"
      crossorigin="anonymous"></script>
     <meta name="naver-site-verification" content="a9dce988a4bf309c2e4fe299228e874ae556e994" />
@@ -30,15 +110,15 @@
     <header class="fixed w-full top-0 z-50 py-6 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
             <!-- 로고 -->
-            <a href="index.html" class="text-2xl font-bold serif text-gray-800 tracking-widest z-50">
+            <a href="#" class="text-2xl font-bold serif text-gray-800 tracking-widest z-50">
                 GUPO NOODLE<br><span class="text-sm font-light tracking-normal">구포국수체험관</span>
             </a>
 
             <!-- PC 메뉴 -->
             <nav class="hidden md:flex space-x-12">
-                <a href="about.html" class="text-gray-800 hover:text-[#8B5E3C] transition font-medium">소개</a>
-                <a href="programs.html" class="text-gray-800 hover:text-[#8B5E3C] transition font-medium">체험 프로그램</a>
-                <a href="contact.html" class="text-gray-800 hover:text-[#8B5E3C] transition font-medium">이용안내</a>
+                <a href="#about" class="text-gray-800 hover:text-[#8B5E3C] transition font-medium">소개</a>
+                <a href="#program" class="text-gray-800 hover:text-[#8B5E3C] transition font-medium">체험 프로그램</a>
+                <a href="#info" class="text-gray-800 hover:text-[#8B5E3C] transition font-medium">이용안내</a>
             </nav>
 
             <!-- 예약 버튼 & 모바일 메뉴 아이콘 -->
@@ -54,9 +134,9 @@
 
         <!-- 모바일 메뉴 (숨김 상태) -->
         <div id="mobile-menu" class="fixed inset-0 bg-white z-40 transform translate-x-full transition-transform duration-300 flex flex-col justify-center items-center space-y-8 md:hidden">
-            <a href="about.html" class="text-2xl font-serif text-gray-800 mobile-link">소개</a>
-            <a href="programs.html" class="text-2xl font-serif text-gray-800 mobile-link">체험 프로그램</a>
-            <a href="contact.html" class="text-2xl font-serif text-gray-800 mobile-link">이용안내</a>
+            <a href="#about" class="text-2xl font-serif text-gray-800 mobile-link">소개</a>
+            <a href="#program" class="text-2xl font-serif text-gray-800 mobile-link">체험 프로그램</a>
+            <a href="#info" class="text-2xl font-serif text-gray-800 mobile-link">이용안내</a>
             <a href="https://map.naver.com/p/entry/place/1759506877?lng=128.997753&lat=35.2066646&placePath=/ticket?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202602040921&locale=ko&svcName=map_pcv5&entry=plt&searchType=place&c=15.00,0,0,0,dh" target="_blank" class="px-8 py-3 bg-[#8B5E3C] text-white rounded-full text-lg">예약하기</a>
         </div>
     </header>
@@ -72,9 +152,128 @@
                 낙동강의 강바람과 뜨거운 햇살이 만들어낸 쫄깃함.<br>
                 직접 만들고 맛보며 우리 국수의 문화를 체험해보세요.
             </p>
-            <a href="programs.html" class="inline-block px-10 py-4 bg-white/10 backdrop-blur-sm border border-white text-white hover:bg-white hover:text-[#2C2C2C] transition duration-300 rounded-sm">
+            <a href="#program" class="inline-block px-10 py-4 bg-white/10 backdrop-blur-sm border border-white text-white hover:bg-white hover:text-[#2C2C2C] transition duration-300 rounded-sm">
                 체험 프로그램 보기
             </a>
+        </div>
+    </section>
+
+    <!-- 2. 브랜드 스토리 (소개) -->
+    <section id="about" class="py-24 bg-[#F9F8F5]">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <!-- 이미지 영역 -->
+                <div class="w-full md:w-1/2 reveal">
+                    <div class="relative h-[500px] w-full overflow-hidden rounded-lg shadow-xl">
+                        <!-- 이미지 URL 변경됨 -->
+                        <img src="구포국수자연건조 고화질.jpg" 
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1590403323067-1725b68df73a?q=80&w=2670&auto=format&fit=crop';" 
+                             alt="구포 국수 자연 건조" 
+                             class="absolute inset-0 w-full h-full object-cover">
+                    </div>
+                </div>
+                <!-- 텍스트 영역 -->
+                <div class="w-full md:w-1/2 reveal delay-200">
+                    <span class="text-[#8B5E3C] font-bold tracking-widest text-sm mb-2 block">OUR STORY</span>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 leading-snug text-gray-900">
+                        낙동강 바람이 말린<br>세월의 쫄깃함
+                    </h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        구포국수는 일제강점기부터 한국전쟁을 거치며 부산의 서민들과 애환을 함께해온 음식입니다. 
+                        낙동강 하구의 염분 섞인 강바람은 국수를 자연 건조하기에 최적의 환경을 제공했습니다.
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        구포국수체험관은 잊혀져 가는 구포국수의 역사를 보존하고, 
+                        남녀노소 누구나 즐겁게 국수를 만들고 맛볼 수 있는 복합 문화 공간입니다.
+                    </p>
+                    
+                    <div class="flex gap-8 border-t border-gray-300 pt-8">
+                        <div>
+                            <strong class="block text-3xl font-serif text-[#8B5E3C]">2~3F</strong>
+                            <span class="text-sm text-gray-500">체험관 / 홍보관</span>
+                        </div>
+                        <div>
+                            <strong class="block text-3xl font-serif text-[#8B5E3C]">1F</strong>
+                            <span class="text-sm text-gray-500">국수 식당</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. 체험 프로그램 -->
+    <section id="program" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="text-[#8B5E3C] font-bold tracking-widest text-sm mb-2 block">PROGRAM</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">나만의 국수 만들기</h2>
+                <p class="text-gray-500 mt-4">제면부터 요리까지, 특별한 추억을 만들어보세요.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="program-card group rounded-xl overflow-hidden bg-white border border-gray-100 reveal">
+                    <div class="h-64 overflow-hidden relative">
+                        <!-- 이미지 src를 새 URL로 변경했습니다 -->
+                        <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F421%2F2021%2F02%2F25%2F0005188693_002_20210225155516699.jpg&type=a340" alt="제면 체험" class="w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 bg-[#8B5E3C] text-white text-xs px-3 py-1 rounded-full">인기</div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold mb-3 group-hover:text-[#8B5E3C] transition">제면 체험 클래스</h3>
+                        <p class="text-gray-500 text-sm mb-6 line-clamp-2">
+                            밀가루 반죽부터 시작해 제면기를 이용해 직접 국수 가닥을 뽑아보는 체험입니다. 내가 만든 국수는 포장해갈 수 있습니다.
+                        </p>
+                        <ul class="text-sm text-gray-600 space-y-2 mb-6">
+                            <li><i class="far fa-clock mr-2 text-[#8B5E3C]"></i> 소요시간: 약 60분</li>
+                            <li><i class="far fa-user mr-2 text-[#8B5E3C]"></i> 대상: 5세 이상 누구나</li>
+                        </ul>
+                        <a href="https://map.naver.com/p/entry/place/1759506877?lng=128.997753&lat=35.2066646&placePath=/ticket?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202602040921&locale=ko&svcName=map_pcv5&entry=plt&searchType=place&c=15.00,0,0,0,dh" target="_blank" class="block w-full py-3 border border-gray-300 text-center rounded-lg hover:bg-gray-50 transition text-sm">예약 바로가기</a>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="program-card group rounded-xl overflow-hidden bg-white border border-gray-100 reveal delay-100">
+                    <div class="h-64 overflow-hidden relative">
+                        <!-- 이미지 src를 요청하신 사진으로 변경했습니다 -->
+                        <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTAzMDNfNDMg%2FMDAxNjE0NzQwOTI1OTYy.fVHXCNrGOhMlaZD2AJpafwK44Xm0lMmmBHekHJry5cQg.NDUdUS4EodX2gaOKuY_oaoBlDNOKEaElbkfsyVe4sLsg.JPEG.bsbukgusns%2F5-4.jpeg&type=a340" alt="맷돌과 편백놀이" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-8">
+                        <!-- 제목 변경 -->
+                        <h3 class="text-xl font-bold mb-3 group-hover:text-[#8B5E3C] transition">맷돌체험 과 편백놀이</h3>
+                        <!-- 설명 변경 -->
+                        <p class="text-gray-500 text-sm mb-6 line-clamp-2">
+                            직접 맷돌을 돌려 곡물을 갈아보는 전통 문화 체험과, 향긋한 편백나무 큐브 속에서 즐기는 오감 발달 놀이입니다.
+                        </p>
+                        <ul class="text-sm text-gray-600 space-y-2 mb-6">
+                            <li><i class="far fa-clock mr-2 text-[#8B5E3C]"></i> 소요시간: 약 30분</li>
+                            <li><i class="far fa-user mr-2 text-[#8B5E3C]"></i> 대상: 영유아 및 어린이</li>
+                        </ul>
+                        <a href="https://map.naver.com/p/entry/place/1759506877?lng=128.997753&lat=35.2066646&placePath=/ticket?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202602040921&locale=ko&svcName=map_pcv5&entry=plt&searchType=place&c=15.00,0,0,0,dh" target="_blank" class="block w-full py-3 border border-gray-300 text-center rounded-lg hover:bg-gray-50 transition text-sm">예약 바로가기</a>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="program-card group rounded-xl overflow-hidden bg-white border border-gray-100 reveal delay-200">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxNzEyMTFfNTMg%2FMDAxNTEyOTU5NjEyODMz.fXQ0bdskEVBP-lXdtQ4JBSl-ib1x4C54k2159Hm8Wwsg.eYNbX3Vfx4bu9JEhBgC4nAPlTjr-og5_a4-YRIcEYa8g.JPEG.dw9597%2F20171209_120817.jpg&type=a340" alt="역사관 투어" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold mb-3 group-hover:text-[#8B5E3C] transition">역사관 & 미니 박물관</h3>
+                        <p class="text-gray-500 text-sm mb-6 line-clamp-2">
+                            1950-60년대 구포의 풍경과 국수 제조 도구들을 관람하며 국수의 역사를 배우는 도슨트 투어입니다.
+                        </p>
+                        <ul class="text-sm text-gray-600 space-y-2 mb-6">
+                            <li><i class="far fa-clock mr-2 text-[#8B5E3C]"></i> 소요시간: 약 30분</li>
+                            <li><i class="far fa-user mr-2 text-[#8B5E3C]"></i> 대상: 무료 관람</li>
+                        </ul>
+                        <!-- 링크(a태그)를 제거하고 안내 문구(div)로 변경하여 클릭되지 않게 수정했습니다. -->
+                        <div class="block w-full py-3 border border-gray-300 text-center rounded-lg bg-gray-100 text-gray-500 text-sm">
+                            잠정중단 & 축소운영
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -92,18 +291,138 @@
             </script>
         </div>
     </section>
-    
+
+    <!-- 4. 이용 안내 및 오시는 길 -->
+    <section id="info" class="py-24 bg-[#2C2C2C] text-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                <div class="reveal">
+                    <h2 class="text-3xl font-bold mb-8 text-white">이용 안내</h2>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-24 text-gray-400 font-light">운영시간</div>
+                            <div>
+                                <p>09:00 ~ 18:00 (월요일 휴관)</p>
+                                <p class="text-sm text-gray-500 mt-1">* 체험은 사전 예약제로 운영됩니다.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-24 text-gray-400 font-light">문의전화 : 010-2608-5099</div>
+                            <div>저희 체험관은 네이버 사전예약으로 운영되고 있습니다.</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-24 text-gray-400 font-light">주소</div>
+                            <div>부산광역시 북구 구포만세길 109 (구포동)</div>
+                        </div>
+                        <div class="mt-8">
+                            <a href="https://map.naver.com/p/entry/place/1759506877?lng=128.997753&lat=35.2066646&placePath=/ticket?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202602040921&locale=ko&svcName=map_pcv5&entry=plt&searchType=place&c=15.00,0,0,0,dh" target="_blank" class="btn-premium px-8 py-4 rounded-lg font-bold inline-flex items-center">
+                                <span>예약하러 가기</span>
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="reveal" style="width:100%; height:400px; overflow:hidden;">
+                    <iframe 
+                        src="https://map.naver.com/v5/entry/place/37277189?c=14362145.4745814,4191317.8427497,15,0,0,0,dh" 
+                        width="100%" 
+                        height="100%" 
+                        frameborder="0" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        aria-hidden="false" 
+                        tabindex="0">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Google AdSense Ad Unit -->
+    <section class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-8186894594525105"
+                 data-ad-slot="2935907955"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </section>
+
     <!-- 푸터 -->
     <footer class="py-12 bg-[#1a1a1a] text-gray-500 text-sm border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-6 text-center md:text-left">
+            <div class="mb-4">
+                <span class="font-bold text-gray-300 text-lg serif">GUPO NOODLE</span>
+            </div>
             <p class="mb-2">상호: 구포국수체험관 | 대표자: 체험관관리자 | 주소: 부산광역시 북구 구포만세길 109</p>
             <p class="mb-6">사업자등록번호: 184-81-02872 | 개인정보관리책임자: 관리자</p>
-            <p><a href="privacy.html" class="hover:underline">개인정보처리방침</a></p>
-            <p class="text-xs text-gray-600 mt-4">COPYRIGHT © GUPO NOODLE EXPERIENCE CENTER. ALL RIGHTS RESERVED.</p>
+            <p class="text-xs text-gray-600">COPYRIGHT © GUPO NOODLE EXPERIENCE CENTER. ALL RIGHTS RESERVED.</p>
         </div>
     </footer>
 
     <!-- 자바스크립트 (기능 구현) -->
-    <script src="main.js"></script>
+    <script>
+        // 1. 헤더 스크롤 효과: 스크롤 내리면 배경색 변경
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // 2. 모바일 메뉴 토글: 햄버거 버튼 클릭 시 메뉴 열림/닫힘
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        let isMenuOpen = false;
+
+        menuBtn.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileMenu.classList.remove('translate-x-full'); // 메뉴 보이기
+                document.body.style.overflow = 'hidden'; // 스크롤 막기
+                menuBtn.innerHTML = '<i class="fas fa-times"></i>'; // 닫기 아이콘
+            } else {
+                mobileMenu.classList.add('translate-x-full'); // 메뉴 숨기기
+                document.body.style.overflow = 'auto'; // 스크롤 허용
+                menuBtn.innerHTML = '<i class="fas fa-bars"></i>'; // 햄버거 아이콘
+            }
+        });
+
+        // 모바일 메뉴 링크 클릭 시 메뉴 닫기
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                isMenuOpen = false;
+                mobileMenu.classList.add('translate-x-full');
+                document.body.style.overflow = 'auto';
+                menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // 3. 스크롤 애니메이션: 요소가 화면에 보이면 서서히 나타나기
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            const elementVisible = 150; // 요소가 150px 정도 보이면 실행
+
+            revealElements.forEach((reveal) => {
+                const elementTop = reveal.getBoundingClientRect().top;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveal.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // 로딩 시 한 번 실행
+    </script>
 </body>
 </html>
