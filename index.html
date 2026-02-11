@@ -3,9 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="부산의 역사와 맛을 체험하다, 구포국수체험관 공식 홈페이지">
-    <meta property="og:title" content="구포국수체험관">
-    <meta property="og:description" content="시간이 빚어낸 맛, 구포국수를 만나다">
+    <meta name="description" content="구포국수체험관 공식 홈페이지. 부산의 역사와 전통이 담긴 구포국수를 직접 만들고 맛보며 특별한 문화 체험을 즐겨보세요. 제면 체험, 맷돌 체험, 역사관 투어 등 다양한 프로그램이 준비되어 있습니다.">
+    <meta property="og:title" content="구포국수체험관 | 시간이 빚어낸 맛, 구포국수를 만나다">
+    <meta property="og:description" content="부산의 역사와 전통이 담긴 구포국수를 직접 만들고 맛보며 특별한 문화 체험을 즐겨보세요. 제면 체험, 맷돌 체험, 역사관 투어 등 다양한 프로그램이 준비되어 있습니다.">
+    <meta property="og:url" content="https://guponoodle.lol/" />
+    <meta property="og:image" content="https://guponoodle.lol/바탕화면 고화질.jpg" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="구포국수체험관 | 시간이 빚어낸 맛, 구포국수를 만나다">
+    <meta name="twitter:description" content="부산의 역사와 전통이 담긴 구포국수를 직접 만들고 맛보며 특별한 문화 체험을 즐겨보세요. 제면 체험, 맷돌 체험, 역사관 투어 등 다양한 프로그램이 준비되어 있습니다.">
+    <meta name="twitter:image" content="https://guponoodle.lol/바탕화면 고화질.jpg">
     <title>구포국수체험관 | Gupo Noodle Experience Center</title>
     
     <!-- Favicon -->
@@ -268,4 +275,5 @@
         const menuBtn = document.getElementById(\'mobile-menu-btn\');
         const mobileMenu = document.getElementById(\'mobile-menu\');
         const mobileLinks = document.querySelectorAll(\'.mobile-link\');
-        let isMenuOpen = false;\n\n        menuBtn.addEventListener(\'click\', () => {\n            isMenuOpen = !isMenuOpen;\n            if (isMenuOpen) {\n                mobileMenu.classList.remove(\'translate-x-full\'); // 메뉴 보이기\n                document.body.style.overflow = \'hidden\'; // 스크롤 막기\n                menuBtn.innerHTML = \'<i class=\"fas fa-times\"></i>\'; // 닫기 아이콘\n            } else {\n                mobileMenu.classList.add(\'translate-x-full\'); // 메뉴 숨기기\n                document.body.style.overflow = \'auto\'; // 스크롤 허용\n                menuBtn.innerHTML = \'<i class=\"fas fa-bars\"></i>\'; // 햄버거 아이콘\n            }\n        });\n\n        // 모바일 메뉴 링크 클릭 시 메뉴 닫기\n        mobileLinks.forEach(link => {\n            link.addEventListener(\'click\', () => {\n                isMenuOpen = false;\n                mobileMenu.classList.add(\'translate-x-full\');\n                document.body.style.overflow = \'auto\';\n                menuBtn.innerHTML = \'<i class=\"fas fa-bars\"></i>\';\n            });\n        });\n\n        // 3. 스크롤 애니메이션: 요소가 화면에 보이면 서서히 나타나기\n        const revealElements = document.querySelectorAll(\'.reveal\');\n\n        const revealOnScroll = () => {\n            const windowHeight = window.innerHeight;\n            const elementVisible = 150; // 요소가 150px 정도 보이면 실행\n\n            revealElements.forEach((reveal) => {\n                const elementTop = reveal.getBoundingClientRect().top;\n                if (elementTop < windowHeight - elementVisible) {\n                    reveal.classList.add(\'active\');\n                }\n            });\n        };\n\n        window.addEventListener(\'scroll\', revealOnScroll);\n        revealOnScroll(); // 로딩 시 한 번 실행\n    </script>\n</body>\n</html>
+        let isMenuOpen = false;\n\n        menuBtn.addEventListener(\'click\', () => {\n            isMenuOpen = !isMenuOpen;\n            if (isMenuOpen) {\n                mobileMenu.classList.remove(\'translate-x-full\'); // 메뉴 보이기\n                document.body.style.overflow = \'hidden\'; // 스크롤 막기\n                menuBtn.innerHTML = \'<i class=\"fas fa-times\"></i>\'; // 닫기 아이콘\n            } else {\n                mobileMenu.classList.add(\'translate-x-full\'); // 메뉴 숨기기\n                document.body.style.overflow = \'auto\'; // 스크롤 허용\n                menuBtn.innerHTML = \'<i class=\"fas fa-bars\"></i>\'; // 햄버거 아이콘\n            }\n        });\n\n        // 모바일 메뉴 링크 클릭 시 메뉴 닫기\n        mobileLinks.forEach(link => {\n            link.addEventListener(\'click\', () => {\n                isMenuOpen = false;\n                mobileMenu.classList.add(\'translate-x-full\');\n                document.body.style.overflow = \'auto\';\n                menuBtn.innerHTML = \'<i class=\"fas fa-bars\"></i>\';\n            });\n        });\n
+        // 3. 스크롤 애니메이션: 요소가 화면에 보이면 서서히 나타나기\n        const revealElements = document.querySelectorAll(\'.reveal\');\n\n        const revealOnScroll = () => {\n            const windowHeight = window.innerHeight;\n            const elementVisible = 150; // 요소가 150px 정도 보이면 실행\n\n            revealElements.forEach((reveal) => {\n                const elementTop = reveal.getBoundingClientRect().top;\n                if (elementTop < windowHeight - elementVisible) {\n                    reveal.classList.add(\'active\');\n                }\n            });\n        };\n\n        window.addEventListener(\'scroll\', revealOnScroll);\n        revealOnScroll(); // 로딩 시 한 번 실행\n    </script>\n</body>\n</html>

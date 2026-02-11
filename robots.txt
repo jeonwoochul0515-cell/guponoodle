@@ -3,8 +3,7 @@ Allow: /
 
 # 파비콘 및 주요 리소스 수집 허용 (검색 품질 유지)
 Allow: /favicon.ico
-Allow: /_next/static/
 Allow: /public/
 
 # 사이트맵 위치를 알려주어 전체 페이지 수집 속도 향상
-Sitemap: https://lawchungsong.vercel.app/sitemap.xml
+Sitemap: https://guponoodle.lol/sitemap.xml
