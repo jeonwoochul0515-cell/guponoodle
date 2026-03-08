@@ -328,7 +328,7 @@
 
 <script>
     // === Auth ===
-    const ADMIN_HASH = '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8'; // "password" SHA-256
+    const ADMIN_HASH = 'df54fc7a1547848a58ad7780daecee0a40feb0b1a6e65badca83f12060135dc3'; // SHA-256
 
     async function sha256(text) {
         const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
@@ -338,7 +338,7 @@
     async function doLogin() {
         const pw = document.getElementById('admin-pw').value;
         const hash = await sha256(pw);
-        if (hash === ADMIN_HASH || pw === 'gupo2025!') {
+        if (hash === ADMIN_HASH) {
             sessionStorage.setItem('admin_auth', '1');
             document.getElementById('login-screen').classList.add('hidden');
             document.getElementById('dashboard').classList.remove('hidden');
