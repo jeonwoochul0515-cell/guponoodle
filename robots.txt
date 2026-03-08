@@ -1,4 +1,17 @@
 User-agent: *
 Allow: /
 
+Disallow: /.git/
+Disallow: /.idx/
+Disallow: /.vscode/
+Disallow: /firebase-debug.log
+
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
 Sitemap: https://guponoodle.lol/sitemap.xml
+
+Host: https://guponoodle.lol
