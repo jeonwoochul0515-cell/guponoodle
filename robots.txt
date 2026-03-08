@@ -5,6 +5,7 @@ Disallow: /.git/
 Disallow: /.idx/
 Disallow: /.vscode/
 Disallow: /firebase-debug.log
+Disallow: /admin.html
 
 User-agent: AhrefsBot
 Crawl-delay: 10
