@@ -89,6 +89,8 @@
         /* Hero */
         .hero-section {
             height: 100vh;
+            height: 100svh;
+            min-height: 560px;
             background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.5)), url('hero-bg.jpg');
             background-size: cover;
             background-position: center;
@@ -238,6 +240,15 @@
         /* Smooth scrolling */
         html { scroll-behavior: smooth; }
 
+        /* Responsiveness & accessibility */
+        a, button { -webkit-tap-highlight-color: rgba(139,94,60,0.18); }
+        img { max-width: 100%; }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+        }
+
         /* sr-only for GEO content */
         .sr-only {
             position: absolute;
@@ -252,8 +263,9 @@
         }
 
         @media (max-width: 768px) {
-            .hero-section { background-attachment: scroll; height: 100vh; }
+            .hero-section { background-attachment: scroll; height: 100svh; }
             .stat-number { font-size: 2.2rem; }
+            h1 { word-break: keep-all; }
         }
     </style>
 
@@ -425,7 +437,7 @@
             <a href="/" class="text-2xl font-bold serif text-gray-800 tracking-widest z-50" aria-label="구포국수체험관 홈">
                 GUPO NOODLE<br><span class="text-sm font-light tracking-normal">구포국수체험관</span>
             </a>
-            <nav class="hidden md:flex space-x-12" aria-label="주요 메뉴">
+            <nav class="hidden md:flex md:space-x-6 lg:space-x-10" aria-label="주요 메뉴">
                 <a href="#about" class="text-gray-800 hover:text-[#8B5E3C] transition font-medium">소개</a>
                 <a href="#program" class="text-gray-800 hover:text-[#8B5E3C] transition font-medium">체험 프로그램</a>
                 <a href="#course" class="text-gray-800 hover:text-[#8B5E3C] transition font-medium">주변 코스</a>
@@ -508,7 +520,7 @@
     </section>
 
     <!-- 2. Brand Story (About) -->
-    <article id="about" class="py-24 bg-[#F9F8F5] relative grain-overlay" aria-label="구포국수체험관 소개 및 역사">
+    <article id="about" class="py-16 md:py-24 bg-[#F9F8F5] relative grain-overlay" aria-label="구포국수체험관 소개 및 역사">
         <div class="max-w-6xl mx-auto px-6 relative z-10">
             <div class="flex flex-col md:flex-row items-center gap-16">
                 <div class="w-full md:w-1/2 reveal">
@@ -564,7 +576,7 @@
     </div>
 
     <!-- 3. Experience Programs -->
-    <section id="program" class="py-24 bg-white" aria-label="체험 프로그램 안내">
+    <section id="program" class="py-16 md:py-24 bg-white" aria-label="체험 프로그램 안내">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16 reveal">
                 <span class="text-[#8B5E3C] font-bold tracking-[0.2em] text-sm mb-3 block">PROGRAM</span>
@@ -681,7 +693,7 @@
     </section>
 
     <!-- Around: 체험 후 추천 도보 코스 -->
-    <section id="course" class="py-24 bg-white" aria-label="체험 후 추천 도보 코스">
+    <section id="course" class="py-16 md:py-24 bg-white" aria-label="체험 후 추천 도보 코스">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-16 reveal">
                 <span class="text-[#8B5E3C] font-bold tracking-[0.2em] text-sm mb-3 block">AROUND</span>
@@ -750,7 +762,7 @@
     </aside>
 
     <!-- Reviews Section -->
-    <section id="reviews" class="py-24 bg-white" aria-label="방문자 후기">
+    <section id="reviews" class="py-16 md:py-24 bg-white" aria-label="방문자 후기">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-16 reveal">
                 <span class="text-[#8B5E3C] font-bold tracking-[0.2em] text-sm mb-3 block">REVIEWS</span>
@@ -840,7 +852,7 @@
     </section>
 
     <!-- 4. FAQ -->
-    <section id="faq" class="py-24 bg-[#F9F8F5]" aria-label="자주 묻는 질문">
+    <section id="faq" class="py-16 md:py-24 bg-[#F9F8F5]" aria-label="자주 묻는 질문">
         <div class="max-w-4xl mx-auto px-6">
             <div class="text-center mb-16 reveal">
                 <span class="text-[#8B5E3C] font-bold tracking-[0.2em] text-sm mb-3 block">FAQ</span>
@@ -1003,7 +1015,7 @@
     </section>
 
     <!-- 5. Info & Map -->
-    <section id="info" class="py-24 bg-[#2C2C2C] text-white" aria-label="이용 안내 및 오시는 길">
+    <section id="info" class="py-16 md:py-24 bg-[#2C2C2C] text-white" aria-label="이용 안내 및 오시는 길">
         <div class="max-w-7xl mx-auto px-6">
             <h2 class="text-3xl font-bold mb-12 text-center reveal">이용 안내 및 오시는 길</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
@@ -1152,7 +1164,7 @@
             } else if (floatingCta) {
                 floatingCta.classList.remove('visible');
             }
-        });
+        }, { passive: true });
 
         // 2. Mobile menu toggle
         const menuBtn = document.getElementById('mobile-menu-btn');
@@ -1192,19 +1204,21 @@
             });
         }
 
-        // 3. Scroll reveal animation
+        // 3. Scroll reveal animation (IntersectionObserver — 스크롤마다 계산하지 않아 더 부드럽고 가볍다)
         const revealElements = document.querySelectorAll('.reveal');
-        const revealOnScroll = () => {
-            const windowHeight = window.innerHeight;
-            revealElements.forEach((el) => {
-                const elementTop = el.getBoundingClientRect().top;
-                if (elementTop < windowHeight - 100) {
-                    el.classList.add('active');
-                }
-            });
-        };
-        window.addEventListener('scroll', revealOnScroll);
-        revealOnScroll();
+        if ('IntersectionObserver' in window) {
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { rootMargin: '0px 0px -80px 0px' });
+            revealElements.forEach((el) => revealObserver.observe(el));
+        } else {
+            revealElements.forEach((el) => el.classList.add('active'));
+        }
 
         // 4. FAQ accordion (smooth height animation)
         document.querySelectorAll('.faq-toggle').forEach(btn => {
