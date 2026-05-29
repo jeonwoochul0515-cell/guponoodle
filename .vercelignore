@@ -1,0 +1,2 @@
+# Vercel 배포에서 제외 (GitHub에는 백업되지만 라이브 사이트에는 노출 안 됨)
+content-plan/
