@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "guponoodle.vercel.app"
+        }
+      ],
+      "destination": "https://guponoodle.lol/:path*",
+      "permanent": true
+    }
+  ]
+}
