@@ -1,0 +1,4 @@
+/* 재빌드 방법: npm i -D tailwindcss@3 && npx tailwindcss -i tailwind.input.css -o tailwind.css --minify */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

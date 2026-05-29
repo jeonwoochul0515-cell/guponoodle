@@ -1,2 +1,9 @@
 # Vercel 배포에서 제외 (GitHub에는 백업되지만 라이브 사이트에는 노출 안 됨)
 content-plan/
+
+# Tailwind 빌드 도구 (tailwind.css 결과물만 배포, 도구는 제외)
+tailwind.config.js
+tailwind.input.css
+node_modules/
+package.json
+package-lock.json

@@ -1,5 +1,11 @@
 # 내부 작업용 스크린샷 (커밋 안 함)
 verify.png
+verify-mobile.png
 blog_capture.png
 blog_list.png
 image*.png
+
+# Tailwind 빌드 도구 — package.json은 커밋 금지(Vercel이 빌드 모드로 바뀌어 정적 배포가 깨질 수 있음)
+node_modules/
+package.json
+package-lock.json
