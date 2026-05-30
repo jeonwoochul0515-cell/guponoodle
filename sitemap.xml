@@ -1,33 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://guponoodle.lol/</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://guponoodle.lol/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://guponoodle.lol/en.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://guponoodle.lol/ja.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://guponoodle.lol/"/>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://guponoodle.lol/en.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://guponoodle.lol/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://guponoodle.lol/en.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://guponoodle.lol/ja.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://guponoodle.lol/"/>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://guponoodle.lol/ja.html</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://guponoodle.lol/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://guponoodle.lol/en.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://guponoodle.lol/ja.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://guponoodle.lol/"/>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
 </urlset>
