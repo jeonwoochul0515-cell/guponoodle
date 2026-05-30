@@ -213,6 +213,18 @@
         }
         .floating-cta.visible { transform: translateY(0); }
 
+        /* KakaoTalk 문의 버튼 */
+        #kakao-chat {
+            position: fixed; right: 1.25rem; bottom: 6rem; z-index: 46;
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.75rem 1.1rem; border-radius: 9999px;
+            background-color: #FEE500; color: #3C1E1E; font-weight: 700; font-size: 0.9rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.18); text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        #kakao-chat:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,0.22); }
+        @media (min-width: 768px) { #kakao-chat { bottom: 1.5rem; } }
+
         /* Trust badges */
         .trust-badge {
             display: inline-flex;
@@ -1153,6 +1165,11 @@
             </div>
         </div>
     </footer>
+
+    <!-- KakaoTalk 문의 플로팅 버튼 -->
+    <a href="https://pf.kakao.com/_wQxoxjX/chat" target="_blank" rel="noopener" id="kakao-chat" aria-label="카카오톡으로 문의하기" onclick="typeof gtag==='function'&&gtag('event','kakao_inquiry_click')">
+        <i class="fas fa-comment" aria-hidden="true"></i><span>카카오톡 문의</span>
+    </a>
 
     <!-- Floating Mobile CTA -->
     <div class="floating-cta md:hidden" id="floating-cta">
