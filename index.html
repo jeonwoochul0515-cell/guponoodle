@@ -21,31 +21,29 @@
     <meta property="og:title" content="구포국수체험관 | 부산 어린이 이색체험 - 보호자 무료">
     <meta property="og:description" content="1945년부터 이어온 구포국수 역사를 직접 체험하세요. 제면·맷돌·편백놀이까지. 보호자 무료 입장, 밀키트 포장 제공.">
     <meta property="og:url" content="https://guponoodle.lol/" />
-    <meta property="og:image" content="https://guponoodle.lol/hero-bg.jpg" />
+    <meta property="og:image" content="https://guponoodle.lol/gupo-noodle-drying.jpg" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="ko_KR" />
     <meta property="og:site_name" content="구포국수체험관" />
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="구포국수체험관 | 부산 어린이 이색체험">
     <meta name="twitter:description" content="1945년부터 이어온 구포국수 역사를 직접 체험하세요. 제면·맷돌·편백놀이. 보호자 무료.">
-    <meta name="twitter:image" content="https://guponoodle.lol/hero-bg.jpg">
+    <meta name="twitter:image" content="https://guponoodle.lol/gupo-noodle-drying.jpg">
     <title>구포국수체험관 | 부산 어린이 이색체험 Gupo Noodle</title>
 
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍜</text></svg>">
+    <!-- Favicon (크롤 가능한 실제 파일) -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.svg">
+    <link rel="apple-touch-icon" href="/favicon.svg">
 
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 
     <!-- Fonts -->
     <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Song+Myung&display=swap" rel="stylesheet">
-
-    <!-- Icons -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" defer></script>
 
     <!-- Tailwind CSS (로컬 빌드 - 사용된 클래스만 포함) -->
     <link rel="stylesheet" href="tailwind.css">
@@ -61,9 +59,10 @@
             --gold: #C68A1E;       /* 금빛노을 */
             --gold-deep: #A06E12;  /* 흰 글씨 대비용 */
             --gold-deeper: #875A0E;
-            --river: #2C5A52;      /* 낙동강 청자빛 */
+            --river: #285249;      /* 낙동강 청자빛 */
             --seal: #B23A2A;       /* 낙관 주홍 */
-            --taupe: #6E6151;      /* 따뜻한 본문 보조 */
+            --taupe: #5C5042;      /* 따뜻한 본문 보조 (대비 4.5:1+) */
+            --gold-ink: #7A4F0A;   /* 소형 골드 텍스트용 (대비 확보) */
             --line: rgba(33,26,18,0.12);
             --font-serif: 'Song Myung', serif;
             --font-sans: 'Pretendard', sans-serif;
@@ -82,6 +81,13 @@
 
         h1, h2, h3, .serif { font-family: var(--font-serif); letter-spacing: -0.01em; font-weight: 400; }
         ::selection { background: var(--gold); color: #fff; }
+
+        /* 인라인 SVG 아이콘 (Font Awesome 대체) */
+        .ic { width: 1em; height: 1em; display: inline-block; vertical-align: -0.125em; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+        .ic-fill { fill: currentColor; stroke: none; }
+
+        /* 키보드 포커스 가시화 (접근성) */
+        a:focus-visible, button:focus-visible { outline: 2px solid var(--gold-deep); outline-offset: 3px; border-radius: 2px; }
 
         .bg-paper { background-color: var(--paper); }
         .bg-paper-2 { background-color: var(--paper-2); }
@@ -127,7 +133,7 @@
         }
 
         /* 섹션 마커 (영어 eyebrow 대체) */
-        .mark { display: inline-flex; align-items: center; gap: 0.6rem; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.02em; color: var(--gold-deep); margin-bottom: 1rem; }
+        .mark { display: inline-flex; align-items: center; gap: 0.6rem; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.02em; color: var(--gold-ink); margin-bottom: 1rem; }
         .mark::before { content: ''; width: 2px; height: 1.15em; background: var(--gold); display: inline-block; }
         .mark.on-dark { color: var(--gold); }
 
@@ -230,7 +236,8 @@
         html { scroll-behavior: smooth; }
         a, button { -webkit-tap-highlight-color: rgba(198,138,30,0.18); }
         img { max-width: 100%; }
-        .link-gold { color: var(--gold-deep); text-decoration: underline; text-underline-offset: 3px; }
+        .link-gold { color: var(--gold-ink); text-decoration: underline; text-underline-offset: 3px; }
+        .text-gold-ink { color: var(--gold-ink); }
 
         .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border-width: 0; }
 
@@ -301,11 +308,6 @@
           "priceRange": "₩",
           "paymentAccepted": "네이버페이, 카드결제, 계좌이체",
           "currenciesAccepted": "KRW",
-          "aggregateRating": {"@type":"AggregateRating","ratingValue":"4.84","reviewCount":"2026","bestRating":"5","worstRating":"1"},
-          "review": [
-            {"@type":"Review","author":{"@type":"Person","name":"유갱41"},"datePublished":"2026-05-25","reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"맷돌체험부터 밀가루 반죽, 수제비 찍기, 국수 뽑기까지 아이들이 너무 재밌어했어요. 직접 만든 국수와 수제비 밀키트도 집에 와서 맛있게 끓여 먹었습니다."},
-            {"@type":"Review","author":{"@type":"Person","name":"J Lynn"},"datePublished":"2026-05-03","reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"연휴에 여행 와서 예약했는데 지역과 관련해 의미도 있고 아이들이 집중해서 잘 참여했어요. 만든 음식을 먹어볼 수 있어 유익합니다."}
-          ],
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "구포만세길 109",
@@ -347,7 +349,10 @@
             {"@type":"Question","name":"음식 알레르기가 있는 경우 어떻게 하나요?","acceptedAnswer":{"@type":"Answer","text":"체험에는 밀가루가 사용됩니다. 밀 알레르기가 있는 경우 사전에 전화로 문의해 주시기 바랍니다."}},
             {"@type":"Question","name":"구포국수체험관 운영시간은?","acceptedAnswer":{"@type":"Answer","text":"화요일~일요일 10:00~18:00 운영하며, 매주 월요일은 휴관입니다. 개인 체험은 주로 주말·공휴일 회차로 운영되고, 평일은 단체 예약 위주로 진행됩니다."}},
             {"@type":"Question","name":"근처에 다른 관광지가 있나요?","acceptedAnswer":{"@type":"Answer","text":"도보권에 구포시장(전통시장)과 구포만세거리(3·1운동 만세운동 기념 거리)가 있고, 구포역에서 감동나룻길 보행교로 연결되는 화명생태공원(금빛노을브릿지)도 가깝습니다. 차로 가까운 거리에 화명수목원, 구포 어린이교통공원, 구포왜성이 있어 함께 방문하기 좋습니다."}},
-            {"@type":"Question","name":"체험 후 둘러볼 도보 코스가 있나요?","acceptedAnswer":{"@type":"Answer","text":"구포역 인근에서 감동나룻길 리버워크, 금빛노을브릿지(일몰), 화명생태공원, 구포시장으로 이어지는 낙동강 강변 코스를 차 없이 반나절(약 3~4시간)에 도보로 돌 수 있습니다. 보행교에 승강기가 있어 유모차 이용도 가능합니다."}}
+            {"@type":"Question","name":"체험 후 둘러볼 도보 코스가 있나요?","acceptedAnswer":{"@type":"Answer","text":"구포역 인근에서 감동나룻길 리버워크, 금빛노을브릿지(일몰), 화명생태공원, 구포시장으로 이어지는 낙동강 강변 코스를 차 없이 반나절(약 3~4시간)에 도보로 돌 수 있습니다. 보행교에 승강기가 있어 유모차 이용도 가능합니다."}},
+            {"@type":"Question","name":"세금계산서나 현금영수증 발행이 되나요?","acceptedAnswer":{"@type":"Answer","text":"어린이집·유치원·학교 등 단체·기관 정산을 위해 세금계산서와 현금영수증을 모두 발행해 드립니다. 발행 정보는 예약 확정 시 전화(010-2608-5099)로 안내드립니다."}},
+            {"@type":"Question","name":"단체 체험, 안전과 보험은 어떻게 되나요?","acceptedAnswer":{"@type":"Answer","text":"영업배상책임보험에 가입되어 있습니다. 모든 체험은 실내에서 진행되며, 시작 전 일회용 앞치마·위생모자 착용과 손 씻기를 거칩니다. 1회차 50명 이상도 교실·회차를 나눠 진행하며 인원은 협의 가능합니다."}},
+            {"@type":"Question","name":"학교 현장체험학습 공문·견적서 대응이 되나요?","acceptedAnswer":{"@type":"Answer","text":"학교 현장체험학습을 위한 공문과 견적서를 모두 발급해 드립니다. 진행은 문의·상담, 견적·공문, 일정·인원 확정, 방문·체험 순이며 단체 결제는 현장에서 진행됩니다."}}
           ]
         },
         {
@@ -355,8 +360,20 @@
           "itemListElement": [
             {"@type":"ListItem","position":1,"name":"홈","item":"https://guponoodle.lol/"},
             {"@type":"ListItem","position":2,"name":"체험 프로그램","item":"https://guponoodle.lol/#program"},
-            {"@type":"ListItem","position":3,"name":"예약","item":"https://map.naver.com/p/entry/place/1759506877?placePath=/ticket"}
+            {"@type":"ListItem","position":3,"name":"단체·기관 안내","item":"https://guponoodle.lol/#group"},
+            {"@type":"ListItem","position":4,"name":"예약","item":"https://map.naver.com/p/entry/place/1759506877?placePath=/ticket"}
           ]
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://guponoodle.lol/#webpage",
+          "url": "https://guponoodle.lol/",
+          "name": "구포국수체험관 | 부산 어린이 이색체험",
+          "inLanguage": "ko-KR",
+          "datePublished": "2025-05-30",
+          "dateModified": "2026-06-28",
+          "isPartOf": {"@id": "https://guponoodle.lol/#touristattraction"},
+          "about": {"@id": "https://guponoodle.lol/#touristattraction"}
         }
       ]
     }
@@ -414,6 +431,32 @@
     <!-- Skip Navigation for Accessibility -->
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:bg-white focus:px-4 focus:py-2 focus:z-[100] focus:rounded">본문으로 건너뛰기</a>
 
+    <!-- SVG 아이콘 스프라이트 (인라인, 외부 요청 0) -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <symbol id="i-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></symbol>
+        <symbol id="i-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></symbol>
+        <symbol id="i-menu" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></symbol>
+        <symbol id="i-close" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+        <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a6.5 6.5 0 0 1 13 0"/></symbol>
+        <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></symbol>
+        <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+        <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></symbol>
+        <symbol id="i-comment" viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8A8.5 8.5 0 0 1 12.5 3 8.4 8.4 0 0 1 21 11.5z"/></symbol>
+        <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></symbol>
+        <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="8 12 11 15 16 9"/></symbol>
+        <symbol id="i-seat" viewBox="0 0 24 24"><path d="M5 11V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4"/><path d="M5 11a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2"/><line x1="6" y1="18" x2="6" y2="21"/><line x1="18" y1="18" x2="18" y2="21"/></symbol>
+        <symbol id="i-rss" viewBox="0 0 24 24"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1.4" fill="currentColor" stroke="none"/></symbol>
+        <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></symbol>
+        <symbol id="i-ticket" viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2 2 2 0 0 0 0 4 2 2 0 0 1-2 2H5a2 2 0 0 1-2-2 2 2 0 0 0 0-4z"/></symbol>
+        <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="14 3 14 9 20 9"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></symbol>
+        <symbol id="i-receipt" viewBox="0 0 24 24"><path d="M5 3v18l2-1.2L9 21l2-1.2L13 21l2-1.2L17 21l2-1.2V3l-2 1.2L15 3l-2 1.2L11 3 9 4.2 7 3z"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/></symbol>
+        <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><path d="M16 5.2a3.2 3.2 0 0 1 0 6"/><path d="M16.5 14.6A5.5 5.5 0 0 1 20.5 20"/></symbol>
+        <symbol id="i-tv" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="13" rx="2"/><polyline points="8 3 12 6 16 3"/></symbol>
+        <symbol id="i-phone" viewBox="0 0 24 24"><path d="M21 16.5v3a2 2 0 0 1-2.2 2 19.5 19.5 0 0 1-8.5-3 19 19 0 0 1-6-6 19.5 19.5 0 0 1-3-8.5A2 2 0 0 1 3.3 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L7.6 9.6a16 16 0 0 0 6 6l1.1-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
+        <symbol id="i-soup" viewBox="0 0 24 24"><path d="M4 11h16a8 8 0 0 1-16 0z"/><line x1="3" y1="20" x2="21" y2="20"/><path d="M9 3c-1 1-1 2 0 3M13 3c-1 1-1 2 0 3"/></symbol>
+        <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.6 5.4L19 10l-5.4 1.6L12 17l-1.6-5.4L5 10l5.4-1.6z"/></symbol>
+    </svg>
+
     <!-- Header -->
     <header class="fixed w-full top-0 z-50 py-5" role="banner">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
@@ -426,6 +469,7 @@
                 <a href="#program" class="nav-link">체험</a>
                 <a href="#course" class="nav-link">주변 코스</a>
                 <a href="#reviews" class="nav-link">후기</a>
+                <a href="#group" class="nav-link">단체·기관</a>
                 <a href="#faq" class="nav-link">자주 묻는 질문</a>
                 <a href="#info" class="nav-link">오시는 길</a>
             </nav>
@@ -434,7 +478,7 @@
                     예약하기
                 </a>
                 <button id="mobile-menu-btn" class="menu-btn md:hidden text-2xl z-50" aria-label="메뉴 열기" aria-expanded="false">
-                    <i class="fas fa-bars"></i>
+                    <svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg>
                 </button>
             </div>
         </div>
@@ -445,6 +489,7 @@
             <a href="#program" class="text-2xl serif text-ink mobile-link">체험</a>
             <a href="#course" class="text-2xl serif text-ink mobile-link">주변 코스</a>
             <a href="#reviews" class="text-2xl serif text-ink mobile-link">후기</a>
+            <a href="#group" class="text-2xl serif text-ink mobile-link">단체·기관</a>
             <a href="#faq" class="text-2xl serif text-ink mobile-link">자주 묻는 질문</a>
             <a href="#info" class="text-2xl serif text-ink mobile-link">오시는 길</a>
             <a href="https://map.naver.com/p/entry/place/1759506877?lng=128.997753&lat=35.2066646&placePath=/ticket?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202602040921&locale=ko&svcName=map_pcv5&entry=plt&searchType=place&c=15.00,0,0,0,dh" target="_blank" rel="noopener" class="btn-gold mt-2 text-lg">예약하기</a>
@@ -516,6 +561,34 @@
         </div>
     </section>
 
+    <!-- 방송·언론 + 단체 실적 신뢰 밴드 -->
+    <section class="py-12 bg-ink text-white" aria-label="방송 소개 및 단체 체험 실적">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-center gap-8 reveal">
+                <div class="md:w-1/2">
+                    <span class="mark on-dark">방송에서 만난 구포국수</span>
+                    <p class="serif text-2xl md:text-[1.7rem] leading-snug">
+                        KNN·MBC가 찾은<br>부산 구포의 국수 체험
+                    </p>
+                </div>
+                <div class="md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div class="flex items-start gap-3 rounded-sm p-3" style="background:rgba(244,236,219,0.06)">
+                        <svg class="ic text-xl mt-0.5" style="color:var(--gold)" aria-hidden="true"><use href="#i-tv"/></svg>
+                        <div><p class="text-sm font-semibold">MBC 테마여행길</p><p class="text-xs" style="color:rgba(244,236,219,0.6)">배우 최주봉 출연 · 2026.1.1 방영</p></div>
+                    </div>
+                    <div class="flex items-start gap-3 rounded-sm p-3" style="background:rgba(244,236,219,0.06)">
+                        <svg class="ic text-xl mt-0.5" style="color:var(--gold)" aria-hidden="true"><use href="#i-tv"/></svg>
+                        <div><p class="text-sm font-semibold">KNN 굿모닝투데이</p><p class="text-xs" style="color:rgba(244,236,219,0.6)">‘셰프 아빠의 맛있는 육아’ · 2026.2 방영</p></div>
+                    </div>
+                    <div class="flex items-start gap-3 rounded-sm p-3 sm:col-span-2" style="background:rgba(244,236,219,0.06)">
+                        <svg class="ic text-xl mt-0.5" style="color:var(--gold)" aria-hidden="true"><use href="#i-users"/></svg>
+                        <div><p class="text-sm font-semibold">단체 체험 실적</p><p class="text-xs" style="color:rgba(244,236,219,0.6)">70명 초등 단체 · 100인의 아빠단 · 유치원·어린이집·학교 체험학습 다수 진행</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 전화 전 빠른 안내 (전화 문의 줄이기) -->
     <section id="quick" class="py-16 md:py-20 bg-paper" aria-label="전화 전 빠른 안내">
         <div class="max-w-5xl mx-auto px-6">
@@ -526,7 +599,7 @@
             </div>
 
             <div class="chip p-6 md:p-8 text-center mb-6 reveal" style="border-color:rgba(198,138,30,0.32)">
-                <p class="text-lg font-bold text-ink mb-1"><i class="fas fa-chair text-gold mr-1" aria-hidden="true"></i> 지금 남은 자리가 궁금하세요?</p>
+                <p class="text-lg font-bold text-ink mb-1"><svg class="ic text-gold mr-1" aria-hidden="true"><use href="#i-seat"/></svg> 지금 남은 자리가 궁금하세요?</p>
                 <p class="text-taupe text-sm mb-5">날짜·시간별 잔여 좌석이 네이버 예약에 <strong>실시간</strong>으로 표시됩니다. <strong>당일은 잔여 좌석이 있는 경우에 한해 현장 결제</strong>로 가능해요.</p>
                 <a href="https://map.naver.com/p/entry/place/1759506877?lng=128.997753&lat=35.2066646&placePath=/ticket?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202602040921&locale=ko&svcName=map_pcv5&entry=plt&searchType=place&c=15.00,0,0,0,dh" target="_blank" rel="noopener" class="btn-gold">실시간 남은 자리 확인 &amp; 예약 &rarr;</a>
             </div>
@@ -616,9 +689,9 @@
                             체험 후 밀키트(소면+수제비+코인육수)를 가져가세요.
                         </p>
                         <ul class="text-sm text-taupe space-y-2 mb-6">
-                            <li><i class="far fa-clock mr-2 text-gold" aria-hidden="true"></i> 제면·맷돌·편백 올인원 약 1시간 30분</li>
-                            <li><i class="fas fa-won-sign mr-2 text-gold" aria-hidden="true"></i> 어린이 1인 24,000원 · 보호자 무료</li>
-                            <li><i class="far fa-user mr-2 text-gold" aria-hidden="true"></i> 36개월(만 3세) 이상 권장</li>
+                            <li><svg class="ic mr-2 text-gold" aria-hidden="true"><use href="#i-clock"/></svg> 제면·맷돌·편백 올인원 약 1시간 30분</li>
+                            <li><span class="mr-2 text-gold" aria-hidden="true">₩</span> 어린이 1인 24,000원 · 보호자 무료</li>
+                            <li><svg class="ic mr-2 text-gold" aria-hidden="true"><use href="#i-user"/></svg> 36개월(만 3세) 이상 권장</li>
                         </ul>
                         <a href="https://map.naver.com/p/entry/place/1759506877?lng=128.997753&lat=35.2066646&placePath=/ticket?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202602040921&locale=ko&svcName=map_pcv5&entry=plt&searchType=place&c=15.00,0,0,0,dh" target="_blank" rel="noopener" class="btn-gold w-full text-sm">이번 주말 자리 확인하기</a>
                     </div>
@@ -637,8 +710,8 @@
                             편백나무 향 가득한 놀이 공간에서 오감 발달까지.
                         </p>
                         <ul class="text-sm text-taupe space-y-2 mb-6">
-                            <li><i class="far fa-clock mr-2 text-gold" aria-hidden="true"></i> 제면 체험과 함께 진행되는 올인원 코스</li>
-                            <li><i class="far fa-user mr-2 text-gold" aria-hidden="true"></i> 영유아 및 어린이</li>
+                            <li><svg class="ic mr-2 text-gold" aria-hidden="true"><use href="#i-clock"/></svg> 제면 체험과 함께 진행되는 올인원 코스</li>
+                            <li><svg class="ic mr-2 text-gold" aria-hidden="true"><use href="#i-user"/></svg> 영유아 및 어린이</li>
                         </ul>
                         <a href="https://map.naver.com/p/entry/place/1759506877?lng=128.997753&lat=35.2066646&placePath=/ticket?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202602040921&locale=ko&svcName=map_pcv5&entry=plt&searchType=place&c=15.00,0,0,0,dh" target="_blank" rel="noopener" class="btn-line w-full text-sm">체험 예약하기</a>
                     </div>
@@ -657,8 +730,8 @@
                             "그때는 이렇게 만들었구나" 하고 눈이 커지는 아이의 모습을 만나보세요.
                         </p>
                         <ul class="text-sm text-taupe space-y-2 mb-6">
-                            <li><i class="far fa-clock mr-2 text-gold" aria-hidden="true"></i> 약 30분</li>
-                            <li><i class="far fa-user mr-2 text-gold" aria-hidden="true"></i> 무료 관람</li>
+                            <li><svg class="ic mr-2 text-gold" aria-hidden="true"><use href="#i-clock"/></svg> 약 30분</li>
+                            <li><svg class="ic mr-2 text-gold" aria-hidden="true"><use href="#i-user"/></svg> 무료 관람</li>
                         </ul>
                         <div class="block w-full py-3 border text-center rounded-sm text-sm text-taupe" style="border-color:var(--line); background:var(--paper)">
                             현재 축소 운영 중 (문의: 010-2608-5099)
@@ -675,35 +748,50 @@
             <div class="text-center mb-16 reveal">
                 <span class="mark" style="justify-content:center">체험 순서</span>
                 <h2 class="text-3xl md:text-[2.6rem] text-ink">이렇게 체험해요</h2>
+                <p class="text-taupe mt-4 max-w-xl mx-auto">맷돌 갈기부터 국수 뽑기까지, 실제 진행 순서 그대로. 도착하면 일회용 앞치마·위생모자를 쓰고 손을 씻은 뒤 시작합니다.</p>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6 reveal">
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-y-10 gap-x-4 reveal">
                 <div class="process-step text-center">
                     <div class="w-14 h-14 mx-auto mb-4 rounded-full flex items-center justify-center" style="border:1.5px solid var(--gold)">
                         <span class="proc-num">一</span>
                     </div>
-                    <h3 class="font-bold text-ink mb-2">도착 &amp; 접수</h3>
-                    <p class="text-taupe text-sm">체험복을 입고 손을 깨끗이 씻어요</p>
+                    <h3 class="font-bold text-ink mb-2 text-sm md:text-base">도착·위생</h3>
+                    <p class="text-taupe text-sm">앞치마·위생모 착용, 손 씻기</p>
                 </div>
                 <div class="process-step text-center">
                     <div class="w-14 h-14 mx-auto mb-4 rounded-full flex items-center justify-center" style="border:1.5px solid var(--gold)">
                         <span class="proc-num">二</span>
                     </div>
-                    <h3 class="font-bold text-ink mb-2">반죽 만들기</h3>
-                    <p class="text-taupe text-sm">밀가루와 물로 반죽을 꾹꾹 치대요</p>
+                    <h3 class="font-bold text-ink mb-2 text-sm md:text-base">맷돌 갈기</h3>
+                    <p class="text-taupe text-sm">통밀을 직접 갈고 채로 걸러요</p>
                 </div>
                 <div class="process-step text-center">
                     <div class="w-14 h-14 mx-auto mb-4 rounded-full flex items-center justify-center" style="border:1.5px solid var(--gold)">
                         <span class="proc-num">三</span>
                     </div>
-                    <h3 class="font-bold text-ink mb-2">국수 뽑기</h3>
-                    <p class="text-taupe text-sm">제면기로 쭈욱 국수 가닥을 뽑아요</p>
+                    <h3 class="font-bold text-ink mb-2 text-sm md:text-base">편백놀이</h3>
+                    <p class="text-taupe text-sm">대기 시간엔 편백 큐브에서 쉬어요</p>
                 </div>
                 <div class="process-step text-center">
                     <div class="w-14 h-14 mx-auto mb-4 rounded-full flex items-center justify-center" style="border:1.5px solid var(--gold)">
                         <span class="proc-num">四</span>
                     </div>
-                    <h3 class="font-bold text-ink mb-2">포장 &amp; 시식</h3>
-                    <p class="text-taupe text-sm">밀키트로 포장하고, 1층에서 한 그릇!</p>
+                    <h3 class="font-bold text-ink mb-2 text-sm md:text-base">반죽</h3>
+                    <p class="text-taupe text-sm">직접 물 붓고 치대 숙성해요</p>
+                </div>
+                <div class="process-step text-center">
+                    <div class="w-14 h-14 mx-auto mb-4 rounded-full flex items-center justify-center" style="border:1.5px solid var(--gold)">
+                        <span class="proc-num">五</span>
+                    </div>
+                    <h3 class="font-bold text-ink mb-2 text-sm md:text-base">수제비·제면</h3>
+                    <p class="text-taupe text-sm">꽃모양 수제비 + 제면기로 국수 뽑기</p>
+                </div>
+                <div class="process-step text-center">
+                    <div class="w-14 h-14 mx-auto mb-4 rounded-full flex items-center justify-center" style="border:1.5px solid var(--gold)">
+                        <span class="proc-num">六</span>
+                    </div>
+                    <h3 class="font-bold text-ink mb-2 text-sm md:text-base">밀키트 포장</h3>
+                    <p class="text-taupe text-sm">집에서 또 한 그릇, 1층 식사도</p>
                 </div>
             </div>
         </div>
@@ -777,7 +865,7 @@
                 <span class="mark" style="justify-content:center">방문자 후기</span>
                 <h2 class="text-3xl md:text-[2.6rem] text-ink">다녀온 가족들의 진짜 후기</h2>
                 <div class="flex items-center justify-center flex-wrap gap-x-3 gap-y-1 mt-4">
-                    <span class="text-2xl serif text-gold"><i class="fas fa-star text-base align-middle" aria-hidden="true"></i> 4.84</span>
+                    <span class="text-2xl serif text-gold"><svg class="ic ic-fill text-base align-middle" aria-hidden="true"><use href="#i-star"/></svg> 4.84</span>
                     <span class="text-taupe">네이버 방문자 리뷰 <strong class="text-ink">2,026</strong>개</span>
                 </div>
                 <p class="text-taupe text-sm mt-2">"유익해요" 634 · "설명이 잘 되어있어요" 558 · "체험 프로그램이 다양해요" 499 · "아이와 가기 좋아요" 311</p>
@@ -786,11 +874,11 @@
                 <!-- Review 1 -->
                 <div class="review-card p-8">
                     <div class="flex items-center gap-1 mb-4">
-                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
-                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
-                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
-                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
-                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
+                        <svg class="ic ic-fill text-gold" aria-hidden="true"><use href="#i-star"/></svg>
+                        <svg class="ic ic-fill text-gold" aria-hidden="true"><use href="#i-star"/></svg>
+                        <svg class="ic ic-fill text-gold" aria-hidden="true"><use href="#i-star"/></svg>
+                        <svg class="ic ic-fill text-gold" aria-hidden="true"><use href="#i-star"/></svg>
+                        <svg class="ic ic-fill text-gold" aria-hidden="true"><use href="#i-star"/></svg>
                     </div>
                     <p class="text-ink leading-relaxed mb-4" style="opacity:.82">
                         맷돌체험부터 밀가루 반죽, 수제비 찍기, 국수 뽑기까지 아이들이 너무 재밌어했어요!
@@ -804,11 +892,11 @@
                 <!-- Review 2 -->
                 <div class="review-card p-8">
                     <div class="flex items-center gap-1 mb-4">
-                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
-                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
-                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
-                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
-                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
+                        <svg class="ic ic-fill text-gold" aria-hidden="true"><use href="#i-star"/></svg>
+                        <svg class="ic ic-fill text-gold" aria-hidden="true"><use href="#i-star"/></svg>
+                        <svg class="ic ic-fill text-gold" aria-hidden="true"><use href="#i-star"/></svg>
+                        <svg class="ic ic-fill text-gold" aria-hidden="true"><use href="#i-star"/></svg>
+                        <svg class="ic ic-fill text-gold" aria-hidden="true"><use href="#i-star"/></svg>
                     </div>
                     <p class="text-ink leading-relaxed mb-4" style="opacity:.82">
                         연휴에 여행 와서 아이들이 체험할 만한 걸 찾다가 예약했는데, 지역과 관련해
@@ -822,11 +910,11 @@
                 <!-- Review 3 -->
                 <div class="review-card p-8">
                     <div class="flex items-center gap-1 mb-4">
-                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
-                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
-                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
-                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
-                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
+                        <svg class="ic ic-fill text-gold" aria-hidden="true"><use href="#i-star"/></svg>
+                        <svg class="ic ic-fill text-gold" aria-hidden="true"><use href="#i-star"/></svg>
+                        <svg class="ic ic-fill text-gold" aria-hidden="true"><use href="#i-star"/></svg>
+                        <svg class="ic ic-fill text-gold" aria-hidden="true"><use href="#i-star"/></svg>
+                        <svg class="ic ic-fill text-gold" aria-hidden="true"><use href="#i-star"/></svg>
                     </div>
                     <p class="text-ink leading-relaxed mb-4" style="opacity:.82">
                         아이랑 같이 가기 정말 좋은 체험관이었어요 😊 국수 만드는 과정을 직접 보고
@@ -839,11 +927,11 @@
                 <!-- Review 4 -->
                 <div class="review-card p-8">
                     <div class="flex items-center gap-1 mb-4">
-                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
-                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
-                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
-                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
-                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
+                        <svg class="ic ic-fill text-gold" aria-hidden="true"><use href="#i-star"/></svg>
+                        <svg class="ic ic-fill text-gold" aria-hidden="true"><use href="#i-star"/></svg>
+                        <svg class="ic ic-fill text-gold" aria-hidden="true"><use href="#i-star"/></svg>
+                        <svg class="ic ic-fill text-gold" aria-hidden="true"><use href="#i-star"/></svg>
+                        <svg class="ic ic-fill text-gold" aria-hidden="true"><use href="#i-star"/></svg>
                     </div>
                     <p class="text-ink leading-relaxed mb-4" style="opacity:.82">
                         부산 여행 와서 검색하다 아이들과 왔어요. 국수 뽑기를 애들이 너무
@@ -862,6 +950,87 @@
         </div>
     </section>
 
+    <!-- 단체·기관 안내 -->
+    <section id="group" class="py-16 md:py-24 bg-paper-2" aria-label="어린이집·유치원·학교 단체 및 기관 안내">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-14 reveal">
+                <span class="mark" style="justify-content:center">단체·기관 안내</span>
+                <h2 class="text-3xl md:text-[2.6rem] text-ink">어린이집·유치원·학교 단체를 위한 안내</h2>
+                <p class="text-taupe mt-4 max-w-2xl mx-auto">평일은 단체 예약 위주로 운영합니다. 1회차 50명 이상도 팀을 나눠(예: 오전 2팀·오후 2팀) 안전하게 진행하며, 36개월부터 초등까지 연령별 난이도로 도와드립니다.</p>
+                <p class="mt-3 text-sm" style="color:var(--river)"><strong>실제 진행 실적</strong> · 70명 초등 단체 역사+체험 · 100인의 아빠단 · 병설·양지유치원 · 영도 초등 체험학습 외 다수</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 reveal">
+                <div class="chip p-6">
+                    <svg class="ic text-2xl mb-3" style="color:var(--river)" aria-hidden="true"><use href="#i-receipt"/></svg>
+                    <h3 class="font-bold text-ink mb-1">세금계산서·현금영수증</h3>
+                    <p class="text-taupe text-sm">기관 정산을 위해 <strong>세금계산서와 현금영수증 모두 발행</strong>해 드립니다.</p>
+                </div>
+                <div class="chip p-6">
+                    <svg class="ic text-2xl mb-3" style="color:var(--river)" aria-hidden="true"><use href="#i-shield"/></svg>
+                    <h3 class="font-bold text-ink mb-1">영업배상책임보험 가입</h3>
+                    <p class="text-taupe text-sm">만일에 대비해 <strong>영업배상책임보험에 가입</strong>되어 있어 안심하고 맡기실 수 있습니다.</p>
+                </div>
+                <div class="chip p-6">
+                    <svg class="ic text-2xl mb-3" style="color:var(--river)" aria-hidden="true"><use href="#i-doc"/></svg>
+                    <h3 class="font-bold text-ink mb-1">현장체험학습 대응</h3>
+                    <p class="text-taupe text-sm">학교 <strong>공문·견적서 모두 발급</strong> 가능합니다. 일정에 여유를 두고 문의해 주세요.</p>
+                </div>
+                <div class="chip p-6">
+                    <svg class="ic text-2xl mb-3" style="color:var(--river)" aria-hidden="true"><use href="#i-users"/></svg>
+                    <h3 class="font-bold text-ink mb-1">50명 이상 팀 분반</h3>
+                    <p class="text-taupe text-sm">1회차 <strong>50명 이상</strong>도 교실·회차를 나눠 운영합니다. 인원은 협의 가능합니다.</p>
+                </div>
+                <div class="chip p-6">
+                    <svg class="ic text-2xl mb-3" style="color:var(--river)" aria-hidden="true"><use href="#i-heart"/></svg>
+                    <h3 class="font-bold text-ink mb-1">위생·안전</h3>
+                    <p class="text-taupe text-sm"><strong>일회용 앞치마·위생모자 착용, 손 씻기</strong>로 시작. 모든 체험은 실내, 엘리베이터로 이동합니다.</p>
+                </div>
+                <div class="chip p-6">
+                    <svg class="ic text-2xl mb-3" style="color:var(--river)" aria-hidden="true"><use href="#i-spark"/></svg>
+                    <h3 class="font-bold text-ink mb-1">단체 맞춤 프로그램</h3>
+                    <p class="text-taupe text-sm">국수 키링·체험관 엽서 꾸미기, 구포만세거리 역사+태극기 키링, 피자·라자냐 쿠킹 연계도 협의 가능합니다.</p>
+                </div>
+            </div>
+
+            <!-- 체험학습 절차 -->
+            <div class="mt-12 reveal">
+                <h3 class="text-center serif text-xl text-ink mb-8">체험학습 진행은 이렇게</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <div class="proc-num" style="color:var(--river)">①</div>
+                        <p class="font-bold text-ink text-sm mt-1">문의·상담</p>
+                        <p class="text-taupe text-xs mt-1">전화·네이버·카카오로 일정 문의</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="proc-num" style="color:var(--river)">②</div>
+                        <p class="font-bold text-ink text-sm mt-1">견적·공문</p>
+                        <p class="text-taupe text-xs mt-1">견적서·공문 발급, 프로그램 협의</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="proc-num" style="color:var(--river)">③</div>
+                        <p class="font-bold text-ink text-sm mt-1">일정 확정</p>
+                        <p class="text-taupe text-xs mt-1">인원·회차·팀 분반 확정</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="proc-num" style="color:var(--river)">④</div>
+                        <p class="font-bold text-ink text-sm mt-1">방문·체험</p>
+                        <p class="text-taupe text-xs mt-1">현장 결제·증빙 발행</p>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-center text-taupe text-sm mt-10 max-w-2xl mx-auto reveal">교과 연계 — 전통문화(맷돌), 식생활 교육(제면), 향토사(구포국수·구포만세거리)를 한 번에 배우고 만들어 갑니다.</p>
+
+            <div class="text-center mt-8 reveal">
+                <a href="tel:010-2608-5099" class="btn-line">
+                    <svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg> 단체 문의 010-2608-5099
+                </a>
+                <a href="https://map.naver.com/p/entry/place/1759506877?lng=128.997753&lat=35.2066646&placePath=/ticket?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202602040921&locale=ko&svcName=map_pcv5&entry=plt&searchType=place&c=15.00,0,0,0,dh" target="_blank" rel="noopener" class="btn-gold ml-0 md:ml-3 mt-3 md:mt-0">네이버 단체 예약 &rarr;</a>
+            </div>
+        </div>
+    </section>
+
     <!-- 4. FAQ -->
     <section id="faq" class="py-16 md:py-24 bg-paper" aria-label="자주 묻는 질문">
         <div class="max-w-4xl mx-auto px-6">
@@ -875,7 +1044,7 @@
                 <div class="faq-item" role="listitem">
                     <button class="faq-toggle w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50/50 transition" aria-expanded="false">
                         <span class="faq-q font-bold pr-4">이용 대상은 어떻게 되나요?</span>
-                        <i class="fas fa-chevron-down text-gold transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
+                        <svg class="ic faq-icon text-gold transition-transform duration-300 text-sm" aria-hidden="true"><use href="#i-chev"/></svg>
                     </button>
                     <div class="faq-content px-8">
                         <p class="text-taupe leading-relaxed">10인 이하 개인 고객 전용 체험이며, 36개월(만 3세) 이상 참여를 권장합니다. 안전하고 즐거운 체험을 위해 연령 기준을 지켜주시기 바랍니다.</p>
@@ -885,7 +1054,7 @@
                 <div class="faq-item" role="listitem">
                     <button class="faq-toggle w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50/50 transition" aria-expanded="false">
                         <span class="faq-q font-bold pr-4">예약은 어떻게 해야 하나요?</span>
-                        <i class="fas fa-chevron-down text-gold transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
+                        <svg class="ic faq-icon text-gold transition-transform duration-300 text-sm" aria-hidden="true"><use href="#i-chev"/></svg>
                     </button>
                     <div class="faq-content px-8">
                         <p class="text-taupe leading-relaxed">네이버 예약을 통해 사전 예약해 주시기 바랍니다. 원하시는 날짜와 시간대를 선택하신 후 간편 결제로 진행됩니다. 전화 문의: 010-2608-5099.</p>
@@ -895,7 +1064,7 @@
                 <div class="faq-item" role="listitem">
                     <button class="faq-toggle w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50/50 transition" aria-expanded="false">
                         <span class="faq-q font-bold pr-4">결제는 어떤 방법으로 가능한가요?</span>
-                        <i class="fas fa-chevron-down text-gold transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
+                        <svg class="ic faq-icon text-gold transition-transform duration-300 text-sm" aria-hidden="true"><use href="#i-chev"/></svg>
                     </button>
                     <div class="faq-content px-8">
                         <p class="text-taupe leading-relaxed">네이버페이 결제로 진행됩니다. 카드결제 또는 현금 계좌이체 결제를 원하실 경우 구포국수체험관(010-2608-5099)으로 전화 문의 주시면 자세히 안내해 드리겠습니다.</p>
@@ -905,7 +1074,7 @@
                 <div class="faq-item" role="listitem">
                     <button class="faq-toggle w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50/50 transition" aria-expanded="false">
                         <span class="faq-q font-bold pr-4">어른도 체험에 참여할 수 있나요?</span>
-                        <i class="fas fa-chevron-down text-gold transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
+                        <svg class="ic faq-icon text-gold transition-transform duration-300 text-sm" aria-hidden="true"><use href="#i-chev"/></svg>
                     </button>
                     <div class="faq-content px-8">
                         <p class="text-taupe leading-relaxed">보호자(성인)는 <strong>무료로 참여</strong> 가능합니다. 아이만 예약하시면 됩니다. 체험 종료 후, 1층 국수 식당에서 국수 한 그릇 드셔보시는 것을 추천합니다.</p>
@@ -915,7 +1084,7 @@
                 <div class="faq-item" role="listitem">
                     <button class="faq-toggle w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50/50 transition" aria-expanded="false">
                         <span class="faq-q font-bold pr-4">보호자 입장은 어떻게 되나요?</span>
-                        <i class="fas fa-chevron-down text-gold transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
+                        <svg class="ic faq-icon text-gold transition-transform duration-300 text-sm" aria-hidden="true"><use href="#i-chev"/></svg>
                     </button>
                     <div class="faq-content px-8">
                         <p class="text-taupe leading-relaxed">보호자(성인)도 함께 체험실에 입장하실 수 있으며, 참여 비용은 <strong>무료</strong>입니다. 특히 미취학 아동은 보호자가 곁에서 함께 도와주시면 반죽·제면을 더욱 즐겁게 완성할 수 있습니다.</p>
@@ -925,7 +1094,7 @@
                 <div class="faq-item" role="listitem">
                     <button class="faq-toggle w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50/50 transition" aria-expanded="false">
                         <span class="faq-q font-bold pr-4">체험 후 가져갈 수 있는 것이 있나요?</span>
-                        <i class="fas fa-chevron-down text-gold transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
+                        <svg class="ic faq-icon text-gold transition-transform duration-300 text-sm" aria-hidden="true"><use href="#i-chev"/></svg>
                     </button>
                     <div class="faq-content px-8">
                         <p class="text-taupe leading-relaxed">체험 종료 후, 아이들이 직접 만든 <strong>국수 소면·수제비·코인육수 밀키트</strong>를 가져가실 수 있습니다. 집에서 가족과 함께 조리해 드시면 체험의 추억이 한 번 더 이어집니다.</p>
@@ -935,7 +1104,7 @@
                 <div class="faq-item" role="listitem">
                     <button class="faq-toggle w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50/50 transition" aria-expanded="false">
                         <span class="faq-q font-bold pr-4">체험 운영은 어떻게 되나요?</span>
-                        <i class="fas fa-chevron-down text-gold transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
+                        <svg class="ic faq-icon text-gold transition-transform duration-300 text-sm" aria-hidden="true"><use href="#i-chev"/></svg>
                     </button>
                     <div class="faq-content px-8">
                         <p class="text-taupe leading-relaxed">개인 체험은 주로 <strong>주말·공휴일</strong>에 회차로 운영되며, <strong>평일은 단체 예약 위주</strong>로 진행됩니다. 회차당 소수 인원으로 여유롭게 운영되어 적정 인원이 충족되지 않을 경우 해당 회차 체험은 부득이하게 취소될 수 있으니, 원하시는 시간대는 서둘러 예약해 주세요.</p>
@@ -945,7 +1114,7 @@
                 <div class="faq-item" role="listitem">
                     <button class="faq-toggle w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50/50 transition" aria-expanded="false">
                         <span class="faq-q font-bold pr-4">주차는 가능한가요?</span>
-                        <i class="fas fa-chevron-down text-gold transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
+                        <svg class="ic faq-icon text-gold transition-transform duration-300 text-sm" aria-hidden="true"><use href="#i-chev"/></svg>
                     </button>
                     <div class="faq-content px-8">
                         <p class="text-taupe leading-relaxed">전용 주차장은 없습니다. 자가용 이용 시 인근 유료 주차장을 이용해 주세요. <strong>지정 주차장(구포·대천·남선)에 한해 30분 주차가 지원</strong>됩니다. 가급적 대중교통(지하철 3호선 구포역 3번 출구에서 도보 3분) 이용을 권장합니다.</p>
@@ -955,7 +1124,7 @@
                 <div class="faq-item" role="listitem">
                     <button class="faq-toggle w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50/50 transition" aria-expanded="false">
                         <span class="faq-q font-bold pr-4">우천 시에도 체험이 가능한가요?</span>
-                        <i class="fas fa-chevron-down text-gold transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
+                        <svg class="ic faq-icon text-gold transition-transform duration-300 text-sm" aria-hidden="true"><use href="#i-chev"/></svg>
                     </button>
                     <div class="faq-content px-8">
                         <p class="text-taupe leading-relaxed">모든 체험은 <strong>실내에서 진행</strong>되므로 비, 눈, 폭염 등 날씨와 관계없이 편안하게 참여하실 수 있습니다. 우천 시 가족 나들이로 안성맞춤입니다.</p>
@@ -965,7 +1134,7 @@
                 <div class="faq-item" role="listitem">
                     <button class="faq-toggle w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50/50 transition" aria-expanded="false">
                         <span class="faq-q font-bold pr-4">단체 예약도 가능한가요?</span>
-                        <i class="fas fa-chevron-down text-gold transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
+                        <svg class="ic faq-icon text-gold transition-transform duration-300 text-sm" aria-hidden="true"><use href="#i-chev"/></svg>
                     </button>
                     <div class="faq-content px-8">
                         <p class="text-taupe leading-relaxed"><strong>15인 이상</strong> 단체(어린이집·유치원·학교·기관)는 네이버 <strong>단체 예약창</strong>으로 예약하시거나 전화(010-2608-5099)로 문의해 주세요. 단체 예약은 신청 후 <strong>직원 확인을 거쳐 확정</strong>되므로 <strong>확정까지 시간이 걸릴 수 있습니다</strong>. 일정에 여유를 두고 신청해 주세요. 결제는 현장에서 진행되며, 인원은 협의 가능합니다.</p>
@@ -975,7 +1144,7 @@
                 <div class="faq-item" role="listitem">
                     <button class="faq-toggle w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50/50 transition" aria-expanded="false">
                         <span class="faq-q font-bold pr-4">예약 시간에 늦으면 어떻게 되나요?</span>
-                        <i class="fas fa-chevron-down text-gold transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
+                        <svg class="ic faq-icon text-gold transition-transform duration-300 text-sm" aria-hidden="true"><use href="#i-chev"/></svg>
                     </button>
                     <div class="faq-content px-8">
                         <p class="text-taupe leading-relaxed">늦을 것 같으면 먼저 전화(010-2608-5099)로 알려주세요. 입장은 <strong>회차 시작 후 15분까지</strong> 가능하며, 그 이후엔 진행 중인 회차에 합류하는 방식으로 안내드립니다. 다음 회차 변경·환불은 어려우니 10분 전 도착을 권장합니다.</p>
@@ -985,7 +1154,7 @@
                 <div class="faq-item" role="listitem">
                     <button class="faq-toggle w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50/50 transition" aria-expanded="false">
                         <span class="faq-q font-bold pr-4">입구(엘리베이터)는 어디인가요?</span>
-                        <i class="fas fa-chevron-down text-gold transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
+                        <svg class="ic faq-icon text-gold transition-transform duration-300 text-sm" aria-hidden="true"><use href="#i-chev"/></svg>
                     </button>
                     <div class="faq-content px-8">
                         <p class="text-taupe leading-relaxed"><strong>1층 구포국수 식당으로 들어가 카운터 오른쪽</strong>에 엘리베이터가 있습니다. 예약 회차에 맞는 교실로 올라오세요. 오전 10시·오후 1시 회차는 <strong>3층 교실</strong>, 오전 10시 30분·오후 1시 30분 회차는 <strong>2층 교실</strong>입니다.</p>
@@ -995,7 +1164,7 @@
                 <div class="faq-item" role="listitem">
                     <button class="faq-toggle w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50/50 transition" aria-expanded="false">
                         <span class="faq-q font-bold pr-4">음식 알레르기가 있는 경우?</span>
-                        <i class="fas fa-chevron-down text-gold transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
+                        <svg class="ic faq-icon text-gold transition-transform duration-300 text-sm" aria-hidden="true"><use href="#i-chev"/></svg>
                     </button>
                     <div class="faq-content px-8">
                         <p class="text-taupe leading-relaxed">체험에는 <strong>밀가루</strong>가 사용됩니다. 밀(글루텐) 알레르기가 있는 경우 사전에 전화(010-2608-5099)로 문의해 주시기 바랍니다.</p>
@@ -1005,7 +1174,7 @@
                 <div class="faq-item" role="listitem">
                     <button class="faq-toggle w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50/50 transition" aria-expanded="false">
                         <span class="faq-q font-bold pr-4">근처에 다른 관광지가 있나요?</span>
-                        <i class="fas fa-chevron-down text-gold transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
+                        <svg class="ic faq-icon text-gold transition-transform duration-300 text-sm" aria-hidden="true"><use href="#i-chev"/></svg>
                     </button>
                     <div class="faq-content px-8">
                         <p class="text-taupe leading-relaxed">도보권에 <strong>구포시장</strong>(400년 전통시장)과 <strong>구포만세거리</strong>(3·1운동 만세운동 기념 거리)가 있고, 구포역에서 감동나룻길 보행교로 이어지는 <strong>화명생태공원</strong>(금빛노을브릿지)도 가깝습니다. 차로 잠깐이면 화명수목원·구포 어린이교통공원·구포왜성도 있어, '구포국수 체험 + 역사·자연 산책'으로 부산 북구 가족 코스를 구성하기 좋습니다.</p>
@@ -1015,10 +1184,40 @@
                 <div class="faq-item" role="listitem">
                     <button class="faq-toggle w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50/50 transition" aria-expanded="false">
                         <span class="faq-q font-bold pr-4">체험 후 둘러볼 도보 코스가 있나요?</span>
-                        <i class="fas fa-chevron-down text-gold transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
+                        <svg class="ic faq-icon text-gold transition-transform duration-300 text-sm" aria-hidden="true"><use href="#i-chev"/></svg>
                     </button>
                     <div class="faq-content px-8">
                         <p class="text-taupe leading-relaxed">네! 구포역 인근에서 <strong>감동나룻길 리버워크 → 금빛노을브릿지(일몰) → 화명생태공원 → 구포시장</strong>으로 이어지는 낙동강 강변 코스를 차 없이 반나절(약 3~4시간)에 돌 수 있습니다. 모두 도보로 연결되고 보행교에 승강기가 있어 유모차로도 다닐 수 있습니다.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" role="listitem">
+                    <button class="faq-toggle w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50/50 transition" aria-expanded="false">
+                        <span class="faq-q font-bold pr-4">세금계산서나 현금영수증 발행이 되나요? (단체·기관)</span>
+                        <svg class="ic faq-icon text-gold transition-transform duration-300 text-sm" aria-hidden="true"><use href="#i-chev"/></svg>
+                    </button>
+                    <div class="faq-content px-8">
+                        <p class="text-taupe leading-relaxed">네. 어린이집·유치원·학교 등 단체·기관 정산을 위해 <strong>세금계산서와 현금영수증을 모두 발행</strong>해 드립니다. 발행 정보는 예약 확정 시 전화(010-2608-5099)로 안내드립니다.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" role="listitem">
+                    <button class="faq-toggle w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50/50 transition" aria-expanded="false">
+                        <span class="faq-q font-bold pr-4">단체 체험, 안전과 보험은 어떻게 되나요?</span>
+                        <svg class="ic faq-icon text-gold transition-transform duration-300 text-sm" aria-hidden="true"><use href="#i-chev"/></svg>
+                    </button>
+                    <div class="faq-content px-8">
+                        <p class="text-taupe leading-relaxed">만일에 대비해 <strong>영업배상책임보험에 가입</strong>되어 있습니다. 모든 체험은 실내에서 진행되고, 시작 전 <strong>일회용 앞치마·위생모자 착용과 손 씻기</strong>를 거칩니다. 1회차 50명 이상도 교실·회차를 나눠 안전하게 진행하며, 인원은 협의 가능합니다.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" role="listitem">
+                    <button class="faq-toggle w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50/50 transition" aria-expanded="false">
+                        <span class="faq-q font-bold pr-4">학교 현장체험학습 공문·견적서 대응이 되나요?</span>
+                        <svg class="ic faq-icon text-gold transition-transform duration-300 text-sm" aria-hidden="true"><use href="#i-chev"/></svg>
+                    </button>
+                    <div class="faq-content px-8">
+                        <p class="text-taupe leading-relaxed">네. 학교 현장체험학습을 위한 <strong>공문과 견적서를 모두 발급</strong>해 드립니다. 진행은 ‘문의·상담 → 견적·공문 → 일정·인원 확정 → 방문·체험’ 순이며, 단체 결제는 현장에서 진행됩니다. 일정에 여유를 두고 전화(010-2608-5099)로 문의해 주세요.</p>
                     </div>
                 </div>
             </div>
@@ -1080,14 +1279,14 @@
                     <div class="mt-8">
                         <a href="https://map.naver.com/p/entry/place/1759506877?lng=128.997753&lat=35.2066646&placePath=/ticket?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202602040921&locale=ko&svcName=map_pcv5&entry=plt&searchType=place&c=15.00,0,0,0,dh" target="_blank" rel="noopener" class="btn-premium px-8 py-4 rounded-sm font-bold inline-flex items-center">
                             <span>지금 예약하고 특별한 주말 만들기</span>
-                            <i class="fas fa-arrow-right ml-3" aria-hidden="true"></i>
+                            <span class="ml-3" aria-hidden="true">&rarr;</span>
                         </a>
                     </div>
                     <!-- Trust badges -->
                     <div class="mt-8 flex flex-wrap gap-3">
-                        <span class="trust-badge"><i class="fas fa-shield-alt" aria-hidden="true"></i> 부산 북구 지정 문화체험관</span>
-                        <span class="trust-badge"><i class="fas fa-check-circle" aria-hidden="true"></i> 네이버 예약 공식 등록</span>
-                        <span class="trust-badge"><i class="fas fa-child" aria-hidden="true"></i> 어린이 안전 환경</span>
+                        <span class="trust-badge"><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg> 부산 북구 지정 문화체험관</span>
+                        <span class="trust-badge"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg> 네이버 예약 공식 등록</span>
+                        <span class="trust-badge"><svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg> 어린이 안전 환경</span>
                     </div>
                 </div>
                 <div class="reveal" style="width:100%; height:400px; overflow:hidden; border-radius: 16px;">
@@ -1115,6 +1314,8 @@
             <p>구포국수는 낙동강 하구의 염분이 섞인 강바람과 뜨거운 햇살로 자연 건조하여 쫄깃한 식감이 특징인 부산의 전통 면(麵) 식품이다. 일제강점기부터 한국전쟁(6·25)을 거치며 부산 서민의 주식으로 자리 잡았으며, 구포 지역은 한때 전국 최대의 국수 생산지로 불렸다.</p>
             <p>대표 체험은 '제면놀이+민속맷돌체험+편백놀이' 올인원 프로그램으로, 소요시간은 약 1시간 30분이며 어린이 1인 24,000원(동반 보호자 무료)이다. 밀가루 반죽부터 제면기를 이용한 국수 가닥 뽑기, 전통 맷돌로 통밀 갈기, 편백나무 놀이방까지 한 번에 체험한다. 더불어 '역사관 및 미니 박물관'에서는 1950~60년대 구포의 국수 제조 도구와 당시 풍경을 전시하여 구포국수의 역사를 배울 수 있다(현재 축소 운영).</p>
             <p>이용 요금은 어린이만 예약권을 구매하면 되며, 동반 보호자(성인)는 무료로 함께 체험실에 입장해 참여할 수 있다. 개인 예약은 네이버페이로 결제하고, 카드결제 또는 현금(계좌이체)을 원할 경우 전화(010-2608-5099)로 문의할 수 있다. 15인 이상 단체(어린이집·유치원·학교·기관)는 네이버 단체 예약창으로 예약하며 인원은 협의 가능하다. 평일은 단체 예약 위주로 운영되고, 개인 체험은 주로 주말·공휴일 회차로 진행된다. 전용 주차장은 없어 대중교통(지하철 3호선 구포역 3번 출구 도보 3분) 이용을 권장하며, 인근 유료 주차장(구포·대천·남선) 이용 시 지정 주차장에 한해 30분 주차가 지원된다. 체험이 끝나면 아이들은 자신이 직접 만든 국수 밀키트(소면, 수제비 반죽, 코인육수)를 집으로 가져갈 수 있다.</p>
+            <p>체험은 도착 후 일회용 앞치마와 위생모자를 착용하고 손을 씻은 뒤, 민속 맷돌 갈기 → 편백나무 놀이 → 밀가루 반죽 → 꽃모양 수제비 만들기 → 제면기로 국수 뽑기 → 밀키트 포장 순서로 약 1시간 30분 진행된다. 권장 연령은 36개월(만 3세) 이상이며, 미취학 아동은 보호자 도움이 필요하고 초등학생은 대부분 스스로 참여할 수 있다.</p>
+            <p>구포국수체험관은 어린이집·유치원·학교 단체와 기관 체험을 운영한다. 1회차 50명 이상도 교실과 회차를 나눠(팀 분반) 진행하며 인원은 협의 가능하다. 단체·기관 정산을 위해 세금계산서와 현금영수증을 모두 발행하고, 학교 현장체험학습을 위한 공문과 견적서도 발급한다. 영업배상책임보험에 가입되어 있다. 70명 규모 초등학생 단체 역사+체험 수업, 100인의 아빠단 제면 체험, 병설·양지유치원, 영도 초등학교 체험학습 등 다수의 단체 체험을 진행한 실적이 있다. 단체 맞춤으로 국수 키링 만들기, 체험관 엽서 꾸미기, 구포만세거리 역사 교육과 태극기 키링, 피자·라자냐 쿠킹 연계 프로그램도 협의할 수 있다. 구포국수체험관은 MBC 「테마여행길」(배우 최주봉 출연, 2026년 1월 1일 방영)과 KNN 「굿모닝투데이」(2026년 2월 방영)에 소개되었다. 1층에는 구포국수 식당이 있어 체험 후 국수와 김밥으로 식사할 수 있다.</p>
         </article>
     </section>
 
@@ -1128,9 +1329,9 @@
                     <span class="text-gray-200 text-xl serif block mb-3">구포국수<span class="seal ml-1">麵</span></span>
                     <p class="text-gray-500 serif text-sm">“1945년부터 부산의 맛을 지켜온 구포국수.<br>이제, 당신 가족의 이야기가 됩니다.”</p>
                     <div class="flex gap-5 mt-5">
-                        <a href="https://www.instagram.com/gupo.noodle/" target="_blank" rel="noopener" aria-label="구포국수체험관 인스타그램" class="hover:text-white transition"><i class="fab fa-instagram text-xl" aria-hidden="true"></i></a>
-                        <a href="https://blog.naver.com/villagekitchen" target="_blank" rel="noopener" aria-label="구포국수체험관 네이버 블로그" class="hover:text-white transition"><i class="fas fa-blog text-xl" aria-hidden="true"></i></a>
-                        <a href="https://map.naver.com/p/entry/place/1759506877" target="_blank" rel="noopener" aria-label="구포국수체험관 네이버 플레이스" class="hover:text-white transition"><i class="fas fa-map-marker-alt text-xl" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/gupo.noodle/" target="_blank" rel="noopener" aria-label="구포국수체험관 인스타그램" class="hover:text-white transition"><svg class="ic text-xl" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+                        <a href="https://blog.naver.com/villagekitchen" target="_blank" rel="noopener" aria-label="구포국수체험관 네이버 블로그" class="hover:text-white transition"><svg class="ic text-xl" aria-hidden="true"><use href="#i-rss"/></svg></a>
+                        <a href="https://map.naver.com/p/entry/place/1759506877" target="_blank" rel="noopener" aria-label="구포국수체험관 네이버 플레이스" class="hover:text-white transition"><svg class="ic text-xl" aria-hidden="true"><use href="#i-pin"/></svg></a>
                     </div>
                 </div>
                 <div class="text-sm">
@@ -1147,7 +1348,7 @@
 
     <!-- KakaoTalk 문의 플로팅 버튼 -->
     <a href="https://pf.kakao.com/_wQxoxjX/chat" target="_blank" rel="noopener" id="kakao-chat" aria-label="카카오톡으로 문의하기" onclick="typeof gtag==='function'&&gtag('event','kakao_inquiry_click')">
-        <i class="fas fa-comment" aria-hidden="true"></i><span>카카오톡 문의</span>
+        <svg class="ic" aria-hidden="true"><use href="#i-comment"/></svg><span>카카오톡 문의</span>
     </a>
 
     <!-- Floating Mobile CTA -->
@@ -1192,14 +1393,14 @@
                     menuBtn.setAttribute('aria-expanded', 'true');
                     menuBtn.setAttribute('aria-label', '메뉴 닫기');
                     document.body.style.overflow = 'hidden';
-                    menuBtn.innerHTML = '<i class="fas fa-times"></i>';
+                    menuBtn.innerHTML = '<svg class="ic" aria-hidden="true"><use href="#i-close"/></svg>';
                 } else {
                     mobileMenu.classList.add('translate-x-full');
                     mobileMenu.setAttribute('aria-hidden', 'true');
                     menuBtn.setAttribute('aria-expanded', 'false');
                     menuBtn.setAttribute('aria-label', '메뉴 열기');
                     document.body.style.overflow = 'auto';
-                    menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    menuBtn.innerHTML = '<svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg>';
                 }
             });
 
@@ -1210,7 +1411,7 @@
                     mobileMenu.setAttribute('aria-hidden', 'true');
                     menuBtn.setAttribute('aria-expanded', 'false');
                     document.body.style.overflow = 'auto';
-                    menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    menuBtn.innerHTML = '<svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg>';
                 });
             });
         }

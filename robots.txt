@@ -1,12 +1,39 @@
+# 구포국수체험관 robots.txt
 User-agent: *
 Allow: /
-
+Disallow: /admin.html
 Disallow: /.git/
 Disallow: /.idx/
 Disallow: /.vscode/
 Disallow: /firebase-debug.log
-Disallow: /admin.html
 
+# 네이버 검색로봇(Yeti) 명시 허용
+User-agent: Yeti
+Allow: /
+
+# AI 검색·응답 크롤러 허용 (GEO)
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# SEO 분석 크롤러 부하 제한
 User-agent: AhrefsBot
 Crawl-delay: 10
 
@@ -14,5 +41,3 @@ User-agent: SemrushBot
 Crawl-delay: 10
 
 Sitemap: https://guponoodle.lol/sitemap.xml
-
-Host: https://guponoodle.lol
