@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!-- 1200x630 OG 공유 카드 (to-png로 캡처 전용, 배포 페이지 아님) -->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Song+Myung&display=swap" rel="stylesheet">
+<style>
+  :root{ --ink:#1C1610; --paper:#F4ECDB; --gold:#C68A1E; --seal:#B23A2A; }
+  *{margin:0;box-sizing:border-box;}
+  html,body{width:1200px;height:630px;overflow:hidden;}
+  .card{
+    position:relative;width:1200px;height:630px;background:var(--ink);
+    font-family:'Pretendard',sans-serif;color:var(--paper);overflow:hidden;
+    background-image:
+      linear-gradient(90deg, rgba(28,22,16,0.96) 0%, rgba(28,22,16,0.9) 34%, rgba(28,22,16,0.5) 62%, rgba(28,22,16,0.25) 100%),
+      linear-gradient(180deg, rgba(28,22,16,0.15) 0%, rgba(28,22,16,0) 30%, rgba(28,22,16,0.6) 100%),
+      url('gupo-noodle-drying.jpg');
+    background-size:cover;background-position:center right;
+  }
+  /* 소면 가닥 결 */
+  .strands{position:absolute;inset:0;display:flex;justify-content:space-between;padding:0 48px;opacity:.16;pointer-events:none;}
+  .strands span{width:1px;height:46%;background:linear-gradient(var(--paper),rgba(244,236,219,0));}
+  .strands span:nth-child(3n){height:38%;} .strands span:nth-child(4n){height:52%;}
+  .inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center;padding:72px 80px;max-width:760px;}
+  .eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:26px;}
+  .eyebrow .rule{width:54px;height:3px;background:var(--gold);display:block;}
+  .eyebrow span{font-size:21px;letter-spacing:.16em;color:rgba(244,236,219,.85);}
+  .seal{display:inline-grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--seal);color:#fff;font-family:'Song Myung',serif;font-size:25px;box-shadow:0 2px 6px rgba(0,0,0,.3);vertical-align:middle;flex:none;}
+  h1{font-family:'Song Myung',serif;font-size:74px;line-height:1.04;letter-spacing:-.01em;white-space:nowrap;display:flex;align-items:center;gap:18px;margin-bottom:24px;}
+  .sub{font-family:'Song Myung',serif;font-size:35px;color:rgba(244,236,219,.9);margin-bottom:34px;}
+  .pills{display:flex;gap:12px;flex-wrap:wrap;}
+  .pill{font-size:21px;font-weight:600;color:var(--ink);background:var(--gold);padding:11px 20px;border-radius:5px;}
+  .pill.ghost{color:var(--paper);background:transparent;border:1.5px solid rgba(244,236,219,.45);}
+  .url{position:absolute;right:60px;bottom:46px;z-index:2;font-size:22px;letter-spacing:.04em;color:rgba(244,236,219,.7);}
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="strands"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="inner">
+      <div class="eyebrow"><span class="rule"></span><span>부산 구포 · 1945년부터 낙동강이 말린 국수</span></div>
+      <h1>구포국수체험관<span class="seal">麵</span></h1>
+      <p class="sub">아이가 직접 만드는 국수 체험 · 보호자 무료</p>
+      <div class="pills">
+        <span class="pill">제면·맷돌·편백 올인원</span>
+        <span class="pill ghost">밀키트 포장</span>
+        <span class="pill ghost">구포역 도보 3분</span>
+      </div>
+    </div>
+    <div class="url">guponoodle.lol</div>
+  </div>
+</body>
+</html>
