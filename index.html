@@ -42,7 +42,7 @@
 
     <!-- Fonts -->
     <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Song+Myung&display=swap" rel="stylesheet">
 
     <!-- Icons -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" defer></script>
@@ -51,15 +51,21 @@
     <link rel="stylesheet" href="tailwind.css">
 
     <style>
+        /* ===== 구포국수 디자인 시스템 — "낙동강이 말린 80년" ===== */
         :root {
-            --color-primary: #2C2C2C;
-            --color-accent: #8B5E3C;
-            --color-accent-dark: #6d482d;
-            --color-accent-light: #A67C5B;
-            --color-bg: #F9F8F5;
-            --color-bg-warm: #F5F0EB;
-            --color-gold: #C4973B;
-            --font-serif: 'Noto Serif KR', serif;
+            --ink: #211A12;        /* 간장빛 다크우드 */
+            --ink-soft: #3A3128;
+            --paper: #F4ECDB;      /* 생밀/소면 따뜻한 크림 */
+            --paper-2: #FBF6EA;
+            --card: #FCF8EF;
+            --gold: #C68A1E;       /* 금빛노을 */
+            --gold-deep: #A06E12;  /* 흰 글씨 대비용 */
+            --gold-deeper: #875A0E;
+            --river: #2C5A52;      /* 낙동강 청자빛 */
+            --seal: #B23A2A;       /* 낙관 주홍 */
+            --taupe: #6E6151;      /* 따뜻한 본문 보조 */
+            --line: rgba(33,26,18,0.12);
+            --font-serif: 'Song Myung', serif;
             --font-sans: 'Pretendard', sans-serif;
         }
 
@@ -67,215 +73,178 @@
 
         body {
             font-family: var(--font-sans);
-            background-color: var(--color-bg);
-            color: var(--color-primary);
-            line-height: 1.6;
+            background-color: var(--paper);
+            color: var(--ink);
+            line-height: 1.7;
             word-break: keep-all;
+            -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2, h3, .serif { font-family: var(--font-serif); }
+        h1, h2, h3, .serif { font-family: var(--font-serif); letter-spacing: -0.01em; font-weight: 400; }
+        ::selection { background: var(--gold); color: #fff; }
 
-        /* Header scroll effect */
-        header { transition: all 0.3s ease; }
+        .bg-paper { background-color: var(--paper); }
+        .bg-paper-2 { background-color: var(--paper-2); }
+        .bg-ink { background-color: var(--ink); }
+        .text-ink { color: var(--ink); }
+        .text-taupe { color: var(--taupe); }
+        .text-gold { color: var(--gold-deep); }
+
+        /* Header */
+        header { transition: background-color .3s ease, box-shadow .3s ease, padding .3s ease; }
         header.scrolled {
-            background-color: rgba(255, 255, 255, 0.97);
-            box-shadow: 0 4px 30px rgba(0,0,0,0.06);
-            padding-top: 0.75rem !important;
-            padding-bottom: 0.75rem !important;
+            background-color: rgba(244,236,219,0.92);
             backdrop-filter: blur(10px);
+            box-shadow: 0 1px 0 var(--line);
+            padding-top: 0.7rem !important;
+            padding-bottom: 0.7rem !important;
         }
+        .brand { color: var(--paper); transition: color .3s ease; }
+        header.scrolled .brand { color: var(--ink); }
+        .nav-link { position: relative; color: rgba(244,236,219,0.85); font-weight: 500; transition: color .25s ease; }
+        .nav-link:hover { color: #fff; }
+        header.scrolled .nav-link { color: var(--ink-soft); }
+        header.scrolled .nav-link:hover { color: var(--gold-deep); }
+        .nav-link::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 0; height: 1.5px; background: var(--gold); transition: width .25s ease; }
+        .nav-link:hover::after { width: 100%; }
+        .nav-reserve { color: var(--paper); border: 1.5px solid rgba(244,236,219,0.5); transition: all .25s ease; }
+        .nav-reserve:hover { background: var(--paper); color: var(--ink); }
+        header.scrolled .nav-reserve { color: var(--gold-deep); border-color: var(--gold-deep); }
+        header.scrolled .nav-reserve:hover { background: var(--gold-deep); color: #fff; }
+        .menu-btn { color: var(--paper); }
+        header.scrolled .menu-btn { color: var(--ink); }
+        /* 모바일 메뉴 열림(크림 배경)일 때 로고·버튼을 어둡게 */
+        header:has(#mobile-menu:not(.translate-x-full)) .menu-btn,
+        header:has(#mobile-menu:not(.translate-x-full)) .brand { color: var(--ink); }
+
+        /* 낙관 도장 */
+        .seal {
+            display: inline-grid; place-items: center;
+            width: 1.7em; height: 1.7em; border-radius: 50%;
+            background: var(--seal); color: #fff;
+            font-family: var(--font-serif); font-size: 0.62em; line-height: 1;
+            box-shadow: 0 1px 2px rgba(0,0,0,.25); vertical-align: middle;
+        }
+
+        /* 섹션 마커 (영어 eyebrow 대체) */
+        .mark { display: inline-flex; align-items: center; gap: 0.6rem; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.02em; color: var(--gold-deep); margin-bottom: 1rem; }
+        .mark::before { content: ''; width: 2px; height: 1.15em; background: var(--gold); display: inline-block; }
+        .mark.on-dark { color: var(--gold); }
 
         /* Hero */
         .hero-section {
-            height: 100vh;
-            height: 100svh;
-            min-height: 560px;
-            background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.5)), url('hero-bg.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
             position: relative;
+            min-height: 100svh;
+            min-height: 560px;
+            background-color: var(--ink);
+            background-image:
+                linear-gradient(90deg, rgba(28,22,14,0.94) 0%, rgba(28,22,14,0.86) 32%, rgba(28,22,14,0.5) 58%, rgba(28,22,14,0.28) 100%),
+                linear-gradient(180deg, rgba(28,22,14,0.2) 0%, rgba(28,22,14,0) 30%, rgba(28,22,14,0.55) 100%),
+                url('gupo-noodle-drying.jpg');
+            background-size: cover;
+            background-position: center right;
+            background-attachment: fixed;
+            overflow: hidden;
         }
-        .hero-section::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 120px;
-            background: linear-gradient(transparent, var(--color-bg));
-        }
+        .hero-section::after { content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 90px; background: linear-gradient(transparent, var(--paper)); z-index: 2; }
+
+        /* 시그니처: 널어 말린 소면 가닥 (좌측 어두운 면에 결만 더함) */
+        .strands { position: absolute; inset: 0 0 auto 0; height: 100%; pointer-events: none; display: flex; justify-content: space-between; padding: 0 4vw; opacity: 0.22; z-index: 1; }
+        .strands span { display: block; width: 1px; height: 44%; background: linear-gradient(var(--paper), rgba(244,236,219,0)); transform-origin: top center; animation: sway 6s ease-in-out infinite; }
+        .strands span:nth-child(3n) { height: 38%; animation-delay: -2s; }
+        .strands span:nth-child(4n) { height: 50%; animation-delay: -4s; }
+        .strands span:nth-child(5n) { height: 33%; animation-delay: -1.2s; }
+        .strands span:nth-child(7n) { height: 47%; animation-delay: -3.3s; }
+        @keyframes sway { 0%,100% { transform: rotate(-0.7deg); } 50% { transform: rotate(0.7deg); } }
+        .hero-rule { width: 56px; height: 2px; background: var(--gold); }
 
         /* Buttons */
-        .btn-premium {
-            background-color: var(--color-accent);
-            color: white;
-            transition: all 0.3s ease;
-        }
-        .btn-premium:hover {
-            background-color: var(--color-accent-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(139,94,60,0.3);
-        }
+        .btn-gold { display: inline-flex; align-items: center; justify-content: center; gap: 0.55rem; background: var(--gold-deep); color: #fff; font-weight: 600; padding: 0.95rem 1.9rem; border-radius: 3px; transition: background .25s ease, transform .25s ease, box-shadow .25s ease; box-shadow: 0 6px 18px rgba(160,110,18,0.22); }
+        .btn-gold:hover { background: var(--gold-deeper); transform: translateY(-1px); box-shadow: 0 10px 24px rgba(160,110,18,0.28); }
+        .btn-ghost { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; border: 1.5px solid rgba(244,236,219,0.55); color: var(--paper); padding: 0.9rem 1.7rem; border-radius: 3px; font-weight: 500; transition: background .25s, color .25s; }
+        .btn-ghost:hover { background: var(--paper); color: var(--ink); }
+        .btn-line { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; border: 1.5px solid var(--gold-deep); color: var(--gold-deep); padding: 0.85rem 1.6rem; border-radius: 3px; font-weight: 600; transition: background .25s, color .25s; }
+        .btn-line:hover { background: var(--gold-deep); color: #fff; }
+        .btn-premium { background: var(--gold-deep); color: #fff; border-radius: 3px; transition: background .25s, transform .25s; }
+        .btn-premium:hover { background: var(--gold-deeper); transform: translateY(-1px); }
+
+        /* 가닥 디바이더 */
+        .strand-divider { display: flex; justify-content: center; align-items: flex-start; gap: 7px; }
+        .strand-divider span { width: 1px; height: 26px; background: var(--line); }
+        .strand-divider span:nth-child(odd) { height: 17px; }
 
         /* Cards */
-        .program-card {
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-        }
-        .program-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.1);
-        }
-        .program-card img { transition: transform 0.6s ease; }
-        .program-card:hover img { transform: scale(1.08); }
+        .program-card { background: var(--card); border: 1px solid var(--line); border-radius: 4px; transition: border-color .3s ease, transform .3s ease, box-shadow .3s ease; overflow: hidden; }
+        .program-card:hover { border-color: rgba(198,138,30,0.5); transform: translateY(-3px); box-shadow: 0 14px 30px rgba(33,26,18,0.07); }
+        .program-card img { transition: transform .6s ease; }
+        .program-card:hover img { transform: scale(1.04); }
+        .badge-gold { background: var(--gold-deep); color: #fff; }
+        .badge-river { background: var(--river); color: #fff; }
 
-        /* Scroll reveal */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+        /* Stats */
+        .stat-number { font-family: var(--font-serif); font-size: 3rem; font-weight: 400; color: var(--ink); line-height: 1; }
+        .stat-number span { color: var(--gold-deep); font-size: 1.4rem; }
+        .stat-tick { width: 1px; height: 18px; background: var(--gold); margin: 0 auto 0.9rem; }
+
+        /* Reviews */
+        .review-card { background: var(--paper-2); border: 1px solid var(--line); border-radius: 4px; transition: transform .3s ease, border-color .3s ease; }
+        .review-card:hover { transform: translateY(-2px); border-color: rgba(198,138,30,0.4); }
+        .quote-mark { font-family: var(--font-serif); color: var(--gold); font-size: 2.4rem; line-height: 0.6; }
+
+        /* Process — 진짜 순서이므로 번호 유지 */
+        .process-step { position: relative; }
+        .proc-num { font-family: var(--font-serif); font-size: 1.6rem; color: var(--gold-deep); }
+        .process-step::after { content: ''; position: absolute; top: 1.75rem; left: calc(50% + 1.6rem); right: calc(-50% + 1.6rem); height: 1px; background: var(--line); }
+        .process-step:last-child::after { display: none; }
+
+        /* Chips */
+        .chip { background: var(--paper-2); border: 1px solid var(--line); border-radius: 4px; }
+
+        /* FAQ */
+        .faq-item { background: var(--paper-2); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; transition: border-color .25s ease; }
+        .faq-item:hover { border-color: rgba(198,138,30,0.4); }
+        .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; padding-top: 0; padding-bottom: 0; }
+        .faq-content.open { padding-bottom: 1.5rem; }
+        .faq-toggle .faq-q { color: var(--ink); }
+
+        /* Info (dark) */
+        .info-link:hover { color: var(--gold); }
+        .info-dt { color: rgba(244,236,219,0.55); }
+        .trust-badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border: 1px solid rgba(244,236,219,0.16); border-radius: 3px; font-size: 0.8rem; color: rgba(244,236,219,0.72); }
+
+        /* Floating */
+        .floating-cta { position: fixed; bottom: 0; left: 0; right: 0; z-index: 45; padding: 0.75rem 1rem; background: rgba(244,236,219,0.96); backdrop-filter: blur(10px); box-shadow: 0 -2px 16px rgba(33,26,18,0.12); transform: translateY(100%); transition: transform 0.3s ease; }
+        .floating-cta.visible { transform: translateY(0); }
+
+        #kakao-chat { position: fixed; right: 1.25rem; bottom: 6rem; z-index: 46; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1.05rem; border-radius: 9999px; background-color: #FEE500; color: #3C1E1E; font-weight: 700; font-size: 0.9rem; box-shadow: 0 8px 24px rgba(0,0,0,0.18); text-decoration: none; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        #kakao-chat:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,0.22); }
+        @media (min-width: 768px) { #kakao-chat { bottom: 1.5rem; } }
+
+        /* Reveal */
+        .reveal { opacity: 0; transform: translateY(34px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .reveal.active { opacity: 1; transform: none; }
         .delay-100 { transition-delay: 0.1s; }
         .delay-200 { transition-delay: 0.2s; }
         .delay-300 { transition-delay: 0.3s; }
 
-        /* FAQ smooth animation */
-        .faq-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.4s ease;
-            padding-top: 0;
-            padding-bottom: 0;
-        }
-        .faq-content.open {
-            max-height: 300px;
-            padding-top: 0;
-            padding-bottom: 1.5rem;
-        }
-
-        /* Stats counter */
-        .stat-number {
-            font-family: var(--font-serif);
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--color-accent);
-            line-height: 1;
-        }
-
-        /* Wave divider */
-        .wave-divider {
-            position: relative;
-            overflow: hidden;
-        }
-        .wave-divider svg {
-            display: block;
-            width: 100%;
-            height: auto;
-        }
-
-        /* Review cards */
-        .review-card {
-            transition: transform 0.3s ease;
-        }
-        .review-card:hover {
-            transform: translateY(-4px);
-        }
-
-        /* Process timeline */
-        .process-step {
-            position: relative;
-        }
-        .process-step::after {
-            content: '';
-            position: absolute;
-            top: 2.5rem;
-            left: 50%;
-            width: 2px;
-            height: calc(100% - 2.5rem);
-            background: linear-gradient(to bottom, var(--color-accent), transparent);
-        }
-        .process-step:last-child::after { display: none; }
-
-        /* Floating mobile CTA */
-        .floating-cta {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 45;
-            padding: 0.75rem 1rem;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-        }
-        .floating-cta.visible { transform: translateY(0); }
-
-        /* KakaoTalk 문의 버튼 */
-        #kakao-chat {
-            position: fixed; right: 1.25rem; bottom: 6rem; z-index: 46;
-            display: inline-flex; align-items: center; gap: 0.5rem;
-            padding: 0.75rem 1.1rem; border-radius: 9999px;
-            background-color: #FEE500; color: #3C1E1E; font-weight: 700; font-size: 0.9rem;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.18); text-decoration: none;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        #kakao-chat:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,0.22); }
-        @media (min-width: 768px) { #kakao-chat { bottom: 1.5rem; } }
-
-        /* Trust badges */
-        .trust-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 2rem;
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.7);
-        }
-
-        /* Grain texture overlay */
-        .grain-overlay::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            opacity: 0.03;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        /* Smooth scrolling */
         html { scroll-behavior: smooth; }
-
-        /* Responsiveness & accessibility */
-        a, button { -webkit-tap-highlight-color: rgba(139,94,60,0.18); }
+        a, button { -webkit-tap-highlight-color: rgba(198,138,30,0.18); }
         img { max-width: 100%; }
+        .link-gold { color: var(--gold-deep); text-decoration: underline; text-underline-offset: 3px; }
+
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border-width: 0; }
+
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto; }
             *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
             .reveal { opacity: 1 !important; transform: none !important; }
-        }
-
-        /* sr-only for GEO content */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border-width: 0;
+            .strands span { animation: none !important; }
         }
 
         @media (max-width: 768px) {
-            .hero-section { background-attachment: scroll; height: 100svh; }
-            .stat-number { font-size: 2.2rem; }
+            .hero-section { background-attachment: scroll; }
+            .stat-number { font-size: 2.3rem; }
+            .process-step::after { display: none; }
             h1 { word-break: keep-all; }
         }
     </style>
@@ -446,162 +415,176 @@
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:bg-white focus:px-4 focus:py-2 focus:z-[100] focus:rounded">본문으로 건너뛰기</a>
 
     <!-- Header -->
-    <header class="fixed w-full top-0 z-50 py-5 transition-all duration-300" role="banner">
+    <header class="fixed w-full top-0 z-50 py-5" role="banner">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <a href="/" class="text-2xl font-bold serif text-gray-800 tracking-widest z-50" aria-label="구포국수체험관 홈">
-                GUPO NOODLE<br><span class="text-sm font-light tracking-normal">구포국수체험관</span>
+            <a href="/" class="brand serif z-50 leading-none" aria-label="구포국수체험관 홈">
+                <span class="block text-2xl tracking-tight">구포국수<span class="seal ml-1">麵</span></span>
+                <span class="block text-[0.62rem] tracking-[0.34em] font-sans mt-1 opacity-80">GUPO NOODLE · SINCE 1945</span>
             </a>
-            <nav class="hidden md:flex md:space-x-6 lg:space-x-10" aria-label="주요 메뉴">
-                <a href="#about" class="text-gray-800 hover:text-[#8B5E3C] transition font-medium">소개</a>
-                <a href="#program" class="text-gray-800 hover:text-[#8B5E3C] transition font-medium">체험 프로그램</a>
-                <a href="#course" class="text-gray-800 hover:text-[#8B5E3C] transition font-medium">주변 코스</a>
-                <a href="#reviews" class="text-gray-800 hover:text-[#8B5E3C] transition font-medium">후기</a>
-                <a href="#faq" class="text-gray-800 hover:text-[#8B5E3C] transition font-medium">FAQ</a>
-                <a href="#info" class="text-gray-800 hover:text-[#8B5E3C] transition font-medium">이용안내</a>
+            <nav class="hidden md:flex md:gap-7 lg:gap-9 text-[0.95rem]" aria-label="주요 메뉴">
+                <a href="#about" class="nav-link">이야기</a>
+                <a href="#program" class="nav-link">체험</a>
+                <a href="#course" class="nav-link">주변 코스</a>
+                <a href="#reviews" class="nav-link">후기</a>
+                <a href="#faq" class="nav-link">자주 묻는 질문</a>
+                <a href="#info" class="nav-link">오시는 길</a>
             </nav>
-            <div class="flex items-center space-x-4">
-                <a href="https://map.naver.com/p/entry/place/1759506877?lng=128.997753&lat=35.2066646&placePath=/ticket?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202602040921&locale=ko&svcName=map_pcv5&entry=plt&searchType=place&c=15.00,0,0,0,dh" target="_blank" rel="noopener" class="hidden md:inline-block px-6 py-2 border border-[#8B5E3C] text-[#8B5E3C] hover:bg-[#8B5E3C] hover:text-white transition rounded-full text-sm font-semibold">
+            <div class="flex items-center gap-4">
+                <a href="https://map.naver.com/p/entry/place/1759506877?lng=128.997753&lat=35.2066646&placePath=/ticket?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202602040921&locale=ko&svcName=map_pcv5&entry=plt&searchType=place&c=15.00,0,0,0,dh" target="_blank" rel="noopener" class="nav-reserve hidden md:inline-block px-5 py-2 rounded-sm text-sm font-semibold">
                     예약하기
                 </a>
-                <button id="mobile-menu-btn" class="md:hidden text-2xl text-gray-800 z-50" aria-label="메뉴 열기" aria-expanded="false">
+                <button id="mobile-menu-btn" class="menu-btn md:hidden text-2xl z-50" aria-label="메뉴 열기" aria-expanded="false">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
         </div>
 
         <!-- Mobile Menu -->
-        <nav id="mobile-menu" class="fixed inset-0 bg-white z-40 transform translate-x-full transition-transform duration-300 flex flex-col justify-center items-center space-y-8 md:hidden" aria-label="모바일 메뉴" aria-hidden="true">
-            <a href="#about" class="text-2xl font-serif text-gray-800 mobile-link">소개</a>
-            <a href="#program" class="text-2xl font-serif text-gray-800 mobile-link">체험 프로그램</a>
-            <a href="#course" class="text-2xl font-serif text-gray-800 mobile-link">주변 코스</a>
-            <a href="#reviews" class="text-2xl font-serif text-gray-800 mobile-link">후기</a>
-            <a href="#faq" class="text-2xl font-serif text-gray-800 mobile-link">FAQ</a>
-            <a href="#info" class="text-2xl font-serif text-gray-800 mobile-link">이용안내</a>
-            <a href="https://map.naver.com/p/entry/place/1759506877?lng=128.997753&lat=35.2066646&placePath=/ticket?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202602040921&locale=ko&svcName=map_pcv5&entry=plt&searchType=place&c=15.00,0,0,0,dh" target="_blank" rel="noopener" class="px-8 py-3 bg-[#8B5E3C] text-white rounded-full text-lg">예약하기</a>
+        <nav id="mobile-menu" class="fixed inset-0 bg-paper z-40 transform translate-x-full transition-transform duration-300 flex flex-col justify-center items-center space-y-7 md:hidden" aria-label="모바일 메뉴" aria-hidden="true">
+            <a href="#about" class="text-2xl serif text-ink mobile-link">이야기</a>
+            <a href="#program" class="text-2xl serif text-ink mobile-link">체험</a>
+            <a href="#course" class="text-2xl serif text-ink mobile-link">주변 코스</a>
+            <a href="#reviews" class="text-2xl serif text-ink mobile-link">후기</a>
+            <a href="#faq" class="text-2xl serif text-ink mobile-link">자주 묻는 질문</a>
+            <a href="#info" class="text-2xl serif text-ink mobile-link">오시는 길</a>
+            <a href="https://map.naver.com/p/entry/place/1759506877?lng=128.997753&lat=35.2066646&placePath=/ticket?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202602040921&locale=ko&svcName=map_pcv5&entry=plt&searchType=place&c=15.00,0,0,0,dh" target="_blank" rel="noopener" class="btn-gold mt-2 text-lg">예약하기</a>
         </nav>
     </header>
 
     <main id="main-content" role="main">
 
     <!-- 1. Hero Section -->
-    <section class="hero-section flex items-center justify-center text-center relative" aria-label="메인 비주얼">
-        <div class="z-10 px-4 reveal">
-            <p class="text-white/80 text-sm md:text-base mb-6 font-light tracking-[0.3em] uppercase">Since 1945 &middot; The History of Busan</p>
-            <h1 class="text-4xl md:text-6xl lg:text-7xl text-white font-bold leading-tight mb-6">
-                "엄마, 나 국수 만들었어!"
-            </h1>
-            <p class="text-white/70 text-xl md:text-2xl mb-4 font-serif">
-                아이의 눈이 반짝이는 순간, 구포국수체험관
-            </p>
-            <p class="text-white/60 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
-                낙동강 강바람에 실려 오는 밀 내음, 반죽을 치대는 작은 손의 촉감,<br class="hidden md:block">
-                제면기에서 쭈욱 뽑아져 나오는 하얀 국수 가닥의 짜릿함.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="https://map.naver.com/p/entry/place/1759506877?lng=128.997753&lat=35.2066646&placePath=/ticket?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202602040921&locale=ko&svcName=map_pcv5&entry=plt&searchType=place&c=15.00,0,0,0,dh" target="_blank" rel="noopener" class="inline-block px-10 py-4 bg-[#8B5E3C] text-white hover:bg-[#6d482d] transition duration-300 rounded-full font-semibold shadow-lg shadow-[#8B5E3C]/30">
-                    이번 주말, 체험 예약하기
-                </a>
-                <a href="#program" class="inline-block px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/40 text-white hover:bg-white hover:text-[#2C2C2C] transition duration-300 rounded-full text-sm">
-                    체험 프로그램 보기
-                </a>
+    <section class="hero-section flex items-center relative" aria-label="메인 비주얼">
+        <!-- 시그니처: 낙동강 강바람에 널어 말린 소면 가닥 -->
+        <div class="strands" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-6 w-full">
+            <div class="max-w-2xl reveal">
+                <div class="flex items-center gap-4 mb-7">
+                    <span class="hero-rule"></span>
+                    <p class="text-paper text-xs md:text-sm tracking-[0.28em]" style="color:rgba(244,236,219,0.85)">부산 구포 · 1945년부터 낙동강이 말린 국수</p>
+                </div>
+                <h1 class="serif text-white text-[2.6rem] leading-[1.18] md:text-6xl md:leading-[1.12] mb-6">
+                    “엄마, 나 국수<br>직접 만들었어!”
+                </h1>
+                <p class="text-xl md:text-2xl serif mb-5" style="color:rgba(244,236,219,0.82)">
+                    아이의 눈이 반짝이는 순간, 구포국수체험관
+                </p>
+                <p class="max-w-xl mb-9 leading-relaxed" style="color:rgba(244,236,219,0.62)">
+                    강바람에 실려 오는 밀 내음, 반죽을 치대는 작은 손의 촉감,
+                    제면기에서 쭈욱 뽑아져 나오는 하얀 국수 가닥의 짜릿함.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <a href="https://map.naver.com/p/entry/place/1759506877?lng=128.997753&lat=35.2066646&placePath=/ticket?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202602040921&locale=ko&svcName=map_pcv5&entry=plt&searchType=place&c=15.00,0,0,0,dh" target="_blank" rel="noopener" class="btn-gold">
+                        이번 주말, 체험 예약하기
+                    </a>
+                    <a href="#program" class="btn-ghost">
+                        체험 프로그램 보기
+                    </a>
+                </div>
+                <p class="text-sm mt-6" style="color:rgba(244,236,219,0.5)">보호자 무료 입장 · 밀키트 포장 제공</p>
             </div>
-            <p class="text-white/50 text-sm mt-6">보호자 무료 입장 · 밀키트 포장 제공</p>
         </div>
     </section>
 
     <!-- Stats Section -->
-    <section class="py-16 bg-white relative" aria-label="구포국수체험관 통계">
+    <section class="py-16 bg-paper-2 relative" aria-label="구포국수체험관 통계">
         <div class="max-w-6xl mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center reveal">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-10 text-center reveal">
                 <div>
-                    <div class="stat-number" data-target="80">80<span class="text-2xl">년+</span></div>
-                    <p class="text-gray-500 text-sm mt-2">부산과 함께한 전통</p>
+                    <div class="stat-tick"></div>
+                    <div class="stat-number">80<span>년+</span></div>
+                    <p class="text-taupe text-sm mt-3">부산과 함께한 전통</p>
                 </div>
                 <div>
-                    <div class="stat-number">2,026<span class="text-2xl">+</span></div>
-                    <p class="text-gray-500 text-sm mt-2">네이버 방문자 리뷰</p>
+                    <div class="stat-tick"></div>
+                    <div class="stat-number">2,026<span>+</span></div>
+                    <p class="text-taupe text-sm mt-3">네이버 방문자 리뷰</p>
                 </div>
                 <div>
-                    <div class="stat-number">4.84<span class="text-2xl">/5.0</span></div>
-                    <p class="text-gray-500 text-sm mt-2">네이버 평균 별점</p>
+                    <div class="stat-tick"></div>
+                    <div class="stat-number">4.84<span>/5.0</span></div>
+                    <p class="text-taupe text-sm mt-3">네이버 평균 별점</p>
                 </div>
                 <div>
-                    <div class="stat-number">36<span class="text-2xl">개월+</span></div>
-                    <p class="text-gray-500 text-sm mt-2">참여 가능 연령</p>
+                    <div class="stat-tick"></div>
+                    <div class="stat-number">36<span>개월+</span></div>
+                    <p class="text-taupe text-sm mt-3">참여 가능 연령</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 전화 전 빠른 안내 (전화 문의 줄이기) -->
-    <section id="quick" class="py-16 md:py-20 bg-[#F5F0EB]" aria-label="전화 전 빠른 안내">
+    <section id="quick" class="py-16 md:py-20 bg-paper" aria-label="전화 전 빠른 안내">
         <div class="max-w-5xl mx-auto px-6">
             <div class="text-center mb-10 reveal">
-                <span class="text-[#8B5E3C] font-bold tracking-[0.2em] text-sm mb-3 block">QUICK GUIDE</span>
-                <h2 class="text-2xl md:text-3xl font-bold text-gray-900">전화 주시기 전, 여기서 바로 확인하세요</h2>
-                <p class="text-gray-500 mt-3">자주 묻는 내용을 모았어요. 남은 자리는 네이버 예약에서 실시간으로 보입니다.</p>
+                <span class="mark" style="justify-content:center">한눈에 보기</span>
+                <h2 class="text-2xl md:text-3xl text-ink">전화 주시기 전, 여기서 바로 확인하세요</h2>
+                <p class="text-taupe mt-3">자주 묻는 내용을 모았어요. 남은 자리는 네이버 예약에서 실시간으로 보입니다.</p>
             </div>
 
-            <div class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-[#8B5E3C]/15 text-center mb-6 reveal">
-                <p class="text-lg font-bold text-gray-900 mb-1"><i class="fas fa-chair text-[#8B5E3C] mr-1" aria-hidden="true"></i> 지금 남은 자리가 궁금하세요?</p>
-                <p class="text-gray-500 text-sm mb-5">날짜·시간별 잔여 좌석이 네이버 예약에 <strong>실시간</strong>으로 표시됩니다. <strong>당일은 잔여 좌석이 있는 경우에 한해 현장 결제</strong>로 가능해요.</p>
-                <a href="https://map.naver.com/p/entry/place/1759506877?lng=128.997753&lat=35.2066646&placePath=/ticket?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202602040921&locale=ko&svcName=map_pcv5&entry=plt&searchType=place&c=15.00,0,0,0,dh" target="_blank" rel="noopener" class="inline-block px-8 py-4 bg-[#8B5E3C] text-white rounded-full font-semibold hover:bg-[#6d482d] transition shadow-lg shadow-[#8B5E3C]/30">실시간 남은 자리 확인 &amp; 예약 &rarr;</a>
+            <div class="chip p-6 md:p-8 text-center mb-6 reveal" style="border-color:rgba(198,138,30,0.32)">
+                <p class="text-lg font-bold text-ink mb-1"><i class="fas fa-chair text-gold mr-1" aria-hidden="true"></i> 지금 남은 자리가 궁금하세요?</p>
+                <p class="text-taupe text-sm mb-5">날짜·시간별 잔여 좌석이 네이버 예약에 <strong>실시간</strong>으로 표시됩니다. <strong>당일은 잔여 좌석이 있는 경우에 한해 현장 결제</strong>로 가능해요.</p>
+                <a href="https://map.naver.com/p/entry/place/1759506877?lng=128.997753&lat=35.2066646&placePath=/ticket?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202602040921&locale=ko&svcName=map_pcv5&entry=plt&searchType=place&c=15.00,0,0,0,dh" target="_blank" rel="noopener" class="btn-gold">실시간 남은 자리 확인 &amp; 예약 &rarr;</a>
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-3 gap-3 reveal">
-                <div class="bg-white rounded-xl p-4 border border-gray-100"><p class="font-bold text-gray-900 text-sm">💰 가격</p><p class="text-gray-500 text-sm mt-1">어린이 1인 24,000원 · 보호자 무료</p></div>
-                <div class="bg-white rounded-xl p-4 border border-gray-100"><p class="font-bold text-gray-900 text-sm">🕙 운영</p><p class="text-gray-500 text-sm mt-1">화~일 10–18시(월 휴무) · 개인체험은 주말·공휴일 중심</p></div>
-                <div class="bg-white rounded-xl p-4 border border-gray-100"><p class="font-bold text-gray-900 text-sm">⏱ 소요시간</p><p class="text-gray-500 text-sm mt-1">약 1시간 30분 · 밀키트 포장</p></div>
-                <div class="bg-white rounded-xl p-4 border border-gray-100"><p class="font-bold text-gray-900 text-sm">👶 연령</p><p class="text-gray-500 text-sm mt-1">36개월(만 3세)부터 · 보호자 동반</p></div>
-                <div class="bg-white rounded-xl p-4 border border-gray-100"><p class="font-bold text-gray-900 text-sm">🚇 오시는 길</p><p class="text-gray-500 text-sm mt-1">구포역 3번 출구 도보 3분 · 전용주차 없음</p></div>
-                <div class="bg-white rounded-xl p-4 border border-gray-100"><p class="font-bold text-gray-900 text-sm">👥 단체</p><p class="text-gray-500 text-sm mt-1">15인 이상 단체 예약창 · 현장 결제</p></div>
+                <div class="chip p-4"><p class="font-bold text-ink text-sm">가격</p><p class="text-taupe text-sm mt-1">어린이 1인 24,000원 · 보호자 무료</p></div>
+                <div class="chip p-4"><p class="font-bold text-ink text-sm">운영</p><p class="text-taupe text-sm mt-1">화~일 10–18시(월 휴무) · 개인체험은 주말·공휴일 중심</p></div>
+                <div class="chip p-4"><p class="font-bold text-ink text-sm">소요시간</p><p class="text-taupe text-sm mt-1">약 1시간 30분 · 밀키트 포장</p></div>
+                <div class="chip p-4"><p class="font-bold text-ink text-sm">연령</p><p class="text-taupe text-sm mt-1">36개월(만 3세)부터 · 보호자 동반</p></div>
+                <div class="chip p-4"><p class="font-bold text-ink text-sm">오시는 길</p><p class="text-taupe text-sm mt-1">구포역 3번 출구 도보 3분 · 전용주차 없음</p></div>
+                <div class="chip p-4"><p class="font-bold text-ink text-sm">단체</p><p class="text-taupe text-sm mt-1">15인 이상 단체 예약창 · 현장 결제</p></div>
             </div>
-            <p class="text-center text-gray-400 text-sm mt-6">더 궁금한 점은 아래 <a href="#faq" class="text-[#8B5E3C] underline">자주 묻는 질문</a>에서 확인하세요.</p>
+            <p class="text-center text-taupe text-sm mt-6">더 궁금한 점은 아래 <a href="#faq" class="link-gold">자주 묻는 질문</a>에서 확인하세요.</p>
         </div>
     </section>
 
     <!-- 2. Brand Story (About) -->
-    <article id="about" class="py-16 md:py-24 bg-[#F9F8F5] relative grain-overlay" aria-label="구포국수체험관 소개 및 역사">
+    <article id="about" class="py-16 md:py-24 bg-paper-2 relative" aria-label="구포국수체험관 소개 및 역사">
         <div class="max-w-6xl mx-auto px-6 relative z-10">
             <div class="flex flex-col md:flex-row items-center gap-16">
                 <div class="w-full md:w-1/2 reveal">
-                    <div class="relative h-[500px] w-full overflow-hidden rounded-2xl shadow-2xl">
-                        <img src="gupo-noodle-drying.jpg"
-                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1590403323067-1725b68df73a?q=80&w=2670&auto=format&fit=crop';"
-                             alt="부산 구포국수 낙동강 강바람 자연 건조 모습 - 1945년부터 이어온 전통 제면 방식"
+                    <div class="relative h-[500px] w-full overflow-hidden rounded-[4px]" style="box-shadow:0 24px 50px rgba(33,26,18,0.16)">
+                        <img src="hero-bg.jpg"
+                             onerror="this.onerror=null; this.src='gupo-noodle-drying.jpg';"
+                             alt="구포국수체험관 손글씨 간판 - 1945년부터 이어온 구포국수 브랜드"
                              class="absolute inset-0 w-full h-full object-cover"
                              loading="lazy">
                     </div>
                 </div>
                 <div class="w-full md:w-1/2 reveal delay-200">
-                    <span class="text-[#8B5E3C] font-bold tracking-[0.2em] text-sm mb-3 block">OUR STORY</span>
-                    <h2 class="text-3xl md:text-4xl font-bold mb-6 leading-snug text-gray-900">
+                    <span class="mark">이야기</span>
+                    <h2 class="text-3xl md:text-[2.6rem] mb-6 leading-[1.25] text-ink">
                         낙동강 바람이 말린<br>80년의 쫄깃한 이야기
                     </h2>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
+                    <p class="text-taupe mb-6 leading-relaxed">
                         1945년, 해방의 기쁨과 함께 구포 사람들은 낙동강 둑 위에 국수 가닥을
                         널기 시작했습니다. 바다를 스치고 올라온 염분 섞인 강바람은
                         밀가루 반죽에 깊은 감칠맛을 불어넣었고, 뜨거운 부산 햇살은
                         국수에 쫄깃한 생명을 더했습니다.
                     </p>
-                    <p class="text-gray-600 mb-8 leading-relaxed">
-                        지금, <strong>구포국수체험관</strong>은 그 80년의 이야기를 살아 있는 체험으로 전합니다.
+                    <p class="text-taupe mb-8 leading-relaxed">
+                        지금, <strong class="text-ink">구포국수체험관</strong>은 그 80년의 이야기를 살아 있는 체험으로 전합니다.
                         아이들은 직접 밀가루를 반죽하고, 제면기를 돌리며, 국수가 탄생하는 순간을
-                        온몸으로 느낍니다. 체험 후에는 직접 만든 <strong>소면·수제비·코인육수 밀키트</strong>를
+                        온몸으로 느낍니다. 체험 후에는 직접 만든 <strong class="text-ink">소면·수제비·코인육수 밀키트</strong>를
                         가정으로 가져갈 수 있어, 저녁 식탁에서 한 번 더 추억을 나눌 수 있습니다.
                     </p>
-                    <div class="flex gap-8 border-t border-gray-200 pt-8">
+                    <div class="flex gap-10 border-t pt-8" style="border-color:var(--line)">
                         <div>
-                            <strong class="block text-3xl font-serif text-[#8B5E3C]">1945</strong>
-                            <span class="text-sm text-gray-500">구포국수 역사 시작</span>
+                            <strong class="block text-3xl serif text-gold">1945</strong>
+                            <span class="text-sm text-taupe">구포국수 역사 시작</span>
                         </div>
                         <div>
-                            <strong class="block text-3xl font-serif text-[#8B5E3C]">2~3F</strong>
-                            <span class="text-sm text-gray-500">체험관 / 홍보관</span>
+                            <strong class="block text-3xl serif text-gold">2~3F</strong>
+                            <span class="text-sm text-taupe">체험관 / 홍보관</span>
                         </div>
                         <div>
-                            <strong class="block text-3xl font-serif text-[#8B5E3C]">1F</strong>
-                            <span class="text-sm text-gray-500">국수 식당</span>
+                            <strong class="block text-3xl serif text-gold">1F</strong>
+                            <span class="text-sm text-taupe">국수 식당</span>
                         </div>
                     </div>
                 </div>
@@ -609,82 +592,75 @@
         </div>
     </article>
 
-    <!-- Wave Divider -->
-    <div class="wave-divider bg-[#F9F8F5]">
-        <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-            <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="white"/>
-        </svg>
-    </div>
-
     <!-- 3. Experience Programs -->
-    <section id="program" class="py-16 md:py-24 bg-white" aria-label="체험 프로그램 안내">
+    <section id="program" class="py-16 md:py-24 bg-paper" aria-label="체험 프로그램 안내">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16 reveal">
-                <span class="text-[#8B5E3C] font-bold tracking-[0.2em] text-sm mb-3 block">PROGRAM</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">아이의 첫 요리 작품을 만들어보세요</h2>
-                <p class="text-gray-500 mt-4 max-w-xl mx-auto">제면·맷돌·편백놀이가 하나로 묶인 약 1시간 30분 올인원 체험. 어린이 1인 24,000원, 보호자 무료. 체험 후 밀키트를 집으로 가져가세요.</p>
+                <span class="mark" style="justify-content:center">체험 프로그램</span>
+                <h2 class="text-3xl md:text-[2.6rem] text-ink">아이의 첫 요리 작품을 만들어보세요</h2>
+                <p class="text-taupe mt-4 max-w-xl mx-auto">제면·맷돌·편백놀이가 하나로 묶인 약 1시간 30분 올인원 체험. 어린이 1인 24,000원, 보호자 무료. 체험 후 밀키트를 집으로 가져가세요.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Card 1: 제면 체험 -->
-                <article class="program-card group rounded-2xl overflow-hidden bg-white border border-gray-100 shadow-sm reveal" aria-label="제면 체험 클래스">
+                <article class="program-card group reveal" aria-label="제면 체험 클래스">
                     <div class="h-64 overflow-hidden relative">
                         <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F421%2F2021%2F02%2F25%2F0005188693_002_20210225155516699.jpg&type=a340" alt="부산 제면 체험 클래스 - 어린이가 직접 국수를 뽑는 모습" class="w-full h-full object-cover" loading="lazy">
-                        <div class="absolute top-4 left-4 bg-[#8B5E3C] text-white text-xs px-4 py-1.5 rounded-full font-semibold">가장 인기</div>
+                        <div class="absolute top-4 left-4 badge-gold text-xs px-3 py-1.5 rounded-sm font-semibold tracking-wide">가장 인기</div>
                     </div>
                     <div class="p-8">
-                        <h3 class="text-xl font-bold mb-3 group-hover:text-[#8B5E3C] transition">우리 아이의 첫 요리 작품, 제면 체험</h3>
-                        <p class="text-gray-500 text-sm mb-6 leading-relaxed">
+                        <h3 class="text-xl mb-3 text-ink serif">우리 아이의 첫 요리 작품, 제면 체험</h3>
+                        <p class="text-taupe text-sm mb-6 leading-relaxed">
                             폭신한 밀가루 반죽을 작은 손으로 꾹꾹 눌러보고,
                             제면기 핸들을 돌리면 쭈욱 나오는 하얀 국수 가닥!
                             체험 후 밀키트(소면+수제비+코인육수)를 가져가세요.
                         </p>
-                        <ul class="text-sm text-gray-600 space-y-2 mb-6">
-                            <li><i class="far fa-clock mr-2 text-[#8B5E3C]" aria-hidden="true"></i> 제면·맷돌·편백 올인원 약 1시간 30분</li>
-                            <li><i class="fas fa-won-sign mr-2 text-[#8B5E3C]" aria-hidden="true"></i> 어린이 1인 24,000원 · 보호자 무료</li>
-                            <li><i class="far fa-user mr-2 text-[#8B5E3C]" aria-hidden="true"></i> 36개월(만 3세) 이상 권장</li>
+                        <ul class="text-sm text-taupe space-y-2 mb-6">
+                            <li><i class="far fa-clock mr-2 text-gold" aria-hidden="true"></i> 제면·맷돌·편백 올인원 약 1시간 30분</li>
+                            <li><i class="fas fa-won-sign mr-2 text-gold" aria-hidden="true"></i> 어린이 1인 24,000원 · 보호자 무료</li>
+                            <li><i class="far fa-user mr-2 text-gold" aria-hidden="true"></i> 36개월(만 3세) 이상 권장</li>
                         </ul>
-                        <a href="https://map.naver.com/p/entry/place/1759506877?lng=128.997753&lat=35.2066646&placePath=/ticket?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202602040921&locale=ko&svcName=map_pcv5&entry=plt&searchType=place&c=15.00,0,0,0,dh" target="_blank" rel="noopener" class="block w-full py-3 bg-[#8B5E3C] text-white text-center rounded-xl hover:bg-[#6d482d] transition text-sm font-semibold">이번 주말 자리 확인하기</a>
+                        <a href="https://map.naver.com/p/entry/place/1759506877?lng=128.997753&lat=35.2066646&placePath=/ticket?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202602040921&locale=ko&svcName=map_pcv5&entry=plt&searchType=place&c=15.00,0,0,0,dh" target="_blank" rel="noopener" class="btn-gold w-full text-sm">이번 주말 자리 확인하기</a>
                     </div>
                 </article>
 
                 <!-- Card 2: 맷돌 & 편백 -->
-                <article class="program-card group rounded-2xl overflow-hidden bg-white border border-gray-100 shadow-sm reveal delay-100" aria-label="맷돌체험 및 편백놀이">
+                <article class="program-card group reveal delay-100" aria-label="맷돌체험 및 편백놀이">
                     <div class="h-64 overflow-hidden relative">
                         <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTAzMDNfNDMg%2FMDAxNjE0NzQwOTI1OTYy.fVHXCNrGOhMlaZD2AJpafwK44Xm0lMmmBHekHJry5cQg.NDUdUS4EodX2gaOKuY_oaoBlDNOKEaElbkfsyVe4sLsg.JPEG.bsbukgusns%2F5-4.jpeg&type=a340" alt="어린이 맷돌 체험 및 편백나무 놀이 공간" class="w-full h-full object-cover" loading="lazy">
                     </div>
                     <div class="p-8">
-                        <h3 class="text-xl font-bold mb-3 group-hover:text-[#8B5E3C] transition">교과서 속 맷돌, 직접 돌려봐요</h3>
-                        <p class="text-gray-500 text-sm mb-6 leading-relaxed">
+                        <h3 class="text-xl mb-3 text-ink serif">교과서 속 맷돌, 직접 돌려봐요</h3>
+                        <p class="text-taupe text-sm mb-6 leading-relaxed">
                             TV에서만 보던 전통 맷돌을 직접 돌려 곡물을 갈아보는 순간,
                             아이의 호기심이 살아 있는 학습으로 바뀝니다.
                             편백나무 향 가득한 놀이 공간에서 오감 발달까지.
                         </p>
-                        <ul class="text-sm text-gray-600 space-y-2 mb-6">
-                            <li><i class="far fa-clock mr-2 text-[#8B5E3C]" aria-hidden="true"></i> 제면 체험과 함께 진행되는 올인원 코스</li>
-                            <li><i class="far fa-user mr-2 text-[#8B5E3C]" aria-hidden="true"></i> 영유아 및 어린이</li>
+                        <ul class="text-sm text-taupe space-y-2 mb-6">
+                            <li><i class="far fa-clock mr-2 text-gold" aria-hidden="true"></i> 제면 체험과 함께 진행되는 올인원 코스</li>
+                            <li><i class="far fa-user mr-2 text-gold" aria-hidden="true"></i> 영유아 및 어린이</li>
                         </ul>
-                        <a href="https://map.naver.com/p/entry/place/1759506877?lng=128.997753&lat=35.2066646&placePath=/ticket?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202602040921&locale=ko&svcName=map_pcv5&entry=plt&searchType=place&c=15.00,0,0,0,dh" target="_blank" rel="noopener" class="block w-full py-3 border-2 border-[#8B5E3C] text-[#8B5E3C] text-center rounded-xl hover:bg-[#8B5E3C] hover:text-white transition text-sm font-semibold">체험 예약하기</a>
+                        <a href="https://map.naver.com/p/entry/place/1759506877?lng=128.997753&lat=35.2066646&placePath=/ticket?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202602040921&locale=ko&svcName=map_pcv5&entry=plt&searchType=place&c=15.00,0,0,0,dh" target="_blank" rel="noopener" class="btn-line w-full text-sm">체험 예약하기</a>
                     </div>
                 </article>
 
                 <!-- Card 3: 역사관 -->
-                <article class="program-card group rounded-2xl overflow-hidden bg-white border border-gray-100 shadow-sm reveal delay-200" aria-label="역사관 및 미니 박물관">
+                <article class="program-card group reveal delay-200" aria-label="역사관 및 미니 박물관">
                     <div class="h-64 overflow-hidden relative">
                         <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxNzEyMTFfNTMg%2FMDAxNTEyOTU5NjEyODMz.fXQ0bdskEVBP-lXdtQ4JBSl-ib1x4C54k2159Hm8Wwsg.eYNbX3Vfx4bu9JEhBgC4nAPlTjr-og5_a4-YRIcEYa8g.JPEG.dw9597%2F20171209_120817.jpg&type=a340" alt="구포국수 역사관 - 1950년대 제면 도구 전시" class="w-full h-full object-cover" loading="lazy">
                     </div>
                     <div class="p-8">
-                        <h3 class="text-xl font-bold mb-3 group-hover:text-[#8B5E3C] transition">시간 여행, 1950년대 구포로</h3>
-                        <p class="text-gray-500 text-sm mb-6 leading-relaxed">
+                        <h3 class="text-xl mb-3 text-ink serif">시간 여행, 1950년대 구포로</h3>
+                        <p class="text-taupe text-sm mb-6 leading-relaxed">
                             흑백 사진 속 낙동강 둑 위에 끝없이 널린 국수 건조대,
                             1950~60년대의 실제 제면 도구와 생활용품을 보며
                             "그때는 이렇게 만들었구나" 하고 눈이 커지는 아이의 모습을 만나보세요.
                         </p>
-                        <ul class="text-sm text-gray-600 space-y-2 mb-6">
-                            <li><i class="far fa-clock mr-2 text-[#8B5E3C]" aria-hidden="true"></i> 약 30분</li>
-                            <li><i class="far fa-user mr-2 text-[#8B5E3C]" aria-hidden="true"></i> 무료 관람</li>
+                        <ul class="text-sm text-taupe space-y-2 mb-6">
+                            <li><i class="far fa-clock mr-2 text-gold" aria-hidden="true"></i> 약 30분</li>
+                            <li><i class="far fa-user mr-2 text-gold" aria-hidden="true"></i> 무료 관람</li>
                         </ul>
-                        <div class="block w-full py-3 border border-gray-200 text-center rounded-xl bg-gray-50 text-gray-400 text-sm">
+                        <div class="block w-full py-3 border text-center rounded-sm text-sm text-taupe" style="border-color:var(--line); background:var(--paper)">
                             현재 축소 운영 중 (문의: 010-2608-5099)
                         </div>
                     </div>
@@ -694,191 +670,191 @@
     </section>
 
     <!-- Experience Process Timeline -->
-    <section class="py-20 bg-[#F9F8F5]" aria-label="체험 과정 안내">
+    <section class="py-20 bg-paper-2" aria-label="체험 과정 안내">
         <div class="max-w-4xl mx-auto px-6">
             <div class="text-center mb-16 reveal">
-                <span class="text-[#8B5E3C] font-bold tracking-[0.2em] text-sm mb-3 block">PROCESS</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">이렇게 체험해요</h2>
+                <span class="mark" style="justify-content:center">체험 순서</span>
+                <h2 class="text-3xl md:text-[2.6rem] text-ink">이렇게 체험해요</h2>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 reveal">
-                <div class="text-center">
-                    <div class="w-16 h-16 mx-auto mb-4 bg-[#8B5E3C]/10 rounded-2xl flex items-center justify-center">
-                        <span class="text-2xl font-serif font-bold text-[#8B5E3C]">01</span>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6 reveal">
+                <div class="process-step text-center">
+                    <div class="w-14 h-14 mx-auto mb-4 rounded-full flex items-center justify-center" style="border:1.5px solid var(--gold)">
+                        <span class="proc-num">一</span>
                     </div>
-                    <h3 class="font-bold text-gray-900 mb-2">도착 & 접수</h3>
-                    <p class="text-gray-500 text-sm">체험복을 입고 손을 깨끗이 씻어요</p>
+                    <h3 class="font-bold text-ink mb-2">도착 &amp; 접수</h3>
+                    <p class="text-taupe text-sm">체험복을 입고 손을 깨끗이 씻어요</p>
                 </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 mx-auto mb-4 bg-[#8B5E3C]/10 rounded-2xl flex items-center justify-center">
-                        <span class="text-2xl font-serif font-bold text-[#8B5E3C]">02</span>
+                <div class="process-step text-center">
+                    <div class="w-14 h-14 mx-auto mb-4 rounded-full flex items-center justify-center" style="border:1.5px solid var(--gold)">
+                        <span class="proc-num">二</span>
                     </div>
-                    <h3 class="font-bold text-gray-900 mb-2">반죽 만들기</h3>
-                    <p class="text-gray-500 text-sm">밀가루와 물로 반죽을 꾹꾹 치대요</p>
+                    <h3 class="font-bold text-ink mb-2">반죽 만들기</h3>
+                    <p class="text-taupe text-sm">밀가루와 물로 반죽을 꾹꾹 치대요</p>
                 </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 mx-auto mb-4 bg-[#8B5E3C]/10 rounded-2xl flex items-center justify-center">
-                        <span class="text-2xl font-serif font-bold text-[#8B5E3C]">03</span>
+                <div class="process-step text-center">
+                    <div class="w-14 h-14 mx-auto mb-4 rounded-full flex items-center justify-center" style="border:1.5px solid var(--gold)">
+                        <span class="proc-num">三</span>
                     </div>
-                    <h3 class="font-bold text-gray-900 mb-2">국수 뽑기</h3>
-                    <p class="text-gray-500 text-sm">제면기로 쭈욱 국수 가닥을 뽑아요</p>
+                    <h3 class="font-bold text-ink mb-2">국수 뽑기</h3>
+                    <p class="text-taupe text-sm">제면기로 쭈욱 국수 가닥을 뽑아요</p>
                 </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 mx-auto mb-4 bg-[#8B5E3C]/10 rounded-2xl flex items-center justify-center">
-                        <span class="text-2xl font-serif font-bold text-[#8B5E3C]">04</span>
+                <div class="process-step text-center">
+                    <div class="w-14 h-14 mx-auto mb-4 rounded-full flex items-center justify-center" style="border:1.5px solid var(--gold)">
+                        <span class="proc-num">四</span>
                     </div>
-                    <h3 class="font-bold text-gray-900 mb-2">포장 & 시식</h3>
-                    <p class="text-gray-500 text-sm">밀키트로 포장하고, 1층에서 한 그릇!</p>
+                    <h3 class="font-bold text-ink mb-2">포장 &amp; 시식</h3>
+                    <p class="text-taupe text-sm">밀키트로 포장하고, 1층에서 한 그릇!</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Around: 체험 후 추천 도보 코스 -->
-    <section id="course" class="py-16 md:py-24 bg-white" aria-label="체험 후 추천 도보 코스">
+    <section id="course" class="py-16 md:py-24 bg-paper" aria-label="체험 후 추천 도보 코스">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-16 reveal">
-                <span class="text-[#8B5E3C] font-bold tracking-[0.2em] text-sm mb-3 block">AROUND</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">체험 후, 낙동강 강변 한 바퀴</h2>
-                <p class="text-gray-500 mt-4 max-w-2xl mx-auto">구포역 인근에서 차 없이 반나절(약 3~4시간)에 도는 도보 코스. 보행교에 승강기가 있어 유모차도 편하게 다닐 수 있습니다.</p>
+                <span class="mark" style="justify-content:center">둘러보기</span>
+                <h2 class="text-3xl md:text-[2.6rem] text-ink">체험 후, 낙동강 강변 한 바퀴</h2>
+                <p class="text-taupe mt-4 max-w-2xl mx-auto">구포역 인근에서 차 없이 반나절(약 3~4시간)에 도는 도보 코스. 보행교에 승강기가 있어 유모차도 편하게 다닐 수 있습니다.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 reveal">
                 <!-- 1. 감동나룻길 리버워크 -->
-                <article class="program-card group rounded-2xl overflow-hidden bg-white border border-gray-100 shadow-sm">
+                <article class="program-card group">
                     <div class="h-52 overflow-hidden relative">
                         <img src="course-1-rivertrail.jpg" onerror="this.onerror=null;this.src='hero-bg.jpg';" alt="감동나룻길 리버워크 - 낙동강 위를 가로지르는 강변 보행교" class="w-full h-full object-cover" loading="lazy">
-                        <div class="absolute top-4 left-4 bg-[#8B5E3C] text-white text-xs px-4 py-1.5 rounded-full font-semibold">구포역 도보 5분</div>
+                        <div class="absolute top-4 left-4 badge-river text-xs px-3 py-1.5 rounded-sm font-semibold">구포역 도보 5분</div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-lg font-bold mb-2 text-gray-900">① 감동나룻길 리버워크</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">구포역을 나서 강 위로 한 걸음 내딛는 순간, 도심은 사라지고 낙동강이 펼쳐집니다. 2024년 말 새로 놓인 320m 강변 보행교를 강바람 맞으며 걷다 보면 옛 구포나루의 정취가 발끝에 닿습니다.</p>
+                        <h3 class="text-lg mb-2 text-ink serif">① 감동나룻길 리버워크</h3>
+                        <p class="text-taupe text-sm leading-relaxed">구포역을 나서 강 위로 한 걸음 내딛는 순간, 도심은 사라지고 낙동강이 펼쳐집니다. 2024년 말 새로 놓인 320m 강변 보행교를 강바람 맞으며 걷다 보면 옛 구포나루의 정취가 발끝에 닿습니다.</p>
                     </div>
                 </article>
 
                 <!-- 2. 금빛노을브릿지 -->
-                <article class="program-card group rounded-2xl overflow-hidden bg-white border border-gray-100 shadow-sm">
+                <article class="program-card group">
                     <div class="h-52 overflow-hidden relative">
                         <img src="course-2-bridge.jpg" onerror="this.onerror=null;this.src='hero-bg.jpg';" alt="금빛노을브릿지 - 낙동강 위 383m 보행교와 전망타워, 일몰 명소" class="w-full h-full object-cover" loading="lazy">
-                        <div class="absolute top-4 left-4 bg-[#C4973B] text-white text-xs px-4 py-1.5 rounded-full font-semibold">일몰·야경 명소</div>
+                        <div class="absolute top-4 left-4 badge-gold text-xs px-3 py-1.5 rounded-sm font-semibold">일몰·야경 명소</div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-lg font-bold mb-2 text-gray-900">② 금빛노을브릿지</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">383m, 다리 전체가 강 위에 떠 있습니다. 해 질 무렵 낙동강 수면이 온통 금빛으로 물들고, 밤이면 조명이 켜져 한 해 200만 명을 불러 모은 야경이 펼쳐집니다. 승강기가 있어 유모차도 전망 데크까지 오를 수 있어요.</p>
+                        <h3 class="text-lg mb-2 text-ink serif">② 금빛노을브릿지</h3>
+                        <p class="text-taupe text-sm leading-relaxed">383m, 다리 전체가 강 위에 떠 있습니다. 해 질 무렵 낙동강 수면이 온통 금빛으로 물들고, 밤이면 조명이 켜져 한 해 200만 명을 불러 모은 야경이 펼쳐집니다. 승강기가 있어 유모차도 전망 데크까지 오를 수 있어요.</p>
                     </div>
                 </article>
 
                 <!-- 3. 화명생태공원 -->
-                <article class="program-card group rounded-2xl overflow-hidden bg-white border border-gray-100 shadow-sm">
+                <article class="program-card group">
                     <div class="h-52 overflow-hidden relative">
                         <img src="course-3-ecopark.jpg" onerror="this.onerror=null;this.src='hero-bg.jpg';" alt="화명생태공원 연꽃습지 - 낙동강변 사계절 정원" class="w-full h-full object-cover" loading="lazy">
-                        <div class="absolute top-4 left-4 bg-[#8B5E3C] text-white text-xs px-4 py-1.5 rounded-full font-semibold">무료 · 사계절 꽃</div>
+                        <div class="absolute top-4 left-4 badge-river text-xs px-3 py-1.5 rounded-sm font-semibold">무료 · 사계절 꽃</div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-lg font-bold mb-2 text-gray-900">③ 화명생태공원</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">91만 평 강변에 봄이면 6만 5천 송이 튤립과 장미, 여름이면 연꽃 습지, 가을이면 은빛 억새가 끝없이 펼쳐집니다. 메타세쿼이아 길에서 아이는 뛰고 어른은 숨을 고르는, 입장료 없는 사계절 정원입니다.</p>
+                        <h3 class="text-lg mb-2 text-ink serif">③ 화명생태공원</h3>
+                        <p class="text-taupe text-sm leading-relaxed">91만 평 강변에 봄이면 6만 5천 송이 튤립과 장미, 여름이면 연꽃 습지, 가을이면 은빛 억새가 끝없이 펼쳐집니다. 메타세쿼이아 길에서 아이는 뛰고 어른은 숨을 고르는, 입장료 없는 사계절 정원입니다.</p>
                     </div>
                 </article>
 
                 <!-- 4. 구포시장 -->
-                <article class="program-card group rounded-2xl overflow-hidden bg-white border border-gray-100 shadow-sm">
+                <article class="program-card group">
                     <div class="h-52 overflow-hidden relative">
                         <img src="course-4-market.jpg" onerror="this.onerror=null;this.src='hero-bg.jpg';" alt="구포시장 - 400년 전통의 부산 대표 전통시장" class="w-full h-full object-cover" loading="lazy">
-                        <div class="absolute top-4 left-4 bg-[#8B5E3C] text-white text-xs px-4 py-1.5 rounded-full font-semibold">400년 전통시장</div>
+                        <div class="absolute top-4 left-4 badge-gold text-xs px-3 py-1.5 rounded-sm font-semibold">400년 전통시장</div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-lg font-bold mb-2 text-gray-900">④ 구포시장</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">400년을 이어온 부산 대표 전통시장. 3·8일엔 1,500여 점포의 오일장이 서고, 12개 특화 골목엔 갓 뽑은 구포국수의 고소한 냄새가 흐릅니다. 체험으로 시작한 구포국수 이야기가 시장에서 완성됩니다.</p>
+                        <h3 class="text-lg mb-2 text-ink serif">④ 구포시장</h3>
+                        <p class="text-taupe text-sm leading-relaxed">400년을 이어온 부산 대표 전통시장. 3·8일엔 1,500여 점포의 오일장이 서고, 12개 특화 골목엔 갓 뽑은 구포국수의 고소한 냄새가 흐릅니다. 체험으로 시작한 구포국수 이야기가 시장에서 완성됩니다.</p>
                     </div>
                 </article>
             </div>
-            <p class="text-center text-gray-400 text-sm mt-10">체험관(1층 국수 식사) → 감동나룻길 → 금빛노을브릿지 → 화명생태공원 → 구포시장 · 모두 도보로 연결됩니다</p>
+            <p class="text-center text-taupe text-sm mt-10">체험관(1층 국수 식사) → 감동나룻길 → 금빛노을브릿지 → 화명생태공원 → 구포시장 · 모두 도보로 연결됩니다</p>
         </div>
     </section>
 
     <!-- Reviews Section -->
-    <section id="reviews" class="py-16 md:py-24 bg-white" aria-label="방문자 후기">
+    <section id="reviews" class="py-16 md:py-24 bg-paper" aria-label="방문자 후기">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-16 reveal">
-                <span class="text-[#8B5E3C] font-bold tracking-[0.2em] text-sm mb-3 block">REVIEWS</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">다녀온 가족들의 진짜 후기</h2>
+                <span class="mark" style="justify-content:center">방문자 후기</span>
+                <h2 class="text-3xl md:text-[2.6rem] text-ink">다녀온 가족들의 진짜 후기</h2>
                 <div class="flex items-center justify-center flex-wrap gap-x-3 gap-y-1 mt-4">
-                    <span class="text-2xl font-bold text-[#C4973B]"><i class="fas fa-star" aria-hidden="true"></i> 4.84</span>
-                    <span class="text-gray-500">네이버 방문자 리뷰 <strong>2,026</strong>개</span>
+                    <span class="text-2xl serif text-gold"><i class="fas fa-star text-base align-middle" aria-hidden="true"></i> 4.84</span>
+                    <span class="text-taupe">네이버 방문자 리뷰 <strong class="text-ink">2,026</strong>개</span>
                 </div>
-                <p class="text-gray-400 text-sm mt-2">"유익해요" 634 · "설명이 잘 되어있어요" 558 · "체험 프로그램이 다양해요" 499 · "아이와 가기 좋아요" 311</p>
+                <p class="text-taupe text-sm mt-2">"유익해요" 634 · "설명이 잘 되어있어요" 558 · "체험 프로그램이 다양해요" 499 · "아이와 가기 좋아요" 311</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 reveal">
                 <!-- Review 1 -->
-                <div class="review-card bg-[#F9F8F5] rounded-2xl p-8 border border-gray-100">
+                <div class="review-card p-8">
                     <div class="flex items-center gap-1 mb-4">
-                        <i class="fas fa-star text-[#C4973B]" aria-hidden="true"></i>
-                        <i class="fas fa-star text-[#C4973B]" aria-hidden="true"></i>
-                        <i class="fas fa-star text-[#C4973B]" aria-hidden="true"></i>
-                        <i class="fas fa-star text-[#C4973B]" aria-hidden="true"></i>
-                        <i class="fas fa-star text-[#C4973B]" aria-hidden="true"></i>
+                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
+                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
+                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
+                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
+                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
                     </div>
-                    <p class="text-gray-600 leading-relaxed mb-4">
+                    <p class="text-ink leading-relaxed mb-4" style="opacity:.82">
                         맷돌체험부터 밀가루 반죽, 수제비 찍기, 국수 뽑기까지 아이들이 너무 재밌어했어요!
                         미취학 아기들은 힘이 약해서 엄마아빠 도움이 좀 필요하긴 했는데,
                         부모님과 함께해서 더 좋아하네요 ^^ 직접 만든 국수랑 수제비 밀키트도
                         집에 와서 맛있게 잘 끓여 먹었습니다~
                     </p>
-                    <p class="text-sm text-gray-400 font-medium">— 유갱41 · 네이버 방문자 리뷰 (2026.5)</p>
+                    <p class="text-sm text-taupe font-medium">— 유갱41 · 네이버 방문자 리뷰 (2026.5)</p>
                 </div>
 
                 <!-- Review 2 -->
-                <div class="review-card bg-[#F9F8F5] rounded-2xl p-8 border border-gray-100">
+                <div class="review-card p-8">
                     <div class="flex items-center gap-1 mb-4">
-                        <i class="fas fa-star text-[#C4973B]" aria-hidden="true"></i>
-                        <i class="fas fa-star text-[#C4973B]" aria-hidden="true"></i>
-                        <i class="fas fa-star text-[#C4973B]" aria-hidden="true"></i>
-                        <i class="fas fa-star text-[#C4973B]" aria-hidden="true"></i>
-                        <i class="fas fa-star text-[#C4973B]" aria-hidden="true"></i>
+                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
+                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
+                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
+                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
+                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
                     </div>
-                    <p class="text-gray-600 leading-relaxed mb-4">
+                    <p class="text-ink leading-relaxed mb-4" style="opacity:.82">
                         연휴에 여행 와서 아이들이 체험할 만한 걸 찾다가 예약했는데, 지역과 관련해
                         의미도 있고 아이들이 집중해서 잘 참여할 수 있어서 좋았어요!
                         마무리로 만든 음식을 먹어볼 수 있으니 너무 유익합니다 👍
                         집에 가서 면과 수제비로 요리까지 하면 완·벽!
                     </p>
-                    <p class="text-sm text-gray-400 font-medium">— J Lynn · 네이버 방문자 리뷰 (2026.5)</p>
+                    <p class="text-sm text-taupe font-medium">— J Lynn · 네이버 방문자 리뷰 (2026.5)</p>
                 </div>
 
                 <!-- Review 3 -->
-                <div class="review-card bg-[#F9F8F5] rounded-2xl p-8 border border-gray-100">
+                <div class="review-card p-8">
                     <div class="flex items-center gap-1 mb-4">
-                        <i class="fas fa-star text-[#C4973B]" aria-hidden="true"></i>
-                        <i class="fas fa-star text-[#C4973B]" aria-hidden="true"></i>
-                        <i class="fas fa-star text-[#C4973B]" aria-hidden="true"></i>
-                        <i class="fas fa-star text-[#C4973B]" aria-hidden="true"></i>
-                        <i class="fas fa-star text-[#C4973B]" aria-hidden="true"></i>
+                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
+                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
+                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
+                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
+                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
                     </div>
-                    <p class="text-gray-600 leading-relaxed mb-4">
+                    <p class="text-ink leading-relaxed mb-4" style="opacity:.82">
                         아이랑 같이 가기 정말 좋은 체험관이었어요 😊 국수 만드는 과정을 직접 보고
                         체험할 수 있어서 더 재미있었어요! 생각보다 내부가 깔끔하고 직원분들도
                         친절해서 만족했어요. 체험 끝나고 국수까지 먹으니 아이도 너무 좋아했네요 🍜
                     </p>
-                    <p class="text-sm text-gray-400 font-medium">— pak**** · 네이버 방문자 리뷰 (2026.5)</p>
+                    <p class="text-sm text-taupe font-medium">— pak**** · 네이버 방문자 리뷰 (2026.5)</p>
                 </div>
 
                 <!-- Review 4 -->
-                <div class="review-card bg-[#F9F8F5] rounded-2xl p-8 border border-gray-100">
+                <div class="review-card p-8">
                     <div class="flex items-center gap-1 mb-4">
-                        <i class="fas fa-star text-[#C4973B]" aria-hidden="true"></i>
-                        <i class="fas fa-star text-[#C4973B]" aria-hidden="true"></i>
-                        <i class="fas fa-star text-[#C4973B]" aria-hidden="true"></i>
-                        <i class="fas fa-star text-[#C4973B]" aria-hidden="true"></i>
-                        <i class="fas fa-star text-[#C4973B]" aria-hidden="true"></i>
+                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
+                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
+                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
+                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
+                        <i class="fas fa-star text-gold" aria-hidden="true"></i>
                     </div>
-                    <p class="text-gray-600 leading-relaxed mb-4">
+                    <p class="text-ink leading-relaxed mb-4" style="opacity:.82">
                         부산 여행 와서 검색하다 아이들과 왔어요. 국수 뽑기를 애들이 너무
                         좋아했어요 ^^ 직접 만든 면과 수제비를 가져갈 수 있어 집에서도 또 즐겼고,
                         좋은 추억 쌓고 갑니다!
                     </p>
-                    <p class="text-sm text-gray-400 font-medium">— 라자매맘 in 광주 · 네이버 방문자 리뷰 (2026.5)</p>
+                    <p class="text-sm text-taupe font-medium">— 라자매맘 in 광주 · 네이버 방문자 리뷰 (2026.5)</p>
                 </div>
             </div>
             <div class="text-center mt-12 reveal">
-                <a href="https://map.naver.com/p/entry/place/1759506877?lng=128.997753&lat=35.2066646&placePath=/ticket?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202602040921&locale=ko&svcName=map_pcv5&entry=plt&searchType=place&c=15.00,0,0,0,dh" target="_blank" rel="noopener" class="inline-block px-10 py-4 bg-[#8B5E3C] text-white hover:bg-[#6d482d] transition duration-300 rounded-full font-semibold shadow-lg shadow-[#8B5E3C]/20">
+                <a href="https://map.naver.com/p/entry/place/1759506877?lng=128.997753&lat=35.2066646&placePath=/ticket?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202602040921&locale=ko&svcName=map_pcv5&entry=plt&searchType=place&c=15.00,0,0,0,dh" target="_blank" rel="noopener" class="btn-gold">
                     우리 가족도 체험 예약하기
                 </a>
                 <p class="text-gray-400 text-sm mt-3">네이버 간편 예약 · 1분이면 끝</p>
@@ -887,162 +863,162 @@
     </section>
 
     <!-- 4. FAQ -->
-    <section id="faq" class="py-16 md:py-24 bg-[#F9F8F5]" aria-label="자주 묻는 질문">
+    <section id="faq" class="py-16 md:py-24 bg-paper" aria-label="자주 묻는 질문">
         <div class="max-w-4xl mx-auto px-6">
             <div class="text-center mb-16 reveal">
-                <span class="text-[#8B5E3C] font-bold tracking-[0.2em] text-sm mb-3 block">FAQ</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">자주 묻는 질문</h2>
-                <p class="text-gray-500 mt-4">체험 전 궁금한 점을 확인해보세요.</p>
+                <span class="mark" style="justify-content:center">자주 묻는 질문</span>
+                <h2 class="text-3xl md:text-[2.6rem] text-ink serif">궁금한 점, 먼저 풀어드려요</h2>
+                <p class="text-taupe mt-4">체험 전 자주 묻는 내용을 모았어요.</p>
             </div>
 
             <div class="space-y-3 reveal" role="list" aria-label="FAQ 목록">
-                <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden" role="listitem">
+                <div class="faq-item" role="listitem">
                     <button class="faq-toggle w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50/50 transition" aria-expanded="false">
-                        <span class="font-bold text-gray-900 pr-4">이용 대상은 어떻게 되나요?</span>
-                        <i class="fas fa-chevron-down text-[#8B5E3C] transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
+                        <span class="faq-q font-bold pr-4">이용 대상은 어떻게 되나요?</span>
+                        <i class="fas fa-chevron-down text-gold transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
                     </button>
                     <div class="faq-content px-8">
-                        <p class="text-gray-600 leading-relaxed">10인 이하 개인 고객 전용 체험이며, 36개월(만 3세) 이상 참여를 권장합니다. 안전하고 즐거운 체험을 위해 연령 기준을 지켜주시기 바랍니다.</p>
+                        <p class="text-taupe leading-relaxed">10인 이하 개인 고객 전용 체험이며, 36개월(만 3세) 이상 참여를 권장합니다. 안전하고 즐거운 체험을 위해 연령 기준을 지켜주시기 바랍니다.</p>
                     </div>
                 </div>
 
-                <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden" role="listitem">
+                <div class="faq-item" role="listitem">
                     <button class="faq-toggle w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50/50 transition" aria-expanded="false">
-                        <span class="font-bold text-gray-900 pr-4">예약은 어떻게 해야 하나요?</span>
-                        <i class="fas fa-chevron-down text-[#8B5E3C] transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
+                        <span class="faq-q font-bold pr-4">예약은 어떻게 해야 하나요?</span>
+                        <i class="fas fa-chevron-down text-gold transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
                     </button>
                     <div class="faq-content px-8">
-                        <p class="text-gray-600 leading-relaxed">네이버 예약을 통해 사전 예약해 주시기 바랍니다. 원하시는 날짜와 시간대를 선택하신 후 간편 결제로 진행됩니다. 전화 문의: 010-2608-5099.</p>
+                        <p class="text-taupe leading-relaxed">네이버 예약을 통해 사전 예약해 주시기 바랍니다. 원하시는 날짜와 시간대를 선택하신 후 간편 결제로 진행됩니다. 전화 문의: 010-2608-5099.</p>
                     </div>
                 </div>
 
-                <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden" role="listitem">
+                <div class="faq-item" role="listitem">
                     <button class="faq-toggle w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50/50 transition" aria-expanded="false">
-                        <span class="font-bold text-gray-900 pr-4">결제는 어떤 방법으로 가능한가요?</span>
-                        <i class="fas fa-chevron-down text-[#8B5E3C] transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
+                        <span class="faq-q font-bold pr-4">결제는 어떤 방법으로 가능한가요?</span>
+                        <i class="fas fa-chevron-down text-gold transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
                     </button>
                     <div class="faq-content px-8">
-                        <p class="text-gray-600 leading-relaxed">네이버페이 결제로 진행됩니다. 카드결제 또는 현금 계좌이체 결제를 원하실 경우 구포국수체험관(010-2608-5099)으로 전화 문의 주시면 자세히 안내해 드리겠습니다.</p>
+                        <p class="text-taupe leading-relaxed">네이버페이 결제로 진행됩니다. 카드결제 또는 현금 계좌이체 결제를 원하실 경우 구포국수체험관(010-2608-5099)으로 전화 문의 주시면 자세히 안내해 드리겠습니다.</p>
                     </div>
                 </div>
 
-                <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden" role="listitem">
+                <div class="faq-item" role="listitem">
                     <button class="faq-toggle w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50/50 transition" aria-expanded="false">
-                        <span class="font-bold text-gray-900 pr-4">어른도 체험에 참여할 수 있나요?</span>
-                        <i class="fas fa-chevron-down text-[#8B5E3C] transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
+                        <span class="faq-q font-bold pr-4">어른도 체험에 참여할 수 있나요?</span>
+                        <i class="fas fa-chevron-down text-gold transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
                     </button>
                     <div class="faq-content px-8">
-                        <p class="text-gray-600 leading-relaxed">보호자(성인)는 <strong>무료로 참여</strong> 가능합니다. 아이만 예약하시면 됩니다. 체험 종료 후, 1층 국수 식당에서 국수 한 그릇 드셔보시는 것을 추천합니다.</p>
+                        <p class="text-taupe leading-relaxed">보호자(성인)는 <strong>무료로 참여</strong> 가능합니다. 아이만 예약하시면 됩니다. 체험 종료 후, 1층 국수 식당에서 국수 한 그릇 드셔보시는 것을 추천합니다.</p>
                     </div>
                 </div>
 
-                <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden" role="listitem">
+                <div class="faq-item" role="listitem">
                     <button class="faq-toggle w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50/50 transition" aria-expanded="false">
-                        <span class="font-bold text-gray-900 pr-4">보호자 입장은 어떻게 되나요?</span>
-                        <i class="fas fa-chevron-down text-[#8B5E3C] transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
+                        <span class="faq-q font-bold pr-4">보호자 입장은 어떻게 되나요?</span>
+                        <i class="fas fa-chevron-down text-gold transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
                     </button>
                     <div class="faq-content px-8">
-                        <p class="text-gray-600 leading-relaxed">보호자(성인)도 함께 체험실에 입장하실 수 있으며, 참여 비용은 <strong>무료</strong>입니다. 특히 미취학 아동은 보호자가 곁에서 함께 도와주시면 반죽·제면을 더욱 즐겁게 완성할 수 있습니다.</p>
+                        <p class="text-taupe leading-relaxed">보호자(성인)도 함께 체험실에 입장하실 수 있으며, 참여 비용은 <strong>무료</strong>입니다. 특히 미취학 아동은 보호자가 곁에서 함께 도와주시면 반죽·제면을 더욱 즐겁게 완성할 수 있습니다.</p>
                     </div>
                 </div>
 
-                <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden" role="listitem">
+                <div class="faq-item" role="listitem">
                     <button class="faq-toggle w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50/50 transition" aria-expanded="false">
-                        <span class="font-bold text-gray-900 pr-4">체험 후 가져갈 수 있는 것이 있나요?</span>
-                        <i class="fas fa-chevron-down text-[#8B5E3C] transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
+                        <span class="faq-q font-bold pr-4">체험 후 가져갈 수 있는 것이 있나요?</span>
+                        <i class="fas fa-chevron-down text-gold transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
                     </button>
                     <div class="faq-content px-8">
-                        <p class="text-gray-600 leading-relaxed">체험 종료 후, 아이들이 직접 만든 <strong>국수 소면·수제비·코인육수 밀키트</strong>를 가져가실 수 있습니다. 집에서 가족과 함께 조리해 드시면 체험의 추억이 한 번 더 이어집니다.</p>
+                        <p class="text-taupe leading-relaxed">체험 종료 후, 아이들이 직접 만든 <strong>국수 소면·수제비·코인육수 밀키트</strong>를 가져가실 수 있습니다. 집에서 가족과 함께 조리해 드시면 체험의 추억이 한 번 더 이어집니다.</p>
                     </div>
                 </div>
 
-                <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden" role="listitem">
+                <div class="faq-item" role="listitem">
                     <button class="faq-toggle w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50/50 transition" aria-expanded="false">
-                        <span class="font-bold text-gray-900 pr-4">체험 운영은 어떻게 되나요?</span>
-                        <i class="fas fa-chevron-down text-[#8B5E3C] transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
+                        <span class="faq-q font-bold pr-4">체험 운영은 어떻게 되나요?</span>
+                        <i class="fas fa-chevron-down text-gold transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
                     </button>
                     <div class="faq-content px-8">
-                        <p class="text-gray-600 leading-relaxed">개인 체험은 주로 <strong>주말·공휴일</strong>에 회차로 운영되며, <strong>평일은 단체 예약 위주</strong>로 진행됩니다. 회차당 소수 인원으로 여유롭게 운영되어 적정 인원이 충족되지 않을 경우 해당 회차 체험은 부득이하게 취소될 수 있으니, 원하시는 시간대는 서둘러 예약해 주세요.</p>
+                        <p class="text-taupe leading-relaxed">개인 체험은 주로 <strong>주말·공휴일</strong>에 회차로 운영되며, <strong>평일은 단체 예약 위주</strong>로 진행됩니다. 회차당 소수 인원으로 여유롭게 운영되어 적정 인원이 충족되지 않을 경우 해당 회차 체험은 부득이하게 취소될 수 있으니, 원하시는 시간대는 서둘러 예약해 주세요.</p>
                     </div>
                 </div>
 
-                <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden" role="listitem">
+                <div class="faq-item" role="listitem">
                     <button class="faq-toggle w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50/50 transition" aria-expanded="false">
-                        <span class="font-bold text-gray-900 pr-4">주차는 가능한가요?</span>
-                        <i class="fas fa-chevron-down text-[#8B5E3C] transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
+                        <span class="faq-q font-bold pr-4">주차는 가능한가요?</span>
+                        <i class="fas fa-chevron-down text-gold transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
                     </button>
                     <div class="faq-content px-8">
-                        <p class="text-gray-600 leading-relaxed">전용 주차장은 없습니다. 자가용 이용 시 인근 유료 주차장을 이용해 주세요. <strong>지정 주차장(구포·대천·남선)에 한해 30분 주차가 지원</strong>됩니다. 가급적 대중교통(지하철 3호선 구포역 3번 출구에서 도보 3분) 이용을 권장합니다.</p>
+                        <p class="text-taupe leading-relaxed">전용 주차장은 없습니다. 자가용 이용 시 인근 유료 주차장을 이용해 주세요. <strong>지정 주차장(구포·대천·남선)에 한해 30분 주차가 지원</strong>됩니다. 가급적 대중교통(지하철 3호선 구포역 3번 출구에서 도보 3분) 이용을 권장합니다.</p>
                     </div>
                 </div>
 
-                <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden" role="listitem">
+                <div class="faq-item" role="listitem">
                     <button class="faq-toggle w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50/50 transition" aria-expanded="false">
-                        <span class="font-bold text-gray-900 pr-4">우천 시에도 체험이 가능한가요?</span>
-                        <i class="fas fa-chevron-down text-[#8B5E3C] transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
+                        <span class="faq-q font-bold pr-4">우천 시에도 체험이 가능한가요?</span>
+                        <i class="fas fa-chevron-down text-gold transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
                     </button>
                     <div class="faq-content px-8">
-                        <p class="text-gray-600 leading-relaxed">모든 체험은 <strong>실내에서 진행</strong>되므로 비, 눈, 폭염 등 날씨와 관계없이 편안하게 참여하실 수 있습니다. 우천 시 가족 나들이로 안성맞춤입니다.</p>
+                        <p class="text-taupe leading-relaxed">모든 체험은 <strong>실내에서 진행</strong>되므로 비, 눈, 폭염 등 날씨와 관계없이 편안하게 참여하실 수 있습니다. 우천 시 가족 나들이로 안성맞춤입니다.</p>
                     </div>
                 </div>
 
-                <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden" role="listitem">
+                <div class="faq-item" role="listitem">
                     <button class="faq-toggle w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50/50 transition" aria-expanded="false">
-                        <span class="font-bold text-gray-900 pr-4">단체 예약도 가능한가요?</span>
-                        <i class="fas fa-chevron-down text-[#8B5E3C] transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
+                        <span class="faq-q font-bold pr-4">단체 예약도 가능한가요?</span>
+                        <i class="fas fa-chevron-down text-gold transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
                     </button>
                     <div class="faq-content px-8">
-                        <p class="text-gray-600 leading-relaxed"><strong>15인 이상</strong> 단체(어린이집·유치원·학교·기관)는 네이버 <strong>단체 예약창</strong>으로 예약하시거나 전화(010-2608-5099)로 문의해 주세요. 단체 예약은 신청 후 <strong>직원 확인을 거쳐 확정</strong>되므로 <strong>확정까지 시간이 걸릴 수 있습니다</strong>. 일정에 여유를 두고 신청해 주세요. 결제는 현장에서 진행되며, 인원은 협의 가능합니다.</p>
+                        <p class="text-taupe leading-relaxed"><strong>15인 이상</strong> 단체(어린이집·유치원·학교·기관)는 네이버 <strong>단체 예약창</strong>으로 예약하시거나 전화(010-2608-5099)로 문의해 주세요. 단체 예약은 신청 후 <strong>직원 확인을 거쳐 확정</strong>되므로 <strong>확정까지 시간이 걸릴 수 있습니다</strong>. 일정에 여유를 두고 신청해 주세요. 결제는 현장에서 진행되며, 인원은 협의 가능합니다.</p>
                     </div>
                 </div>
 
-                <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden" role="listitem">
+                <div class="faq-item" role="listitem">
                     <button class="faq-toggle w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50/50 transition" aria-expanded="false">
-                        <span class="font-bold text-gray-900 pr-4">예약 시간에 늦으면 어떻게 되나요?</span>
-                        <i class="fas fa-chevron-down text-[#8B5E3C] transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
+                        <span class="faq-q font-bold pr-4">예약 시간에 늦으면 어떻게 되나요?</span>
+                        <i class="fas fa-chevron-down text-gold transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
                     </button>
                     <div class="faq-content px-8">
-                        <p class="text-gray-600 leading-relaxed">늦을 것 같으면 먼저 전화(010-2608-5099)로 알려주세요. 입장은 <strong>회차 시작 후 15분까지</strong> 가능하며, 그 이후엔 진행 중인 회차에 합류하는 방식으로 안내드립니다. 다음 회차 변경·환불은 어려우니 10분 전 도착을 권장합니다.</p>
+                        <p class="text-taupe leading-relaxed">늦을 것 같으면 먼저 전화(010-2608-5099)로 알려주세요. 입장은 <strong>회차 시작 후 15분까지</strong> 가능하며, 그 이후엔 진행 중인 회차에 합류하는 방식으로 안내드립니다. 다음 회차 변경·환불은 어려우니 10분 전 도착을 권장합니다.</p>
                     </div>
                 </div>
 
-                <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden" role="listitem">
+                <div class="faq-item" role="listitem">
                     <button class="faq-toggle w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50/50 transition" aria-expanded="false">
-                        <span class="font-bold text-gray-900 pr-4">입구(엘리베이터)는 어디인가요?</span>
-                        <i class="fas fa-chevron-down text-[#8B5E3C] transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
+                        <span class="faq-q font-bold pr-4">입구(엘리베이터)는 어디인가요?</span>
+                        <i class="fas fa-chevron-down text-gold transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
                     </button>
                     <div class="faq-content px-8">
-                        <p class="text-gray-600 leading-relaxed"><strong>1층 구포국수 식당으로 들어가 카운터 오른쪽</strong>에 엘리베이터가 있습니다. 예약 회차에 맞는 교실로 올라오세요. 오전 10시·오후 1시 회차는 <strong>3층 교실</strong>, 오전 10시 30분·오후 1시 30분 회차는 <strong>2층 교실</strong>입니다.</p>
+                        <p class="text-taupe leading-relaxed"><strong>1층 구포국수 식당으로 들어가 카운터 오른쪽</strong>에 엘리베이터가 있습니다. 예약 회차에 맞는 교실로 올라오세요. 오전 10시·오후 1시 회차는 <strong>3층 교실</strong>, 오전 10시 30분·오후 1시 30분 회차는 <strong>2층 교실</strong>입니다.</p>
                     </div>
                 </div>
 
-                <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden" role="listitem">
+                <div class="faq-item" role="listitem">
                     <button class="faq-toggle w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50/50 transition" aria-expanded="false">
-                        <span class="font-bold text-gray-900 pr-4">음식 알레르기가 있는 경우?</span>
-                        <i class="fas fa-chevron-down text-[#8B5E3C] transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
+                        <span class="faq-q font-bold pr-4">음식 알레르기가 있는 경우?</span>
+                        <i class="fas fa-chevron-down text-gold transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
                     </button>
                     <div class="faq-content px-8">
-                        <p class="text-gray-600 leading-relaxed">체험에는 <strong>밀가루</strong>가 사용됩니다. 밀(글루텐) 알레르기가 있는 경우 사전에 전화(010-2608-5099)로 문의해 주시기 바랍니다.</p>
+                        <p class="text-taupe leading-relaxed">체험에는 <strong>밀가루</strong>가 사용됩니다. 밀(글루텐) 알레르기가 있는 경우 사전에 전화(010-2608-5099)로 문의해 주시기 바랍니다.</p>
                     </div>
                 </div>
 
-                <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden" role="listitem">
+                <div class="faq-item" role="listitem">
                     <button class="faq-toggle w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50/50 transition" aria-expanded="false">
-                        <span class="font-bold text-gray-900 pr-4">근처에 다른 관광지가 있나요?</span>
-                        <i class="fas fa-chevron-down text-[#8B5E3C] transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
+                        <span class="faq-q font-bold pr-4">근처에 다른 관광지가 있나요?</span>
+                        <i class="fas fa-chevron-down text-gold transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
                     </button>
                     <div class="faq-content px-8">
-                        <p class="text-gray-600 leading-relaxed">도보권에 <strong>구포시장</strong>(400년 전통시장)과 <strong>구포만세거리</strong>(3·1운동 만세운동 기념 거리)가 있고, 구포역에서 감동나룻길 보행교로 이어지는 <strong>화명생태공원</strong>(금빛노을브릿지)도 가깝습니다. 차로 잠깐이면 화명수목원·구포 어린이교통공원·구포왜성도 있어, '구포국수 체험 + 역사·자연 산책'으로 부산 북구 가족 코스를 구성하기 좋습니다.</p>
+                        <p class="text-taupe leading-relaxed">도보권에 <strong>구포시장</strong>(400년 전통시장)과 <strong>구포만세거리</strong>(3·1운동 만세운동 기념 거리)가 있고, 구포역에서 감동나룻길 보행교로 이어지는 <strong>화명생태공원</strong>(금빛노을브릿지)도 가깝습니다. 차로 잠깐이면 화명수목원·구포 어린이교통공원·구포왜성도 있어, '구포국수 체험 + 역사·자연 산책'으로 부산 북구 가족 코스를 구성하기 좋습니다.</p>
                     </div>
                 </div>
 
-                <div class="faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden" role="listitem">
+                <div class="faq-item" role="listitem">
                     <button class="faq-toggle w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50/50 transition" aria-expanded="false">
-                        <span class="font-bold text-gray-900 pr-4">체험 후 둘러볼 도보 코스가 있나요?</span>
-                        <i class="fas fa-chevron-down text-[#8B5E3C] transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
+                        <span class="faq-q font-bold pr-4">체험 후 둘러볼 도보 코스가 있나요?</span>
+                        <i class="fas fa-chevron-down text-gold transition-transform duration-300 faq-icon text-sm" aria-hidden="true"></i>
                     </button>
                     <div class="faq-content px-8">
-                        <p class="text-gray-600 leading-relaxed">네! 구포역 인근에서 <strong>감동나룻길 리버워크 → 금빛노을브릿지(일몰) → 화명생태공원 → 구포시장</strong>으로 이어지는 낙동강 강변 코스를 차 없이 반나절(약 3~4시간)에 돌 수 있습니다. 모두 도보로 연결되고 보행교에 승강기가 있어 유모차로도 다닐 수 있습니다.</p>
+                        <p class="text-taupe leading-relaxed">네! 구포역 인근에서 <strong>감동나룻길 리버워크 → 금빛노을브릿지(일몰) → 화명생태공원 → 구포시장</strong>으로 이어지는 낙동강 강변 코스를 차 없이 반나절(약 3~4시간)에 돌 수 있습니다. 모두 도보로 연결되고 보행교에 승강기가 있어 유모차로도 다닐 수 있습니다.</p>
                     </div>
                 </div>
             </div>
@@ -1050,9 +1026,12 @@
     </section>
 
     <!-- 5. Info & Map -->
-    <section id="info" class="py-16 md:py-24 bg-[#2C2C2C] text-white" aria-label="이용 안내 및 오시는 길">
+    <section id="info" class="py-16 md:py-24 bg-ink text-white" aria-label="이용 안내 및 오시는 길">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-3xl font-bold mb-12 text-center reveal">이용 안내 및 오시는 길</h2>
+            <div class="text-center mb-12 reveal">
+                <span class="mark on-dark" style="justify-content:center">오시는 길</span>
+                <h2 class="text-3xl md:text-[2.4rem] serif">이용 안내 및 오시는 길</h2>
+            </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
                 <div class="reveal">
                     <h3 class="text-2xl font-bold mb-8 text-white">시설 정보</h3>
@@ -1073,7 +1052,7 @@
                         </div>
                         <div class="flex items-start">
                             <dt class="w-24 text-gray-400 font-light flex-shrink-0">문의전화</dt>
-                            <dd><a href="tel:010-2608-5099" class="hover:text-[#8B5E3C] transition">010-2608-5099</a> (네이버 사전예약 필수)</dd>
+                            <dd><a href="tel:010-2608-5099" class="hover:text-gold transition">010-2608-5099</a> (네이버 사전예약 필수)</dd>
                         </div>
                         <div class="flex items-start">
                             <dt class="w-24 text-gray-400 font-light flex-shrink-0">주소</dt>
@@ -1099,7 +1078,7 @@
                         </div>
                     </dl>
                     <div class="mt-8">
-                        <a href="https://map.naver.com/p/entry/place/1759506877?lng=128.997753&lat=35.2066646&placePath=/ticket?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202602040921&locale=ko&svcName=map_pcv5&entry=plt&searchType=place&c=15.00,0,0,0,dh" target="_blank" rel="noopener" class="btn-premium px-8 py-4 rounded-xl font-bold inline-flex items-center">
+                        <a href="https://map.naver.com/p/entry/place/1759506877?lng=128.997753&lat=35.2066646&placePath=/ticket?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202602040921&locale=ko&svcName=map_pcv5&entry=plt&searchType=place&c=15.00,0,0,0,dh" target="_blank" rel="noopener" class="btn-premium px-8 py-4 rounded-sm font-bold inline-flex items-center">
                             <span>지금 예약하고 특별한 주말 만들기</span>
                             <i class="fas fa-arrow-right ml-3" aria-hidden="true"></i>
                         </a>
@@ -1142,12 +1121,12 @@
     </main>
 
     <!-- Footer -->
-    <footer class="py-16 bg-[#1a1a1a] text-gray-500 text-sm border-t border-gray-800" role="contentinfo">
+    <footer class="py-16 text-gray-500 text-sm border-t border-gray-800" style="background:#171109" role="contentinfo">
         <div class="max-w-7xl mx-auto px-6">
             <div class="md:flex md:justify-between md:items-start">
                 <div class="mb-8 md:mb-0">
-                    <span class="font-bold text-gray-300 text-xl serif block mb-3">GUPO NOODLE</span>
-                    <p class="text-gray-600 italic font-serif text-sm">"1945년부터 부산의 맛을 지켜온 구포국수.<br>이제, 당신 가족의 이야기가 됩니다."</p>
+                    <span class="text-gray-200 text-xl serif block mb-3">구포국수<span class="seal ml-1">麵</span></span>
+                    <p class="text-gray-500 serif text-sm">“1945년부터 부산의 맛을 지켜온 구포국수.<br>이제, 당신 가족의 이야기가 됩니다.”</p>
                     <div class="flex gap-5 mt-5">
                         <a href="https://www.instagram.com/gupo.noodle/" target="_blank" rel="noopener" aria-label="구포국수체험관 인스타그램" class="hover:text-white transition"><i class="fab fa-instagram text-xl" aria-hidden="true"></i></a>
                         <a href="https://blog.naver.com/villagekitchen" target="_blank" rel="noopener" aria-label="구포국수체험관 네이버 블로그" class="hover:text-white transition"><i class="fas fa-blog text-xl" aria-hidden="true"></i></a>
@@ -1173,7 +1152,7 @@
 
     <!-- Floating Mobile CTA -->
     <div class="floating-cta md:hidden" id="floating-cta">
-        <a href="https://map.naver.com/p/entry/place/1759506877?lng=128.997753&lat=35.2066646&placePath=/ticket?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202602040921&locale=ko&svcName=map_pcv5&entry=plt&searchType=place&c=15.00,0,0,0,dh" target="_blank" rel="noopener" class="block w-full py-3.5 bg-[#8B5E3C] text-white text-center rounded-xl font-semibold text-base shadow-lg">
+        <a href="https://map.naver.com/p/entry/place/1759506877?lng=128.997753&lat=35.2066646&placePath=/ticket?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202602040921&locale=ko&svcName=map_pcv5&entry=plt&searchType=place&c=15.00,0,0,0,dh" target="_blank" rel="noopener" class="btn-gold w-full py-3.5 text-base">
             남은 자리 보기 &rarr;
         </a>
     </div>
