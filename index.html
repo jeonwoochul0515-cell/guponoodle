@@ -262,6 +262,16 @@
         #estimate-modal.flex { display: flex; }
         #estimate-print-area table { border-collapse: collapse; }
         #estimate-print-area .doc-table td, #estimate-print-area .doc-table th { border: 1px solid #333; padding: 4px 6px; }
+        @media (max-width: 480px) {
+            #estimate-print-area { padding: 0.75rem !important; }
+            #estimate-print-area h4 { font-size: 1.15rem !important; letter-spacing: 0.3em !important; }
+            #estimate-print-area .doc-table td, #estimate-print-area .doc-table th { padding: 2px 3px; font-size: 10px; }
+            #estimate-print-area table th.w-10, #estimate-print-area table td.w-10 { width: 22px; }
+            #estimate-print-area table th.w-20 { width: 40px; }
+            #estimate-print-area table th.w-16 { width: 36px; }
+            #estimate-print-area table th.w-24 { width: 52px; }
+            #estimate-print-area img { width: 3rem !important; height: 3rem !important; }
+        }
         @media print {
             @page { size: A4; margin: 12mm; }
             body > *:not(#main-content) { display: none !important; }
