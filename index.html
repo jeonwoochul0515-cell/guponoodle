@@ -257,6 +257,20 @@
             .process-step::after { display: none; }
             h1 { word-break: keep-all; }
         }
+
+        /* 견적서 발급 모달 */
+        #estimate-modal.flex { display: flex; }
+        #estimate-print-area table { border-collapse: collapse; }
+        #estimate-print-area .doc-table td, #estimate-print-area .doc-table th { border: 1px solid #333; padding: 4px 6px; }
+        @media print {
+            @page { size: A4; margin: 12mm; }
+            body > *:not(#main-content) { display: none !important; }
+            #main-content > *:not(#estimate-modal) { display: none !important; }
+            #estimate-modal { position: static !important; inset: auto !important; background: none !important; padding: 0 !important; display: block !important; }
+            #estimate-modal > div { position: static !important; max-width: none !important; max-height: none !important; overflow: visible !important; box-shadow: none !important; border-radius: 0 !important; padding: 0 !important; }
+            #estimate-modal .no-print { display: none !important; }
+            #estimate-print-area { position: static !important; width: 100% !important; min-height: 273mm; border: none !important; }
+        }
     </style>
 
     <meta name="naver-site-verification" content="f8f7492b71f168cdc627b20048eec8781d0eca46" />
@@ -1031,8 +1045,134 @@
                 </a>
                 <a href="https://map.naver.com/p/entry/place/1759506877?lng=128.997753&lat=35.2066646&placePath=/ticket?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202602040921&locale=ko&svcName=map_pcv5&entry=plt&searchType=place&c=15.00,0,0,0,dh" target="_blank" rel="noopener" class="btn-gold ml-0 md:ml-3 mt-3 md:mt-0">네이버 단체 예약 &rarr;</a>
             </div>
+
+            <!-- 관공서 제출 서류 다운로드 -->
+            <div class="text-center mt-6 reveal">
+                <p class="text-taupe text-sm mb-3">관공서·학교 제출용 서류가 필요하신가요?</p>
+                <a href="마을부엌정지사업자등록증.jpg" download class="btn-line">
+                    <svg class="ic" aria-hidden="true"><use href="#i-doc"/></svg> 사업자등록증 다운로드
+                </a>
+                <button type="button" id="estimate-open-btn" class="btn-gold ml-0 md:ml-3 mt-3 md:mt-0">
+                    견적서 발급받기 &rarr;
+                </button>
+            </div>
         </div>
     </section>
+
+    <!-- 견적서 발급 모달 -->
+    <div id="estimate-modal" class="hidden fixed inset-0 z-[100] items-center justify-center p-4" style="background:rgba(30,20,10,.55)" role="dialog" aria-modal="true" aria-label="견적서 발급">
+        <div class="bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto p-6 md:p-8 relative">
+            <button type="button" id="estimate-close-btn" aria-label="닫기" class="absolute top-4 right-4 text-taupe hover:text-ink no-print">
+                <svg class="ic text-xl" aria-hidden="true"><use href="#i-close"/></svg>
+            </button>
+            <h3 class="text-xl font-bold text-ink mb-1 no-print">견적서 발급</h3>
+            <p class="text-taupe text-sm mb-6 no-print">견적대상기관과 체험 인원을 입력하면 견적서가 자동 계산됩니다. <strong>실제 체험하는 인원만</strong> 기재해 주세요.</p>
+
+            <div class="space-y-4 no-print">
+                <div>
+                    <label class="block text-sm font-bold text-ink mb-1" for="est-org">견적대상기관</label>
+                    <input id="est-org" type="text" placeholder="예: OO초등학교" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" />
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-ink mb-1" for="est-count">체험 인원 (실제 체험 인원만 기재)</label>
+                    <input id="est-count" type="number" min="1" value="10" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" />
+                </div>
+            </div>
+
+            <!-- 견적서 미리보기 (인쇄 영역, A4 규격) -->
+            <div id="estimate-print-area" class="mt-6 border border-gray-200 rounded-xl p-5 md:p-8 text-ink">
+                <div class="flex justify-between text-xs text-taupe mb-2">
+                    <span>구포국수체험관</span>
+                    <span id="est-preview-date">-</span>
+                </div>
+                <h4 class="text-center text-2xl font-bold mb-6" style="letter-spacing:0.8em">견 적 서</h4>
+
+                <table class="doc-table w-full text-xs mb-4">
+                    <tbody>
+                        <tr>
+                            <td rowspan="5" class="align-top w-1/3 p-3">
+                                <p class="font-bold text-sm" id="est-preview-org">-</p>
+                                <p class="mt-1">귀하</p>
+                                <p class="text-taupe mt-3 leading-relaxed">아래와 같이 견적합니다.<br>이용해 주셔서 감사합니다.</p>
+                            </td>
+                            <td class="text-taupe w-16">등록번호</td>
+                            <td colspan="3">184-81-02872</td>
+                        </tr>
+                        <tr>
+                            <td class="text-taupe">상호</td>
+                            <td>구포국수체험관(마을부엌정지협동조합)</td>
+                            <td class="text-taupe w-12">성명</td>
+                            <td>김창희</td>
+                        </tr>
+                        <tr>
+                            <td class="text-taupe">주소</td>
+                            <td colspan="3">부산광역시 북구 상리로 42-1(만덕동)</td>
+                        </tr>
+                        <tr>
+                            <td class="text-taupe">업태</td>
+                            <td>교육서비스업·음식점업</td>
+                            <td class="text-taupe">종목</td>
+                            <td>청소년 수련시설 운영업·한식</td>
+                        </tr>
+                        <tr>
+                            <td class="text-taupe">TEL</td>
+                            <td colspan="3">010-2608-5099</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="doc-table text-center font-bold text-sm mb-4" style="border:1px solid #333; padding:8px;">
+                    합 계 금 액 : 일금 <span id="est-korean-amount">이십사만</span>원정 ( ￦ <span id="est-total">240,000</span> )
+                </div>
+
+                <table class="doc-table w-full text-xs">
+                    <thead>
+                        <tr class="text-taupe">
+                            <th class="w-10">번호</th>
+                            <th>품명</th>
+                            <th class="w-20">규격</th>
+                            <th class="w-16">수량</th>
+                            <th class="w-24">단가</th>
+                            <th class="w-24">금액</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-center">1</td>
+                            <td>제면체험·맷돌체험·편백놀이·국수시식</td>
+                            <td class="text-center">1인 세트</td>
+                            <td class="text-center" id="est-preview-count">10명</td>
+                            <td class="text-right">24,000원</td>
+                            <td class="text-right font-bold" id="est-row-total">240,000원</td>
+                        </tr>
+                        <tr><td class="text-center">&nbsp;</td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td class="text-center">&nbsp;</td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td class="text-center">&nbsp;</td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td class="text-center">&nbsp;</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5" class="text-right font-bold">합계</td>
+                            <td class="text-right font-bold" id="est-total-2">240,000원</td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+                <div class="flex justify-between items-end mt-6">
+                    <p class="text-xs text-taupe leading-relaxed">※ 실제 체험하는 인원만 산정됩니다.<br>※ 일정·인원 변경 시 사전 연락 부탁드립니다. (010-2608-5099)</p>
+                    <div class="text-center shrink-0 ml-4">
+                        <p class="text-xs text-taupe mb-1">구포국수체험관</p>
+                        <img src="정지도장.jpg" alt="구포국수체험관 직인" class="w-16 h-16 object-contain mx-auto" style="mix-blend-mode:multiply" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 no-print">
+                <button type="button" id="estimate-print-btn" class="btn-gold w-full justify-center">견적서 PDF로 저장 / 인쇄</button>
+                <p class="text-xs text-taupe mt-3 text-center">* 인쇄 대화상자에서 프린터를 <strong>'PDF로 저장'</strong>으로 선택하면 파일로 다운로드됩니다.</p>
+            </div>
+        </div>
+    </div>
 
     <!-- 4. FAQ -->
     <section id="faq" class="py-16 md:py-24 bg-paper" aria-label="자주 묻는 질문">
@@ -1459,6 +1599,87 @@
                 }
             });
         });
+
+        // 5. 견적서 발급 모달
+        const estimateModal = document.getElementById('estimate-modal');
+        const estimateOpenBtn = document.getElementById('estimate-open-btn');
+        const estimateCloseBtn = document.getElementById('estimate-close-btn');
+        const estOrgInput = document.getElementById('est-org');
+        const estCountInput = document.getElementById('est-count');
+        const UNIT_PRICE = 24000;
+
+        // 숫자를 한글 금액 표기로 변환 (예: 240000 -> "이십사만")
+        function numberToKorean(num) {
+            if (num <= 0) return '영';
+            const digits = ['', '일', '이', '삼', '사', '오', '육', '칠', '팔', '구'];
+            const smallUnits = ['', '십', '백', '천'];
+            const bigUnits = ['', '만', '억', '조'];
+            let chunks = [];
+            let str = String(num);
+            while (str.length > 0) {
+                chunks.unshift(str.slice(-4));
+                str = str.slice(0, -4);
+            }
+            let result = '';
+            chunks.forEach((chunk, idx) => {
+                const chunkNum = parseInt(chunk, 10);
+                if (chunkNum === 0) return;
+                let chunkStr = '';
+                const chunkDigits = String(chunkNum).padStart(4, '0').split('').map(Number);
+                chunkDigits.forEach((d, i) => {
+                    if (d === 0) return;
+                    const digitStr = (d === 1 && i !== 3) ? '' : digits[d];
+                    chunkStr += digitStr + smallUnits[3 - i];
+                });
+                result += chunkStr + bigUnits[chunks.length - 1 - idx];
+            });
+            return result;
+        }
+
+        function updateEstimatePreview() {
+            const org = estOrgInput.value.trim() || '-';
+            const count = Math.max(1, parseInt(estCountInput.value, 10) || 0);
+            const total = UNIT_PRICE * count;
+            document.getElementById('est-preview-org').textContent = org;
+            document.getElementById('est-preview-count').textContent = count + '명';
+            document.getElementById('est-total').textContent = total.toLocaleString('ko-KR');
+            document.getElementById('est-total-2').textContent = total.toLocaleString('ko-KR') + '원';
+            document.getElementById('est-row-total').textContent = total.toLocaleString('ko-KR') + '원';
+            document.getElementById('est-korean-amount').textContent = numberToKorean(total);
+            document.getElementById('est-preview-date').textContent = new Date().toLocaleDateString('ko-KR');
+        }
+
+        function openEstimateModal() {
+            estimateModal.classList.remove('hidden');
+            estimateModal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+            updateEstimatePreview();
+        }
+
+        function closeEstimateModal() {
+            estimateModal.classList.add('hidden');
+            estimateModal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        if (estimateOpenBtn) {
+            estimateOpenBtn.addEventListener('click', openEstimateModal);
+        }
+        if (estimateCloseBtn) {
+            estimateCloseBtn.addEventListener('click', closeEstimateModal);
+        }
+        if (estimateModal) {
+            estimateModal.addEventListener('click', (e) => {
+                if (e.target === estimateModal) closeEstimateModal();
+            });
+        }
+        [estOrgInput, estCountInput].forEach((el) => {
+            if (el) el.addEventListener('input', updateEstimatePreview);
+        });
+        const estimatePrintBtn = document.getElementById('estimate-print-btn');
+        if (estimatePrintBtn) {
+            estimatePrintBtn.addEventListener('click', () => window.print());
+        }
     </script>
 
 </body>
