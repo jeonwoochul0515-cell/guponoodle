@@ -16,6 +16,12 @@
 6. 예약 CTA URL은 홈과 동일한 네이버 예약 링크 사용(전환 동선 유지). 페이지 목적은 "검색 유입 → 정보 → 예약".
 7. FAQPage 스키마는 페이지별로 해당 페이지 FAQ만 포함(홈과 질문 중복 최소화, 완전 중복 문구 지양).
 
+## IndexNow 자동화 (2026-07-17 추가)
+- 엔드포인트 확정. `https://searchadvisor.naver.com/indexnow` (POST JSON). `api.searchadvisor.naver.com`은 접속 불가 — 블로그 글들이 잘못 안내하는 경우 있음. 유효하지 않은 키로 테스트 시 422 "Invalid key" 응답으로 동작 확인함.
+- 키. `9f3011277bf86bf46669e83fb927699a` — 루트의 같은 이름 .txt 파일로 서빙. IndexNow 키는 공개 값이라 워크플로에 하드코딩해도 안전.
+- 자동화. `.github/workflows/indexnow.yml` — main에 *.html 또는 sitemap.xml 변경이 push되면, 키 파일 라이브 확인(최대 5분 폴링) 후 사이트맵 전체 URL을 POST. 네이버 제출로 Bing 등에도 전파(IndexNow 규약).
+- 수동 실행. GitHub Actions 탭에서 "IndexNow 색인 알림" → Run workflow (workflow_dispatch 지원).
+
 ## 남긴 것 (다음 작업 후보)
 - 페이지별 고유 OG 이미지 제작(현재 홈 og-image.jpg 공용, 도보코스만 course-2-bridge.jpg).
 - 서치어드바이저 수집요청은 사장님이 직접 제출해야 함 (요청 > 웹페이지 수집요청).

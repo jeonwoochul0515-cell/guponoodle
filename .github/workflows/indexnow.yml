@@ -1,0 +1,50 @@
+# HTML·사이트맵 변경이 main에 push되면 사이트맵의 모든 URL을 네이버 IndexNow로 자동 통지하는 워크플로
+# (IndexNow 규약상 네이버에 제출하면 Bing 등 참여 검색엔진에도 전파됨. 키는 공개되는 값이라 하드코딩해도 안전)
+name: IndexNow 색인 알림
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**.html'
+      - 'sitemap.xml'
+  workflow_dispatch: {}
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    env:
+      HOST: guponoodle.lol
+      KEY: 9f3011277bf86bf46669e83fb927699a
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Vercel 배포 완료 대기 (키 파일이 라이브될 때까지)
+        run: |
+          for i in $(seq 1 30); do
+            LIVE=$(curl -s --max-time 10 "https://$HOST/$KEY.txt" || true)
+            if [ "$LIVE" = "$KEY" ]; then
+              echo "키 파일 라이브 확인 (${i}0초 경과)"
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "::error::키 파일이 5분 내에 라이브되지 않았습니다"
+          exit 1
+
+      - name: 사이트맵 URL을 네이버 IndexNow로 제출
+        run: |
+          JSON=$(grep -o '<loc>[^<]*</loc>' sitemap.xml \
+            | sed -e 's|<loc>||' -e 's|</loc>||' \
+            | jq -R . | jq -s --arg host "$HOST" --arg key "$KEY" \
+              '{host: $host, key: $key, keyLocation: ("https://" + $host + "/" + $key + ".txt"), urlList: .}')
+          echo "$JSON"
+          CODE=$(curl -s -o response.txt -w '%{http_code}' -X POST \
+            'https://searchadvisor.naver.com/indexnow' \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            -d "$JSON")
+          echo "HTTP $CODE"; cat response.txt
+          case "$CODE" in
+            200|202) echo "IndexNow 제출 성공" ;;
+            *) echo "::error::IndexNow 제출 실패 (HTTP $CODE)"; exit 1 ;;
+          esac
