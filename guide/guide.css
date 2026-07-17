@@ -1,0 +1,153 @@
+/* 이용 가이드 페이지 공용 스타일 — 홈(index.html)과 동일한 디자인 토큰 사용 */
+:root {
+    --ink: #211A12;
+    --ink-soft: #3A3128;
+    --paper: #F4ECDB;
+    --paper-2: #FBF6EA;
+    --card: #FCF8EF;
+    --gold: #C68A1E;
+    --gold-deep: #A06E12;
+    --gold-deeper: #875A0E;
+    --river: #285249;
+    --seal: #B23A2A;
+    --taupe: #5C5042;
+    --gold-ink: #7A4F0A;
+    --line: rgba(33,26,18,0.12);
+    --font-serif: 'Song Myung', serif;
+    --font-sans: 'Pretendard', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: var(--font-sans);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.8;
+    word-break: keep-all;
+    -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--gold-ink); text-decoration: underline; text-underline-offset: 3px; }
+a:hover { color: var(--gold-deeper); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--gold-deep); outline-offset: 3px; }
+
+/* Header */
+.g-header {
+    background: var(--ink);
+    padding: 1rem 1.5rem;
+}
+.g-header-inner {
+    max-width: 760px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+}
+.g-brand {
+    font-family: var(--font-serif);
+    color: var(--paper); text-decoration: none;
+    font-size: 1.3rem; line-height: 1;
+}
+.g-brand .seal {
+    display: inline-grid; place-items: center;
+    width: 1.7em; height: 1.7em; border-radius: 50%;
+    background: var(--seal); color: #fff;
+    font-size: 0.62em; margin-left: 0.3em; vertical-align: middle;
+}
+.g-brand small {
+    display: block; font-family: var(--font-sans);
+    font-size: 0.55rem; letter-spacing: 0.3em; opacity: 0.75; margin-top: 0.35rem;
+}
+.g-header .g-reserve {
+    color: var(--paper); text-decoration: none;
+    border: 1.5px solid rgba(244,236,219,0.5);
+    padding: 0.45rem 1rem; border-radius: 3px;
+    font-size: 0.85rem; font-weight: 600; white-space: nowrap;
+}
+.g-header .g-reserve:hover { background: var(--paper); color: var(--ink); }
+
+/* Layout */
+.g-main { max-width: 760px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+.g-breadcrumb { font-size: 0.82rem; color: var(--taupe); margin-bottom: 2rem; }
+.g-breadcrumb ol { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.g-breadcrumb li + li::before { content: '›'; margin-right: 0.4rem; color: var(--gold); }
+.g-breadcrumb a { color: var(--taupe); }
+
+h1 {
+    font-family: var(--font-serif); font-weight: 400;
+    font-size: 1.85rem; line-height: 1.35; margin-bottom: 1.1rem;
+}
+.g-date { font-size: 0.82rem; color: var(--taupe); margin-bottom: 1.6rem; }
+
+/* 두괄식 정답 박스 */
+.g-lead {
+    background: var(--card); border: 1px solid rgba(198,138,30,0.35);
+    border-left: 3px solid var(--gold); border-radius: 4px;
+    padding: 1.25rem 1.4rem; margin-bottom: 2.4rem;
+    font-size: 1.02rem;
+}
+
+h2 {
+    font-family: var(--font-serif); font-weight: 400;
+    font-size: 1.35rem; margin: 2.6rem 0 0.9rem;
+    padding-left: 0.75rem; border-left: 2.5px solid var(--gold);
+}
+p { margin-bottom: 1rem; color: var(--ink-soft); }
+strong { color: var(--ink); }
+ul, ol { margin: 0 0 1rem 1.3rem; color: var(--ink-soft); }
+li { margin-bottom: 0.4rem; }
+
+/* 표 */
+.g-table-wrap { overflow-x: auto; margin: 1.2rem 0 1.4rem; }
+table { border-collapse: collapse; width: 100%; font-size: 0.92rem; background: var(--paper-2); }
+th, td { border: 1px solid var(--line); padding: 0.65rem 0.8rem; text-align: left; vertical-align: top; }
+th { background: var(--card); font-weight: 700; white-space: nowrap; }
+
+/* FAQ */
+.g-faq { margin-top: 1rem; }
+.g-faq dt {
+    font-weight: 700; margin-top: 1.1rem;
+    padding-left: 1.4rem; position: relative;
+}
+.g-faq dt::before { content: 'Q'; position: absolute; left: 0; color: var(--gold-deep); font-family: var(--font-serif); }
+.g-faq dd { margin: 0.25rem 0 0 1.4rem; color: var(--ink-soft); }
+
+/* CTA */
+.g-cta {
+    background: var(--ink); color: var(--paper);
+    border-radius: 4px; padding: 1.8rem 1.5rem;
+    text-align: center; margin: 3rem 0 0;
+}
+.g-cta p { color: rgba(244,236,219,0.8); margin-bottom: 1.1rem; }
+.g-cta-btns { display: flex; flex-wrap: wrap; gap: 0.7rem; justify-content: center; }
+.btn-gold {
+    display: inline-block; background: var(--gold-deep); color: #fff;
+    font-weight: 600; padding: 0.85rem 1.7rem; border-radius: 3px;
+    text-decoration: none;
+}
+.btn-gold:hover { background: var(--gold-deeper); color: #fff; }
+.btn-ghost {
+    display: inline-block; border: 1.5px solid rgba(244,236,219,0.55);
+    color: var(--paper); padding: 0.8rem 1.5rem; border-radius: 3px;
+    font-weight: 500; text-decoration: none;
+}
+.btn-ghost:hover { background: var(--paper); color: var(--ink); }
+
+/* 관련 가이드 */
+.g-related { margin-top: 3rem; border-top: 1px solid var(--line); padding-top: 1.8rem; }
+.g-related h2 { margin-top: 0; }
+.g-related ul { list-style: none; margin-left: 0; }
+.g-related li { padding-left: 1rem; position: relative; }
+.g-related li::before { content: ''; position: absolute; left: 0; top: 0.85em; width: 5px; height: 5px; background: var(--gold); border-radius: 50%; }
+
+/* Footer */
+.g-footer {
+    background: #171109; color: #8a8378;
+    font-size: 0.82rem; padding: 2.2rem 1.5rem; text-align: center;
+}
+.g-footer a { color: #b5ac9d; }
+
+@media (max-width: 480px) {
+    h1 { font-size: 1.55rem; }
+    .g-main { padding: 1.8rem 1.1rem 3rem; }
+    th, td { padding: 0.5rem 0.55rem; font-size: 0.85rem; }
+}
