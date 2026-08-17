@@ -1276,6 +1276,13 @@
                         결제는 <strong style="color:rgba(244,236,219,0.8)">예약 인원수 기준 카드 결제</strong>입니다.
                         세금계산서·현금영수증을 발행해 드리므로 회사 복리후생비로 처리하실 수 있습니다.
                     </p>
+
+                    <!-- 네이버 톡톡 알림받기 — 새 회차·이벤트 소식을 받아보게 하는 버튼. 클릭 시 동의 고객이 쌓인다 -->
+                    <div class="mt-5 pt-5" style="border-top:1px solid rgba(244,236,219,0.15)">
+                        <p class="text-xs mb-2" style="color:rgba(244,236,219,0.55)">새 회차와 이벤트 소식을 가장 먼저 받아보세요</p>
+                        <div class="navertalk-friend-button" data-talk-id="w5vujt" data-size-width="224" data-size-height="52"
+                             data-device-type="MOBILE" data-type="BASIC" data-channel-no="3358245"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1849,6 +1856,9 @@
             estimatePrintBtn.addEventListener('click', () => window.print());
         }
     </script>
+
+    <!-- 네이버 톡톡 알림받기 SDK — 위 .navertalk-friend-button을 실제 버튼으로 렌더한다. defer로 본문 렌더를 막지 않는다 -->
+    <script type="text/javascript" src="https://ua.talk.naver.com/dist/sdk.js" defer></script>
 
 </body>
 </html>
