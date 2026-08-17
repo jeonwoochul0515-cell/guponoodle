@@ -1,0 +1,313 @@
+<!-- 어린이집·유치원에 단체 현장학습을 알리는 팩스 발송용 A4 1장 (흑백 저해상도 출력 최적화) -->
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>구포국수체험관 단체 현장학습 안내 팩스</title>
+<style>
+  @page { size: A4 portrait; margin: 0; }
+
+  /* 팩스는 1bit 흑백으로 출력된다. 회색 배경·얇은 선·명조체는 뭉개지므로
+     흰 배경 + 굵은 검은 선 + 고딕체만 사용한다. */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: "Malgun Gothic", "맑은 고딕", sans-serif;
+    color: #000;
+    background: #fff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    padding: 9mm 11mm 7mm;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── 팩스 헤더 ── */
+  .faxbar {
+    background: #000;
+    color: #fff;
+    padding: 2.2mm 3mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .faxbar .tag { font-size: 14.5pt; font-weight: 800; letter-spacing: 1px; }
+  .faxbar .from { font-size: 9pt; font-weight: 700; text-align: right; line-height: 1.3; }
+
+  .to {
+    border: 2px solid #000;
+    border-top: none;
+    padding: 1.8mm 3mm;
+    font-size: 9.5pt;
+    font-weight: 700;
+    display: flex;
+    gap: 5mm;
+  }
+  .to .blank { display: inline-block; border-bottom: 1.5px solid #000; min-width: 40mm; }
+
+  /* ── 표제 ── */
+  .title { text-align: center; margin: 3.4mm 0 2.6mm; }
+  .title h1 { font-size: 20pt; font-weight: 800; letter-spacing: -1px; line-height: 1.22; }
+  .title p { font-size: 10.5pt; font-weight: 700; margin-top: 1.2mm; }
+
+  /* ── 핵심 4칸 ── */
+  .keys { display: flex; border: 2.5px solid #000; }
+  .keys div {
+    flex: 1;
+    padding: 2.3mm 1mm;
+    text-align: center;
+    border-right: 2px solid #000;
+  }
+  .keys div:last-child { border-right: none; }
+  .keys .lab { font-size: 8pt; font-weight: 700; margin-bottom: 0.9mm; }
+  .keys .val { font-size: 12.5pt; font-weight: 800; line-height: 1.2; }
+  .keys .val small { font-size: 8.5pt; font-weight: 700; }
+
+  /* ── 섹션 공통 ── */
+  section { margin-top: 2.9mm; }
+  h2 {
+    font-size: 11pt;
+    font-weight: 800;
+    border-bottom: 2.5px solid #000;
+    padding-bottom: 1mm;
+    margin-bottom: 1.7mm;
+  }
+
+  /* ── 프로그램 표 ── */
+  table { width: 100%; border-collapse: collapse; }
+  td { border: 1.5px solid #000; padding: 1.7mm 2.4mm; font-size: 9.5pt; vertical-align: top; }
+  td.step { width: 7.5mm; text-align: center; font-weight: 800; font-size: 10.5pt; }
+  td.name { width: 30mm; font-weight: 800; }
+  td.desc { line-height: 1.38; }
+  td.desc b { font-weight: 800; }
+
+  /* ── 2단 배치 ── */
+  .two { display: flex; gap: 4.5mm; }
+  .two > div { flex: 1; }
+
+  ul { list-style: none; }
+  li {
+    font-size: 9.5pt;
+    line-height: 1.45;
+    padding-left: 4.2mm;
+    position: relative;
+    margin-bottom: 0.6mm;
+  }
+  li::before { content: "■"; position: absolute; left: 0; font-size: 6.5pt; top: 0.5mm; }
+  li b { font-weight: 800; }
+
+  /* ── 예약 절차 (가로 1줄) ── */
+  .flow {
+    border: 2.5px solid #000;
+    padding: 2mm 3mm;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 9.5pt;
+    font-weight: 700;
+  }
+  .flow b { font-weight: 800; }
+  .flow .ar { font-size: 11pt; font-weight: 800; padding: 0 1mm; }
+
+  .note {
+    border: 2.5px solid #000;
+    border-top: none;
+    padding: 2mm 3mm;
+    font-size: 9pt;
+    font-weight: 700;
+    line-height: 1.42;
+  }
+
+  /* ── 리뷰 강조 ── */
+  .review {
+    border: 3px solid #000;
+    display: flex;
+    align-items: stretch;
+  }
+  .review .score {
+    background: #000;
+    color: #fff;
+    padding: 2.2mm 4mm;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    white-space: nowrap;
+  }
+  .review .score .num { font-size: 19pt; font-weight: 800; line-height: 1; }
+  .review .score .cap { font-size: 8pt; font-weight: 700; margin-top: 1mm; }
+  .review .kw { padding: 2.2mm 3.5mm; }
+  .review .kw .hd { font-size: 10pt; font-weight: 800; margin-bottom: 1.2mm; }
+  .review .kw .body { font-size: 9pt; font-weight: 700; line-height: 1.5; }
+  .review .kw .body b { font-weight: 800; }
+
+  /* ── 하단 액션 (검색 + QR + 연락처) ── */
+  .action { display: flex; margin-top: 2.4mm; border: 3px solid #000; }
+
+  .act-search { flex: 1; padding: 2.4mm 3.5mm; border-right: 2.5px solid #000; }
+  .act-search .hd { font-size: 9.5pt; font-weight: 800; margin-bottom: 1.4mm; }
+  .searchbox {
+    border: 2.5px solid #000;
+    border-radius: 3mm;
+    padding: 1.6mm 2.5mm;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2mm;
+  }
+  .searchbox .kwtext { font-size: 12pt; font-weight: 800; letter-spacing: -0.5px; }
+  .act-search .sub { font-size: 8.5pt; font-weight: 700; margin-top: 1.4mm; line-height: 1.35; }
+
+  .act-qr { width: 34mm; padding: 1.6mm 1mm; text-align: center; border-right: 2.5px solid #000; }
+  .act-qr img { width: 26mm; height: 26mm; display: block; margin: 0 auto; }
+  .act-qr .cap { font-size: 8pt; font-weight: 800; margin-top: 0.8mm; line-height: 1.25; }
+
+  .act-tel { width: 62mm; padding: 2.4mm 3.5mm; display: flex; flex-direction: column; justify-content: center; }
+  .act-tel .lab { font-size: 9pt; font-weight: 800; }
+  .act-tel .tel { font-size: 17pt; font-weight: 800; letter-spacing: 0.5px; line-height: 1.15; }
+  .act-tel .addr { font-size: 7.5pt; font-weight: 700; line-height: 1.35; margin-top: 0.8mm; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="faxbar">
+    <span class="tag">FAX ─ 단체 현장학습 안내</span>
+    <span class="from">보내는 곳 &nbsp;구포국수체험관<br>010-2608-5099</span>
+  </div>
+  <div class="to">
+    <span>받는 곳 <span class="blank">&nbsp;</span> 어린이집 · 유치원</span>
+    <span>원장님 · 현장학습 담당 선생님 귀중</span>
+  </div>
+
+  <div class="title">
+    <h1>밀을 갈고, 반죽을 치대고, 국수를 뽑습니다</h1>
+    <p>부산 향토음식 구포국수를 아이 손으로 완성합니다 · 체험 90분 + 점심까지 총 2시간 · 전 과정 실내</p>
+  </div>
+
+  <div class="keys">
+    <div>
+      <div class="lab">아동 참가비 <b>· 국수 1식 포함</b></div>
+      <div class="val">1인 24,000<small>원</small></div>
+    </div>
+    <div>
+      <div class="lab">인솔 교사 <b>· 점심까지</b></div>
+      <div class="val">전원 무료</div>
+    </div>
+    <div>
+      <div class="lab">예약 인원 <b>· 60명 넘어도 가능</b></div>
+      <div class="val">15명부터</div>
+    </div>
+    <div>
+      <div class="lab">소요 시간 <b>· 점심 포함</b></div>
+      <div class="val">약 2시간</div>
+    </div>
+  </div>
+
+  <section>
+    <h2>체험 순서 — 무엇을 배우고 무엇을 하나요</h2>
+    <table>
+      <tr>
+        <td class="step">1</td>
+        <td class="name">구포국수 이야기</td>
+        <td class="desc">3층 교실에서 우리 고장 향토음식이 어떻게 시작됐는지 아이 눈높이로 들려드립니다. <b>지역 이해 · 듣기 활동</b></td>
+      </tr>
+      <tr>
+        <td class="step">2</td>
+        <td class="name">제면 놀이</td>
+        <td class="desc">직접 물을 붓고 반죽해 밀대로 밀고, 제면기를 돌려 국수를 뽑습니다. 자색고구마 반죽으로 꽃모양 수제비도 찍습니다. <b>소근육 · 성취 경험</b></td>
+      </tr>
+      <tr>
+        <td class="step">3</td>
+        <td class="name">맷돌 체험 · 편백 놀이</td>
+        <td class="desc">2층 한 교실에서 진행합니다. 맷돌로 통밀을 갈아 곡식이 밀가루가 되는 과정을 보고, 편백 놀이존에서 놉니다. <b>전통 도구 · 오감 놀이</b></td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <div class="two">
+      <div>
+        <h2>선생님이 걱정하시는 부분</h2>
+        <ul>
+          <li><b>전세버스는 건물 앞에서 바로 하차</b>합니다. 아이들이 큰길을 걷지 않습니다.</li>
+          <li><b>기차로 오셔도 됩니다.</b> 구포역에 내려 <b>도보 1분</b>이라 타 지역 원도 부담이 없습니다. 지하철 3호선 구포역 3번 출구는 도보 3분입니다.</li>
+          <li>모든 활동이 <b>실내</b>입니다. 비·미세먼지·폭염에 일정을 취소할 일이 없습니다.</li>
+          <li>건물에 <b>엘리베이터</b>가 있습니다(1층 식당 카운터 오른쪽). 층 이동은 직원이 인솔합니다.</li>
+          <li>일회용 <b>앞치마·위생모자</b>를 인원수대로 준비해 둡니다.</li>
+        </ul>
+      </div>
+      <div>
+        <h2>돌아갈 때 손에 남는 것</h2>
+        <ul>
+          <li>직접 만든 <b>소면 · 수제비 · 코인육수</b>를 아이마다 밀키트로 포장해 드립니다.</li>
+          <li>집에서 부모님과 끓여 먹으며 <b>체험이 한 번 더 이어집니다.</b></li>
+          <li><b>점심 준비가 따로 필요 없습니다.</b> 참가비에 <b>어린이국수 1식</b>이 포함되고, <b>인솔 선생님 점심도 무료</b>입니다(1층 식당, 사전 예약).</li>
+          <li><b>알레르기는 예약 시 꼭 알려 주세요.</b> 밀가루를 직접 만지고, 점심 국수 고명에 <b>계란</b> 등이 들어갑니다.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>예약은 이렇게 진행됩니다</h2>
+    <div class="flow">
+      <span><b>1</b> 전화로 날짜·인원 문의</span><span class="ar">▶</span>
+      <span><b>2</b> 네이버 <u>단체 전용</u> 예약창 신청</span><span class="ar">▶</span>
+      <span><b>3</b> 직원 확인 전화 후 확정</span><span class="ar">▶</span>
+      <span><b>4</b> 당일 현장 결제</span>
+    </div>
+    <div class="note">
+      ■ <b>15명부터</b> 예약하실 수 있고, <b>60명이 넘는 단체도 한 회차에 받습니다.</b> 평일은 단체 예약을 우선 배정합니다(운영 화~일 10:00~18:00, 월요일 휴무).<br>
+      ■ 날짜가 급하셔도 먼저 전화 주세요. <b>남은 회차가 있으면 조율해 드립니다.</b> 결제는 카드·계좌이체·현금 모두 됩니다.
+    </div>
+  </section>
+
+  <section>
+    <div class="review">
+      <div class="score">
+        <div class="num">4.84</div>
+        <div class="cap">평점 / 5.0</div>
+      </div>
+      <div class="kw">
+        <div class="hd">다녀가신 분들이 남긴 평가 — 네이버 방문자 리뷰 <b>2,026개</b> · 블로그 후기 136개</div>
+        <div class="body">
+          유익해요 <b>634</b> &nbsp;·&nbsp; 설명이 잘 되어있어요 <b>558</b> &nbsp;·&nbsp; 체험 프로그램이 다양해요 <b>499</b><br>
+          아이와 가기 좋아요 <b>311</b> &nbsp;·&nbsp; 전시 구성이 알차요 <b>198</b>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="action">
+    <div class="act-search">
+      <div class="hd">네이버에서 검색해 보세요</div>
+      <div class="searchbox">
+        <span class="kwtext">구포국수체험관</span>
+        <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
+          <circle cx="10" cy="10" r="6.4" fill="none" stroke="#000" stroke-width="2.6"/>
+          <line x1="14.8" y1="14.8" x2="21" y2="21" stroke="#000" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="sub">사진 · 후기 · 예약 가능한 날짜를 한 번에 보실 수 있습니다.</div>
+    </div>
+    <div class="act-qr">
+      <img src="qr-guponoodle.svg" alt="구포국수체험관 홈페이지 QR">
+      <div class="cap">홈페이지 바로가기<br>guponoodle.lol</div>
+    </div>
+    <div class="act-tel">
+      <div class="lab">예약 · 문의</div>
+      <div class="tel">010-2608-5099</div>
+      <div class="addr">구포국수체험관 · 마을부엌정지협동조합 (사업자등록번호 184-81-02872)<br>
+      부산광역시 북구 구포만세길 109</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
