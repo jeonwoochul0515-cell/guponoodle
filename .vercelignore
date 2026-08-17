@@ -1,6 +1,10 @@
 # Vercel 배포에서 제외 (GitHub에는 백업되지만 라이브 사이트에는 노출 안 됨)
 content-plan/
 
+# ⚠ 발송 작업 폴더 — 연락처 DB와 Solapi 키가 들어 있어 라이브 노출 금지.
+# .gitignore로도 막아두었지만 이중으로 걸어둔다.
+outreach/
+
 # OG 카드 캡처 소스 (결과물 og-image.jpg만 배포, 소스 HTML은 제외)
 og-card.html
 

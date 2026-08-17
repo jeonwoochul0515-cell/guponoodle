@@ -1,3 +1,10 @@
+# ⚠ 발송 작업 폴더 — 절대 커밋 금지.
+# 이 저장소는 PUBLIC이고, 이 폴더에는 다음이 들어 있다.
+#   · 어린이집·유치원 연락처 1,552곳 (contacts*.csv) · 학교 641곳
+#   · solapi_send.py 안에 Solapi API 키·시크릿이 평문으로 박혀 있음
+# 커밋하면 공개 저장소와 라이브 사이트(guponoodle.lol/outreach/...) 양쪽에 그대로 노출된다.
+outreach/
+
 # 내부 작업용 스크린샷 (커밋 안 함)
 verify.png
 verify-mobile.png
@@ -9,3 +16,4 @@ image*.png
 node_modules/
 package.json
 package-lock.json
+01000000006b5051ee8ae7726b75e820215900bc35eb90a693486221bd7e2be9942f1964f7
