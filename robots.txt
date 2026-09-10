@@ -1,6 +1,7 @@
 # 구포국수체험관 robots.txt
 User-agent: *
 Allow: /
+Disallow: /admin
 Disallow: /admin.html
 Disallow: /.git/
 Disallow: /.idx/
