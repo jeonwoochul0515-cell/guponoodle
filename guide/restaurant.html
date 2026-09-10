@@ -23,62 +23,124 @@
     <link href="https://fonts.googleapis.com/css2?family=Song+Myung&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/guide/guide.css">
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "Article",
+      "@id": "https://guponoodle.lol/guide/restaurant#article",
+      "mainEntityOfPage": "https://guponoodle.lol/guide/restaurant",
+      "headline": "구포국수체험관 1층 국수 식당 — 체험 전후 식사·메뉴·휴무 안내",
+      "description": "구포국수체험관 건물 1층에서 운영하는 구포국수 식당의 위치, 메뉴, 휴무일과 체험 전후 이용 방법 안내.",
+      "inLanguage": "ko-KR",
+      "image": "https://guponoodle.lol/og-image.jpg",
+      "datePublished": "2026-07-21",
+      "dateModified": "2026-07-21",
+      "author": {
+        "@type": "Organization",
+        "name": "구포국수체험관",
+        "url": "https://guponoodle.lol/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "구포국수체험관",
+        "url": "https://guponoodle.lol/"
+      }
+    },
+    {
+      "@type": "Restaurant",
+      "@id": "https://guponoodle.lol/guide/restaurant#restaurant",
+      "name": "구포국수식당",
+      "servesCuisine": "국수",
+      "url": "https://guponoodle.lol/guide/restaurant",
+      "telephone": "+82-10-4870-2190",
+      "image": "https://guponoodle.lol/og-image.jpg",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "구포만세길 109",
+        "addressLocality": "북구",
+        "addressRegion": "부산광역시",
+        "addressCountry": "KR"
+      },
+      "openingHoursSpecification": [
         {
-          "@type": "Article",
-          "@id": "https://guponoodle.lol/guide/restaurant#article",
-          "mainEntityOfPage": "https://guponoodle.lol/guide/restaurant",
-          "headline": "구포국수체험관 1층 국수 식당 — 체험 전후 식사·메뉴·휴무 안내",
-          "description": "구포국수체험관 건물 1층에서 운영하는 구포국수 식당의 위치, 메뉴, 휴무일과 체험 전후 이용 방법 안내.",
-          "inLanguage": "ko-KR",
-          "image": "https://guponoodle.lol/og-image.jpg",
-          "datePublished": "2026-07-21",
-          "dateModified": "2026-07-21",
-          "author": {"@type": "Organization", "name": "구포국수체험관", "url": "https://guponoodle.lol/"},
-          "publisher": {"@type": "Organization", "name": "구포국수체험관", "url": "https://guponoodle.lol/"}
-        },
-        {
-          "@type": "Restaurant",
-          "@id": "https://guponoodle.lol/guide/restaurant#restaurant",
-          "name": "구포국수식당",
-          "servesCuisine": "국수",
-          "url": "https://guponoodle.lol/guide/restaurant",
-          "telephone": "+82-10-4870-2190",
-          "image": "https://guponoodle.lol/og-image.jpg",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "구포만세길 109",
-            "addressLocality": "북구",
-            "addressRegion": "부산광역시",
-            "addressCountry": "KR"
-          },
-          "openingHoursSpecification": [
-            {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "09:00", "closes": "16:00"}
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
           ],
-          "menu": "https://guponoodle.lol/guide/restaurant",
-          "parentOrganization": {"@type": "Organization", "name": "구포국수체험관", "url": "https://guponoodle.lol/"}
+          "opens": "09:00",
+          "closes": "16:00"
+        }
+      ],
+      "menu": "https://guponoodle.lol/guide/restaurant",
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "구포국수체험관",
+        "url": "https://guponoodle.lol/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "홈",
+          "item": "https://guponoodle.lol/"
         },
         {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": "홈", "item": "https://guponoodle.lol/"},
-            {"@type": "ListItem", "position": 2, "name": "구포국수식당", "item": "https://guponoodle.lol/guide/restaurant"}
-          ]
+          "@type": "ListItem",
+          "position": 2,
+          "name": "구포국수식당",
+          "item": "https://guponoodle.lol/guide/restaurant"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "체험관 안에서 밥을 먹을 수 있나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "네, 같은 건물 1층 국수 식당에서 드실 수 있습니다. 밖으로 나가지 않아도 됩니다."
+          }
         },
         {
-          "@type": "FAQPage",
-          "mainEntity": [
-            {"@type": "Question", "name": "구포국수체험관에서 밥을 먹을 수 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "네. 체험관 건물 1층에서 구포국수 식당을 운영하고 있어 체험 전이나 후에 바로 식사할 수 있습니다. 밖으로 나가지 않아도 되어 아이와 함께 온 가족이 이동 없이 식사를 마칠 수 있습니다. 다만 매주 월요일은 휴무입니다."}},
-            {"@type": "Question", "name": "1층 국수 식당의 메뉴는 무엇인가요?", "acceptedAnswer": {"@type": "Answer", "text": "물국수, 잔치국수, 김치얼큰국수, 김밥 등을 냅니다. 여름에는 콩국수도 나오고 곱빼기 주문도 됩니다. 밑반찬과 김치는 셀프로 리필할 수 있습니다."}},
-            {"@type": "Question", "name": "구포국수식당 영업시간은 어떻게 되나요?", "acceptedAnswer": {"@type": "Answer", "text": "영업시간은 오전 9시부터 오후 4시까지이며, 매주 월요일이 정기 휴무입니다. 사정에 따라 임시 휴무가 생기는 경우가 있으니, 식사까지 계획하고 오신다면 방문 전 식당 문의 전화 010-4870-2190으로 확인하시는 편이 안전합니다."}},
-            {"@type": "Question", "name": "구포역 근처에 아이와 갈 만한 식당이 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "구포국수체험관 1층 국수 식당이 구포역에서 도보 3분 거리에 있습니다. 국수와 김밥 위주라 아이가 먹기 부담이 적고, 체험관과 같은 건물이라 체험과 식사를 한 번에 해결할 수 있습니다."}}
-          ]
+          "@type": "Question",
+          "name": "아이가 먹을 만한 메뉴가 있나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "물국수·잔치국수·김밥 위주라 아이가 먹기 부담이 적습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "몇 시까지 하나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "오전 9시부터 오후 4시까지이고, 월요일은 식당과 체험관 모두 휴무입니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "예약이 필요한가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "식당은 별도 예약 없이 이용하시면 됩니다. 체험은 예약이 필요합니다."
+          }
         }
       ]
     }
-    </script>
+  ]
+}
+</script>
 </head>
 <body>
     <header class="g-header">

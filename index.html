@@ -287,124 +287,299 @@
 
     <!-- Structured Data: @graph (TouristAttraction + LocalBusiness + FAQPage) -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "TouristAttraction",
+      "@id": "https://guponoodle.lol/#touristattraction",
+      "name": "구포국수체험관",
+      "alternateName": "Gupo Noodle Experience Center",
+      "description": "구포국수체험관은 부산광역시 북구 구포만세길 109에 위치한 국수 문화 체험 시설이다. 1945년부터 이어져 온 구포국수의 역사를 보존하고 알리기 위해 설립되었으며, 어린이와 가족 단위 방문객이 직접 국수를 만들어보고 가져갈 수 있는 체험형 복합 문화 공간이다.",
+      "url": "https://guponoodle.lol/",
+      "image": "https://guponoodle.lol/hero-bg.jpg",
+      "telephone": "+82-10-2608-5099",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "구포만세길 109",
+        "addressLocality": "북구",
+        "addressRegion": "부산광역시",
+        "postalCode": "46630",
+        "addressCountry": "KR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 35.2066646,
+        "longitude": 128.997753
+      },
+      "openingHoursSpecification": [
         {
-          "@type": "TouristAttraction",
-          "@id": "https://guponoodle.lol/#touristattraction",
-          "name": "구포국수체험관",
-          "alternateName": "Gupo Noodle Experience Center",
-          "description": "구포국수체험관은 부산광역시 북구 구포만세길 109에 위치한 국수 문화 체험 시설이다. 1945년부터 이어져 온 구포국수의 역사를 보존하고 알리기 위해 설립되었으며, 어린이와 가족 단위 방문객이 직접 국수를 만들어보고 가져갈 수 있는 체험형 복합 문화 공간이다.",
-          "url": "https://guponoodle.lol/",
-          "image": "https://guponoodle.lol/hero-bg.jpg",
-          "telephone": "+82-10-2608-5099",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "구포만세길 109",
-            "addressLocality": "북구",
-            "addressRegion": "부산광역시",
-            "postalCode": "46630",
-            "addressCountry": "KR"
-          },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 35.2066646,
-            "longitude": 128.997753
-          },
-          "openingHoursSpecification": [
-            {
-              "@type": "OpeningHoursSpecification",
-              "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-              "opens": "10:00",
-              "closes": "18:00"
-            }
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
           ],
-          "touristType": ["가족 여행","어린이 체험","문화 체험"],
-          "sameAs": ["https://map.naver.com/p/entry/place/1759506877","https://www.instagram.com/gupo.noodle/","https://blog.naver.com/villagekitchen"]
-        },
+          "opens": "10:00",
+          "closes": "18:00"
+        }
+      ],
+      "touristType": [
+        "가족 여행",
+        "어린이 체험",
+        "문화 체험"
+      ],
+      "sameAs": [
+        "https://map.naver.com/p/entry/place/1759506877",
+        "https://www.instagram.com/gupo.noodle/",
+        "https://blog.naver.com/villagekitchen"
+      ]
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://guponoodle.lol/#localbusiness",
+      "name": "구포국수체험관",
+      "alternateName": "Gupo Noodle Experience Center",
+      "description": "부산 구포국수체험관에서 특별한 추억을 만드세요. 제면, 맷돌, 역사관 등 다채로운 체험으로 우리 국수의 맛과 멋을 느낄 수 있습니다.",
+      "url": "https://guponoodle.lol/",
+      "image": "https://guponoodle.lol/hero-bg.jpg",
+      "telephone": "+82-10-2608-5099",
+      "priceRange": "₩",
+      "paymentAccepted": "네이버페이, 카드결제, 계좌이체",
+      "currenciesAccepted": "KRW",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "구포만세길 109",
+        "addressLocality": "북구",
+        "addressRegion": "부산광역시",
+        "postalCode": "46630",
+        "addressCountry": "KR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 35.2066646,
+        "longitude": 128.997753
+      },
+      "openingHoursSpecification": [
         {
-          "@type": "LocalBusiness",
-          "@id": "https://guponoodle.lol/#localbusiness",
-          "name": "구포국수체험관",
-          "alternateName": "Gupo Noodle Experience Center",
-          "description": "부산 구포국수체험관에서 특별한 추억을 만드세요. 제면, 맷돌, 역사관 등 다채로운 체험으로 우리 국수의 맛과 멋을 느낄 수 있습니다.",
-          "url": "https://guponoodle.lol/",
-          "image": "https://guponoodle.lol/hero-bg.jpg",
-          "telephone": "+82-10-2608-5099",
-          "priceRange": "₩",
-          "paymentAccepted": "네이버페이, 카드결제, 계좌이체",
-          "currenciesAccepted": "KRW",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "구포만세길 109",
-            "addressLocality": "북구",
-            "addressRegion": "부산광역시",
-            "postalCode": "46630",
-            "addressCountry": "KR"
-          },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 35.2066646,
-            "longitude": 128.997753
-          },
-          "openingHoursSpecification": [
-            {
-              "@type": "OpeningHoursSpecification",
-              "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-              "opens": "10:00",
-              "closes": "18:00"
-            }
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
           ],
-          "sameAs": ["https://map.naver.com/p/entry/place/1759506877","https://www.instagram.com/gupo.noodle/","https://blog.naver.com/villagekitchen"]
+          "opens": "10:00",
+          "closes": "18:00"
+        }
+      ],
+      "sameAs": [
+        "https://map.naver.com/p/entry/place/1759506877",
+        "https://www.instagram.com/gupo.noodle/",
+        "https://blog.naver.com/villagekitchen"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "이용 대상은 어떻게 되나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "10인 이하 개인 고객 전용 체험이며, 36개월(만 3세) 이상 참여를 권장합니다. 나이 상한은 없어 중학생·청소년은 물론 성인도 참여할 수 있습니다. 안전하고 즐거운 체험을 위해 연령 기준을 지켜주시기 바랍니다."
+          }
         },
         {
-          "@type": "FAQPage",
-          "@id": "https://guponoodle.lol/#faq",
-          "mainEntity": [
-            {"@type":"Question","name":"이용 대상은 어떻게 되나요?","acceptedAnswer":{"@type":"Answer","text":"10인 이하 개인 고객 전용 체험이며, 36개월(만 3세) 이상 참여를 권장합니다. 나이 상한은 없어 중학생·청소년은 물론 성인도 참여할 수 있습니다."}},
-            {"@type":"Question","name":"예약은 어떻게 해야 하나요?","acceptedAnswer":{"@type":"Answer","text":"네이버 예약을 통해 사전 예약해 주시기 바랍니다. 전화 문의: 010-2608-5099."}},
-            {"@type":"Question","name":"결제는 어떤 방법으로 가능한가요?","acceptedAnswer":{"@type":"Answer","text":"네이버페이 결제로 진행됩니다. 카드결제 또는 현금 계좌이체를 원하실 경우 전화(010-2608-5099) 문의 바랍니다."}},
-            {"@type":"Question","name":"어른도 체험에 참여할 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"보호자(성인)는 무료로 참여 가능합니다. 아이만 예약하시면 됩니다."}},
-            {"@type":"Question","name":"보호자 입장은 어떻게 되나요?","acceptedAnswer":{"@type":"Answer","text":"보호자(성인)도 함께 체험실에 입장하실 수 있으며 무료입니다. 미취학 아동은 보호자가 곁에서 함께 도와주시면 더욱 즐겁게 참여할 수 있습니다."}},
-            {"@type":"Question","name":"체험 후 가져갈 수 있는 것이 있나요?","acceptedAnswer":{"@type":"Answer","text":"체험 종료 후 아이들이 직접 만든 국수 소면, 수제비, 코인육수 밀키트를 가져가실 수 있습니다."}},
-            {"@type":"Question","name":"주차는 가능한가요?","acceptedAnswer":{"@type":"Answer","text":"전용 주차장은 없습니다. 인근 유료 주차장(구포·대천·남선)을 이용해 주시며, 지정 주차장에 한해 30분 주차 지원이 제공됩니다. 가급적 대중교통(지하철 3호선 구포역 3번 출구 도보 3분) 이용을 권장합니다."}},
-            {"@type":"Question","name":"우천 시에도 체험이 가능한가요?","acceptedAnswer":{"@type":"Answer","text":"모든 체험은 실내에서 진행되므로 날씨와 관계없이 참여 가능합니다."}},
-            {"@type":"Question","name":"단체 예약도 가능한가요?","acceptedAnswer":{"@type":"Answer","text":"15인 이상 단체(어린이집·유치원·학교·기관)는 네이버 단체 예약창으로 예약하시거나 전화(010-2608-5099)로 문의해 주세요. 단체 예약은 신청 후 직원 확인을 거쳐 확정되므로 확정까지 시간이 걸릴 수 있으니 일정에 여유를 두고 신청해 주세요. 인원은 협의 가능하며, 단체 결제는 현장에서 진행됩니다."}},
-            {"@type":"Question","name":"예약 시간에 늦으면 어떻게 되나요?","acceptedAnswer":{"@type":"Answer","text":"늦을 것 같으면 먼저 전화(010-2608-5099)로 알려주세요. 입장은 회차 시작 후 15분까지 가능하며, 그 이후엔 진행 중인 회차에 합류하는 방식으로 안내드립니다. 다음 회차 변경과 환불은 어려우니 10분 전 도착을 권장합니다."}},
-            {"@type":"Question","name":"입구(엘리베이터)는 어디인가요?","acceptedAnswer":{"@type":"Answer","text":"1층 구포국수 식당으로 들어가 카운터 오른쪽에 엘리베이터가 있습니다. 오전 10시·오후 1시 회차는 3층 교실, 오전 10시 30분·오후 1시 30분 회차는 2층 교실로 올라오시면 됩니다."}},
-            {"@type":"Question","name":"음식 알레르기가 있는 경우 어떻게 하나요?","acceptedAnswer":{"@type":"Answer","text":"체험에는 밀가루가 사용됩니다. 밀 알레르기가 있는 경우 사전에 전화로 문의해 주시기 바랍니다."}},
-            {"@type":"Question","name":"구포국수체험관 운영시간은?","acceptedAnswer":{"@type":"Answer","text":"화요일~일요일 10:00~18:00 운영하며, 매주 월요일은 휴관입니다. 개인 체험은 주로 주말·공휴일 회차로 운영되고, 평일은 단체 예약 위주로 진행됩니다. 회차당 소수 인원으로 운영되어 적정 인원이 충족되지 않으면 해당 회차가 취소될 수 있으니, 원하시는 시간대는 서둘러 예약해 주세요."}},
-            {"@type":"Question","name":"근처에 다른 관광지가 있나요?","acceptedAnswer":{"@type":"Answer","text":"도보권에 구포시장(전통시장)과 구포만세거리(3·1운동 만세운동 기념 거리)가 있고, 구포역에서 감동나룻길 보행교로 연결되는 화명생태공원(금빛노을브릿지)도 가깝습니다. 차로 가까운 거리에 화명수목원, 구포 어린이교통공원, 구포왜성이 있어 함께 방문하기 좋습니다."}},
-            {"@type":"Question","name":"체험 후 둘러볼 도보 코스가 있나요?","acceptedAnswer":{"@type":"Answer","text":"구포역 인근에서 감동나룻길 리버워크, 금빛노을브릿지(일몰), 화명생태공원, 구포시장으로 이어지는 낙동강 강변 코스를 차 없이 반나절(약 3~4시간)에 도보로 돌 수 있습니다. 보행교에 승강기가 있어 유모차 이용도 가능합니다."}},
-            {"@type":"Question","name":"세금계산서나 현금영수증 발행이 되나요? (단체·기관)","acceptedAnswer":{"@type":"Answer","text":"어린이집·유치원·학교 등 단체·기관 정산을 위해 세금계산서와 현금영수증을 모두 발행해 드립니다. 발행 정보는 예약 확정 시 전화(010-2608-5099)로 안내드립니다."}},
-            {"@type":"Question","name":"단체 체험, 안전과 보험은 어떻게 되나요?","acceptedAnswer":{"@type":"Answer","text":"영업배상책임보험에 가입되어 있습니다. 모든 체험은 실내에서 진행되며, 시작 전 일회용 앞치마·위생모자 착용과 손 씻기를 거칩니다. 1회차 50명 이상도 교실·회차를 나눠 진행하며 인원은 협의 가능합니다."}},
-            {"@type":"Question","name":"학교 현장체험학습 공문·견적서 대응이 되나요?","acceptedAnswer":{"@type":"Answer","text":"학교 현장체험학습을 위한 공문과 견적서를 모두 발급해 드립니다. 진행은 문의·상담, 견적·공문, 일정·인원 확정, 방문·체험 순이며 단체 결제는 현장에서 진행됩니다."}}
-          ]
+          "@type": "Question",
+          "name": "예약은 어떻게 해야 하나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "네이버 예약을 통해 사전 예약해 주시기 바랍니다. 원하시는 날짜와 시간대를 선택하신 후 간편 결제로 진행됩니다. 전화 문의: 010-2608-5099 ."
+          }
         },
         {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {"@type":"ListItem","position":1,"name":"홈","item":"https://guponoodle.lol/"},
-            {"@type":"ListItem","position":2,"name":"체험 프로그램","item":"https://guponoodle.lol/#program"},
-            {"@type":"ListItem","position":3,"name":"단체·기관 안내","item":"https://guponoodle.lol/#group"},
-            {"@type":"ListItem","position":4,"name":"예약","item":"https://map.naver.com/p/entry/place/1759506877?placePath=/ticket"}
-          ]
+          "@type": "Question",
+          "name": "결제는 어떤 방법으로 가능한가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "네이버페이 결제로 진행됩니다. 카드결제 또는 현금 계좌이체 결제를 원하실 경우 구포국수체험관( 010-2608-5099 )으로 전화 문의 주시면 자세히 안내해 드리겠습니다."
+          }
         },
         {
-          "@type": "WebPage",
-          "@id": "https://guponoodle.lol/#webpage",
-          "url": "https://guponoodle.lol/",
-          "name": "구포국수체험관 공식 홈페이지 | 예약·가격·주차 안내",
-          "inLanguage": "ko-KR",
-          "datePublished": "2025-05-30",
-          "dateModified": "2026-07-17",
-          "isPartOf": {"@id": "https://guponoodle.lol/#touristattraction"},
-          "about": {"@id": "https://guponoodle.lol/#touristattraction"}
+          "@type": "Question",
+          "name": "어른도 체험에 참여할 수 있나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "보호자(성인)는 무료로 참여 가능합니다. 아이만 예약하시면 됩니다. 체험 종료 후, 1층 국수 식당에서 국수 한 그릇 드셔보시는 것을 추천합니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "보호자 입장은 어떻게 되나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "보호자(성인)도 함께 체험실에 입장하실 수 있으며, 참여 비용은 무료 입니다. 특히 미취학 아동은 보호자가 곁에서 함께 도와주시면 반죽·제면을 더욱 즐겁게 완성할 수 있습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "체험 후 가져갈 수 있는 것이 있나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "체험 종료 후, 아이들이 직접 만든 국수 소면·수제비·코인육수 밀키트 를 가져가실 수 있습니다. 집에서 가족과 함께 조리해 드시면 체험의 추억이 한 번 더 이어집니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "구포국수체험관 운영시간은?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "화요일~일요일 10:00~18:00 운영하며, 매주 월요일은 휴관입니다. 개인 체험은 주로 주말·공휴일 회차로 운영되고, 평일은 단체 예약 위주 로 진행됩니다. 회차당 소수 인원으로 운영되어 적정 인원이 충족되지 않으면 해당 회차가 취소될 수 있으니, 원하시는 시간대는 서둘러 예약해 주세요."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "주차는 가능한가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "전용 주차장은 없습니다. 자가용 이용 시 인근 유료 주차장을 이용해 주세요. 지정 주차장(구포·대천·남선)에 한해 30분 주차가 지원 됩니다. 가급적 대중교통(지하철 3호선 구포역 3번 출구에서 도보 3분) 이용을 권장합니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "우천 시에도 체험이 가능한가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "모든 체험은 실내에서 진행 되므로 비, 눈, 폭염 등 날씨와 관계없이 편안하게 참여하실 수 있습니다. 우천 시 가족 나들이로 안성맞춤입니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "단체 예약도 가능한가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "15인 이상 단체(어린이집·유치원·학교·기관)는 네이버 단체 예약창 으로 예약하시거나 전화( 010-2608-5099 )로 문의해 주세요. 단체 예약은 신청 후 직원 확인을 거쳐 확정 되므로 확정까지 시간이 걸릴 수 있습니다 . 일정에 여유를 두고 신청해 주세요. 결제는 현장에서 진행되며, 인원은 협의 가능합니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "예약 시간에 늦으면 어떻게 되나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "늦을 것 같으면 먼저 전화( 010-2608-5099 )로 알려주세요. 입장은 회차 시작 후 15분까지 가능하며, 그 이후엔 진행 중인 회차에 합류하는 방식으로 안내드립니다. 다음 회차 변경·환불은 어려우니 10분 전 도착을 권장합니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "입구(엘리베이터)는 어디인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "1층 구포국수 식당으로 들어가 카운터 오른쪽 에 엘리베이터가 있습니다. 예약 회차에 맞는 교실로 올라오세요. 오전 10시·오후 1시 회차는 3층 교실 , 오전 10시 30분·오후 1시 30분 회차는 2층 교실 입니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "음식 알레르기가 있는 경우 어떻게 하나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "체험에는 밀가루 가 사용됩니다. 밀(글루텐) 알레르기가 있는 경우 사전에 전화( 010-2608-5099 )로 문의해 주시기 바랍니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "근처에 다른 관광지가 있나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "도보권에 구포시장 (400년 전통시장)과 구포만세거리 (3·1운동 만세운동 기념 거리)가 있고, 구포역에서 감동나룻길 보행교로 이어지는 화명생태공원 (금빛노을브릿지)도 가깝습니다. 차로 잠깐이면 화명수목원·구포 어린이교통공원·구포왜성도 있어, '구포국수 체험 + 역사·자연 산책'으로 부산 북구 가족 코스를 구성하기 좋습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "체험 후 둘러볼 도보 코스가 있나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "네! 구포역 인근에서 감동나룻길 리버워크 → 금빛노을브릿지(일몰) → 화명생태공원 → 구포시장 으로 이어지는 낙동강 강변 코스를 차 없이 반나절(약 3~4시간)에 돌 수 있습니다. 모두 도보로 연결되고 보행교에 승강기가 있어 유모차로도 다닐 수 있습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "세금계산서나 현금영수증 발행이 되나요? (단체·기관)",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "네. 어린이집·유치원·학교 등 단체·기관 정산을 위해 세금계산서와 현금영수증을 모두 발행 해 드립니다. 발행 정보는 예약 확정 시 전화( 010-2608-5099 )로 안내드립니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "단체 체험, 안전과 보험은 어떻게 되나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "만일에 대비해 영업배상책임보험에 가입 되어 있습니다. 모든 체험은 실내에서 진행되고, 시작 전 일회용 앞치마·위생모자 착용과 손 씻기 를 거칩니다. 1회차 50명 이상도 교실·회차를 나눠 안전하게 진행하며, 인원은 협의 가능합니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "학교 현장체험학습 공문·견적서 대응이 되나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "네. 학교 현장체험학습을 위한 공문과 견적서를 모두 발급 해 드립니다. 진행은 ‘문의·상담 → 견적·공문 → 일정·인원 확정 → 방문·체험’ 순이며, 단체 결제는 현장에서 진행됩니다. 일정에 여유를 두고 전화( 010-2608-5099 )로 문의해 주세요."
+          }
         }
       ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "홈",
+          "item": "https://guponoodle.lol/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "체험 프로그램",
+          "item": "https://guponoodle.lol/#program"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "단체·기관 안내",
+          "item": "https://guponoodle.lol/#group"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "예약",
+          "item": "https://map.naver.com/p/entry/place/1759506877?placePath=/ticket"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://guponoodle.lol/#webpage",
+      "url": "https://guponoodle.lol/",
+      "name": "구포국수체험관 공식 홈페이지 | 예약·가격·주차 안내",
+      "inLanguage": "ko-KR",
+      "datePublished": "2025-05-30",
+      "dateModified": "2026-07-17",
+      "isPartOf": {
+        "@id": "https://guponoodle.lol/#touristattraction"
+      },
+      "about": {
+        "@id": "https://guponoodle.lol/#touristattraction"
+      }
     }
-    </script>
+  ]
+}
+</script>
 
     <!-- Event Schema -->
     <script type="application/ld+json">
