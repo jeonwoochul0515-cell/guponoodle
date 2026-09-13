@@ -146,6 +146,13 @@ th { background: var(--card); font-weight: 700; white-space: nowrap; }
 }
 .g-footer a { color: #b5ac9d; }
 
+/* 안내 사진 — 체험관에서 직접 찍은 사진만 쓴다 */
+.g-photo { margin: 1.4rem 0 1.8rem; }
+/* 원본보다 크게 늘리지 않는다 — 늘리면 흐려진다 */
+.g-photo img { max-width: 100%; max-height: 420px; width: auto; height: auto; border-radius: 10px; display: block; margin: 0 auto; border: 1px solid var(--line); }
+.g-photo figcaption { text-align: center; }
+.g-photo figcaption { margin-top: 0.55rem; font-size: 0.85rem; color: var(--muted, #5C5042); }
+
 @media (max-width: 480px) {
     h1 { font-size: 1.55rem; }
     .g-main { padding: 1.8rem 1.1rem 3rem; }
