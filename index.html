@@ -187,6 +187,15 @@
         .program-card:hover { border-color: rgba(198,138,30,0.5); transform: translateY(-3px); box-shadow: 0 14px 30px rgba(33,26,18,0.07); }
         .program-card img { transition: transform .6s ease; }
         .program-card:hover img { transform: scale(1.04); }
+        /* 사진 대신 쓰는 그림판 — 건조대에 널어 말린 국수 가닥을 선으로 옮긴 것 */
+        .card-art { height: 100%; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.55rem; background: linear-gradient(168deg, var(--paper-2) 0%, #EFE3C9 100%); }
+        .card-art::before { content: ""; position: absolute; left: 0; right: 0; top: 3.1rem; bottom: 0; background: repeating-linear-gradient(90deg, rgba(33,26,18,0.16) 0 1px, transparent 1px 9px); -webkit-mask-image: linear-gradient(180deg, #000 0 55%, transparent 100%); mask-image: linear-gradient(180deg, #000 0 55%, transparent 100%); }
+        .card-art::after { content: ""; position: absolute; left: 1.6rem; right: 1.6rem; top: 3rem; height: 3px; border-radius: 2px; background: var(--ink-soft); opacity: 0.55; }
+        .card-art .ic { font-size: 2.1rem; color: var(--gold-ink); position: relative; margin-top: 3.4rem; }
+        .card-art b { position: relative; font-family: var(--font-serif); font-weight: 400; font-size: 1.28rem; color: var(--ink); letter-spacing: -0.01em; }
+        .card-art span { position: relative; font-size: 0.82rem; color: var(--taupe); }
+        .program-card:nth-child(2) .card-art { background: linear-gradient(168deg, #FBF6EA 0%, #EDE6D6 100%); }
+        .program-card:nth-child(3) .card-art { background: linear-gradient(168deg, #FAF4E6 0%, #EBE0CC 100%); }
         .badge-gold { background: var(--gold-deep); color: #fff; }
         .badge-river { background: var(--river); color: #fff; }
 
@@ -228,6 +237,15 @@
         #kakao-chat { position: fixed; right: 1.25rem; bottom: 6rem; z-index: 46; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1.05rem; border-radius: 9999px; background-color: #FEE500; color: #3C1E1E; font-weight: 700; font-size: 0.9rem; box-shadow: 0 8px 24px rgba(0,0,0,0.18); text-decoration: none; transition: transform 0.2s ease, box-shadow 0.2s ease; }
         #kakao-chat:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,0.22); }
         @media (min-width: 768px) { #kakao-chat { bottom: 1.5rem; } }
+
+        /* 모바일 메뉴 — 화면보다 길면 메뉴 안에서 스크롤되게 한다 (본문 스크롤은 잠겨 있다).
+           safe center: 다 들어가면 가운데, 넘치면 위부터 — 넘칠 때 윗부분이 잘려 못 보는 것을 막는다 */
+        #mobile-menu { overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; justify-content: safe center; }
+        #mobile-menu .mm-shield { position: sticky; top: 0; z-index: 2; flex: none; height: 5.4rem; background: var(--paper); }
+        #mobile-menu .mm-inner { padding: 0.5rem 1.5rem 2.5rem; width: 100%; }
+        /* 메뉴가 열려 있는 동안 떠 있는 버튼들이 메뉴를 덮지 않게 한다 */
+        body:has(#mobile-menu:not(.translate-x-full)) #kakao-chat,
+        body:has(#mobile-menu:not(.translate-x-full)) .floating-cta { opacity: 0; visibility: hidden; pointer-events: none; }
 
         /* Reveal */
         .reveal { opacity: 0; transform: translateY(34px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
@@ -695,7 +713,9 @@
         </div>
 
         <!-- Mobile Menu -->
-        <nav id="mobile-menu" class="fixed inset-0 bg-paper z-40 transform translate-x-full transition-transform duration-300 flex flex-col justify-center items-center space-y-7 md:hidden" aria-label="모바일 메뉴" aria-hidden="true">
+        <nav id="mobile-menu" class="fixed inset-0 bg-paper z-40 transform translate-x-full transition-transform duration-300 flex flex-col md:hidden" aria-label="모바일 메뉴" aria-hidden="true">
+          <div class="mm-shield" aria-hidden="true"></div>
+          <div class="mm-inner flex flex-col items-center space-y-7">
             <a href="#about" class="text-2xl serif text-ink mobile-link">이야기</a>
             <a href="#program" class="text-2xl serif text-ink mobile-link">체험</a>
             <a href="#course" class="text-2xl serif text-ink mobile-link">주변 코스</a>
@@ -705,6 +725,7 @@
             <a href="#faq" class="text-2xl serif text-ink mobile-link">자주 묻는 질문</a>
             <a href="#info" class="text-2xl serif text-ink mobile-link">오시는 길</a>
             <a href="https://map.naver.com/p/entry/place/1759506877?lng=128.997753&lat=35.2066646&placePath=/ticket?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202602040921&locale=ko&svcName=map_pcv5&entry=plt&searchType=place&c=15.00,0,0,0,dh" target="_blank" rel="noopener" class="btn-gold mt-2 text-lg">예약하기</a>
+          </div>
         </nav>
     </header>
 
@@ -902,7 +923,12 @@
                 <!-- Card 1: 제면 체험 -->
                 <article class="program-card group reveal" aria-label="제면 체험 클래스">
                     <div class="h-64 overflow-hidden relative">
-                        <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F421%2F2021%2F02%2F25%2F0005188693_002_20210225155516699.jpg&type=a340" alt="부산 제면 체험 클래스 - 어린이가 직접 국수를 뽑는 모습" class="w-full h-full object-cover" loading="lazy">
+                        <!-- 사진 자리 — 자체 촬영본이 준비되면 이 블록을 <img>로 되돌린다 -->
+                        <div class="card-art" role="img" aria-label="제면 체험 - 반죽부터 국수 뽑기까지">
+                            <svg class="ic" aria-hidden="true"><use href="#i-soup"/></svg>
+                            <b>제면 놀이</b>
+                            <span>반죽부터 제면기로 국수 뽑기</span>
+                        </div>
                         <div class="absolute top-4 left-4 badge-gold text-xs px-3 py-1.5 rounded-sm font-semibold tracking-wide">가장 인기</div>
                     </div>
                     <div class="p-8">
@@ -924,7 +950,12 @@
                 <!-- Card 2: 맷돌 & 편백 -->
                 <article class="program-card group reveal delay-100" aria-label="맷돌체험 및 편백놀이">
                     <div class="h-64 overflow-hidden relative">
-                        <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTAzMDNfNDMg%2FMDAxNjE0NzQwOTI1OTYy.fVHXCNrGOhMlaZD2AJpafwK44Xm0lMmmBHekHJry5cQg.NDUdUS4EodX2gaOKuY_oaoBlDNOKEaElbkfsyVe4sLsg.JPEG.bsbukgusns%2F5-4.jpeg&type=a340" alt="어린이 맷돌 체험 및 편백나무 놀이 공간" class="w-full h-full object-cover" loading="lazy">
+                        <!-- 사진 자리 — 자체 촬영본이 준비되면 이 블록을 <img>로 되돌린다 -->
+                        <div class="card-art" role="img" aria-label="맷돌 체험과 편백 놀이방">
+                            <svg class="ic" aria-hidden="true"><use href="#i-spark"/></svg>
+                            <b>맷돌 · 편백</b>
+                            <span>통밀을 갈고 편백 놀이방에서 쉬기</span>
+                        </div>
                     </div>
                     <div class="p-8">
                         <h3 class="text-xl mb-3 text-ink serif">교과서 속 맷돌, 직접 돌려봐요</h3>
@@ -944,7 +975,12 @@
                 <!-- Card 3: 역사관 -->
                 <article class="program-card group reveal delay-200" aria-label="역사관 및 미니 박물관">
                     <div class="h-64 overflow-hidden relative">
-                        <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxNzEyMTFfNTMg%2FMDAxNTEyOTU5NjEyODMz.fXQ0bdskEVBP-lXdtQ4JBSl-ib1x4C54k2159Hm8Wwsg.eYNbX3Vfx4bu9JEhBgC4nAPlTjr-og5_a4-YRIcEYa8g.JPEG.dw9597%2F20171209_120817.jpg&type=a340" alt="구포국수 역사관 - 1950년대 제면 도구 전시" class="w-full h-full object-cover" loading="lazy">
+                        <!-- 사진 자리 — 자체 촬영본이 준비되면 이 블록을 <img>로 되돌린다 -->
+                        <div class="card-art" role="img" aria-label="1950년대 구포 국수 역사관">
+                            <svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg>
+                            <b>1950 구포</b>
+                            <span>실제 제면 도구와 흑백 사진 전시</span>
+                        </div>
                     </div>
                     <div class="p-8">
                         <h3 class="text-xl mb-3 text-ink serif">시간 여행, 1950년대 구포로</h3>
@@ -1859,7 +1895,7 @@
                     </div>
                 </div>
                 <div class="text-sm">
-                    <p class="mb-1">상호: 구포국수체험관 | 대표자: 체험관관리자</p>
+                    <p class="mb-1">상호: 구포국수체험관(마을부엌정지협동조합) | 대표자: 김창희</p>
                     <p class="mb-1">주소: 부산광역시 북구 구포만세길 109 (구포동)</p>
                     <p class="mb-1">사업자등록번호: 184-81-02872 | 문의: <a href="tel:010-2608-5099" class="hover:text-white transition">010-2608-5099</a></p>
                     <p class="mb-1 mt-4">이용 가이드:
