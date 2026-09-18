@@ -169,8 +169,8 @@
            JS가 그때그때 계산해 키운다. 무작정 키우면 사진이 잘려 뭐지 보이지 않는다. */
         .shot {
             position: absolute; left: 50%; top: 50%;
-            width: 100vw; height: 100vh;
-            margin-left: -50vw; margin-top: -50vh;
+            width: 128vw; height: 128vh;
+            margin-left: -64vw; margin-top: -64vh;
             background: #0C0A07;
             transform-style: preserve-3d;
             backface-visibility: hidden;
@@ -2535,7 +2535,9 @@
                     const z = l * SPAN;
                     const raw = PERSP / (PERSP - z);          // 원근 배율
                     // 원근은 남기되 배율 진폭은 눌러야 화면이 항상 꽉 찬다
-                    const k = Math.pow(raw, 0.45) / raw * cover;
+                    // 지수를 낮춰 배율 진폭을 줄인다. 가장 멀리 있을 때(0.82)에도
+                    // CSS 기본 크기 122%와 곱해 1을 넘겨야 가장자가 비지 않는다.
+                    const k = Math.pow(raw, 0.25) / raw * cover;
                     const o = smoothstep(IN0, IN1, l) * (1 - smoothstep(OUT0, OUT1, l));
                     const d = drift[i];
 
