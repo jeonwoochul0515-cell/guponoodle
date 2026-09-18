@@ -41,7 +41,7 @@
 
     <!-- Preconnect for performance -->
     <link rel="preload" as="image" href="cinema/s01.webp" fetchpriority="high">
-    <link rel="preload" as="image" href="cinema/s02.webp">
+    <link rel="preload" as="image" href="cinema/s03.webp">
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1009,6 +1009,10 @@
               <figure class="shot" data-era="past" data-year="1945" data-cap="낙동강 바람에 널은 국수">
                 <img src="cinema/s01.webp" width="1920" height="1080" fetchpriority="high" decoding="async"
                      alt="1945년대 낙동강 둑 위 국수 건조장. 건조대가 소실점까지 줄지어 있고 하얀 소면이 강바람에 마른다. 직접 그린 재현 이미지">
+              </figure>
+              <figure class="shot" data-era="past" data-year="1950s" data-cap="부산항으로 들어온 밀">
+                <img src="cinema/s03.webp" width="1920" height="1080" loading="lazy" decoding="async"
+                     alt="1950년대 구포의 밀가루 창고. ‘미국 국민이 기증한 밀로 제분된 밀가루, 대한제분주식회사’라 인쇄된 원조 밀가루 포대가 쌓여 있다. 남아 있는 실물 포대를 보고 직접 그린 재현 이미지">
               </figure>
               <figure class="shot" data-era="past" data-year="1950s" data-cap="제면소의 빛기둥">
                 <img src="cinema/s02.webp" width="1920" height="1080" loading="lazy" decoding="async"
@@ -2461,7 +2465,7 @@
                그냥 계속 돌리면 사진이 내내 누워 무슨 장면인지 알 수 없다.
                샷 가운데엔 수평을 지키고, 시대가 바뀌는 순간과 주제가 바뀌는
                순간에 한 바퀴씩 통째로 돌린다. 두 바퀴 넘게 뎬다. */
-            const SEG = [12, -10, 360, 14, -12, 10, 360, -14, 12, 8];   // 샷간 회전량(도)
+            const SEG = [12, -10, 8, 360, 14, -12, 10, -12, 360, 12, 8];   // 샷간 회전량(도)
             const ACC = [0];
             for (let i = 0; i < SEG.length; i++) ACC.push(ACC[i] + SEG[i]);
             const IN0 = -1.40, IN1 = -0.96;   // 등장 구간
