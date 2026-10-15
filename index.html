@@ -12,7 +12,7 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="구포국수체험관 공식 홈페이지. 어린이 1인 24,000원(보호자 무료), 화~일 10:00~18:00(월 휴관), 제면·맷돌·편백놀이 올인원 약 1시간 30분. 예약 방법·주차 30분 지원·단체 견적서 즉시 발급·자주 묻는 질문 18개를 한눈에 확인하세요.">
+    <meta name="description" content="네이버 예약 · 어린이 24,000원(보호자 무료) · 화~일 10:00~18:00(월 휴관) · 인근 유료주차장 30분 지원 · 지하철 구포역 3번 출구 3분. 아이가 직접 국수를 뽑아 소면·수제비 밀키트로 가져가는 약 1시간 30분 체험.">
     <meta name="keywords" content="부산체험, 어린이체험, 이색체험, 구포국수체험관, 부산가볼만한곳, 제면체험, 맷돌체험, 부산여행, 부산가족나들이, 부산아이와갈만한곳">
     <link rel="canonical" href="https://guponoodle.lol/">
     <meta name="geo.region" content="KR-26">
@@ -434,6 +434,13 @@
             color: rgba(246,238,220,.56); line-height: 1.5;
         }
         .g-sub b { color: rgba(246,238,220,.85); font-weight: 600; }
+        /* 카드 아래 안내 페이지 바로가기 — 손가락이 닿게 높이 44px */
+        .g-more {
+            display: inline-flex; align-items: center; min-height: 44px;
+            margin-top: .2rem; font-size: clamp(.74rem, 1.4vw, .84rem);
+            color: var(--gold); text-decoration: underline; text-underline-offset: 3px;
+        }
+        .g-more:hover { color: #F2E7CE; }
         .glance-cta {
             margin-top: clamp(2rem, 4vw, 3rem);
             display: flex; flex-wrap: wrap; gap: .8rem;
@@ -689,6 +696,14 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "10인 이하 개인 고객 전용 체험이며, 36개월(만 3세) 이상 참여를 권장합니다. 나이 상한은 없어 중학생·청소년은 물론 성인도 참여할 수 있습니다. 안전하고 즐거운 체험을 위해 연령 기준을 지켜주시기 바랍니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "체험은 몇 시에 시작하고, 얼마나 걸리나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "한 회차는 약 1시간 30분입니다. 개인 체험은 주로 주말·공휴일에 오전 10시, 10시 30분, 오후 1시, 1시 30분 회차로 열리고, 평일은 어린이집·학교 단체 위주로 운영됩니다. 남은 자리와 정확한 회차는 네이버 예약에서 실시간으로 보입니다."
           }
         },
         {
@@ -1143,6 +1158,7 @@
             </div>
             <p class="g-big">어린이 <b>24,000</b>원</p>
             <p class="g-sub">보호자 <b>0</b>원</p>
+            <a class="g-more" href="/guide/booking-price">예약·가격 안내</a>
           </li>
 
           <!-- 시간 -->
@@ -1176,6 +1192,7 @@
             </div>
             <p class="g-big"><b>36</b>개월부터</p>
             <p class="g-sub">보호자 함께 들어옵니다</p>
+            <a class="g-more" href="/guide/age">몇 살부터 가능한지</a>
           </li>
 
           <!-- 무엇을 하나 -->
@@ -1243,6 +1260,7 @@
             </div>
             <p class="g-big">전용 주차장 없음</p>
             <p class="g-sub">인근 유료주차장 <b>30</b>분 지원</p>
+            <a class="g-more" href="/guide/parking">주차장 위치·요금</a>
           </li>
 
           <!-- 입구 -->
@@ -1259,6 +1277,7 @@
             </div>
             <p class="g-big">1층 식당으로</p>
             <p class="g-sub">카운터 오른쪽 엘리베이터</p>
+            <a class="g-more" href="/guide/restaurant">1층 구포국수식당</a>
           </li>
         </ul>
 
@@ -2017,6 +2036,16 @@
                     </button>
                     <div class="faq-content px-8">
                         <p class="text-taupe leading-relaxed">10인 이하 개인 고객 전용 체험이며, 36개월(만 3세) 이상 참여를 권장합니다. <strong>나이 상한은 없어 중학생·청소년은 물론 성인도 참여할 수 있습니다.</strong> 안전하고 즐거운 체험을 위해 연령 기준을 지켜주시기 바랍니다.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" role="listitem">
+                    <button class="faq-toggle w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50/50 transition" aria-expanded="false">
+                        <span class="faq-q font-bold pr-4">체험은 몇 시에 시작하고, 얼마나 걸리나요?</span>
+                        <svg class="ic faq-icon text-gold transition-transform duration-300 text-sm" aria-hidden="true"><use href="#i-chev"/></svg>
+                    </button>
+                    <div class="faq-content px-8">
+                        <p class="text-taupe leading-relaxed">한 회차는 약 1시간 30분입니다. 개인 체험은 주로 주말·공휴일에 <strong>오전 10시, 10시 30분, 오후 1시, 1시 30분</strong> 회차로 열리고, 평일은 어린이집·학교 단체 위주로 운영됩니다. 남은 자리와 정확한 회차는 네이버 예약에서 실시간으로 보입니다.</p>
                     </div>
                 </div>
 
