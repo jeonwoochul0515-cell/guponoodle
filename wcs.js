@@ -6,6 +6,10 @@
   var CNV = { call: 'custom001', kakao: 'custom002' };
 
   var ready = false;
+  // 원문 HTML의 네이버 공통 스크립트가 이미 페이지 조회를 보냈으면 다시 보내지 않고 전환만 쓴다
+  if (window.wcs && window.wcs_add && window.wcs_add['wa'] === NAVER_WA) {
+    ready = true;
+  } else {
   var s = document.createElement('script');
   s.src = 'https://wcs.naver.net/wcslog.js';
   s.async = true;
@@ -20,6 +24,7 @@
     } catch (e) { /* 추적 실패가 화면을 막지 않게 한다 */ }
   };
   document.head.appendChild(s);
+  }
 
   function trans(type) {
     if (!ready || !window.wcs) return;
